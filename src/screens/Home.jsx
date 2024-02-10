@@ -1,13 +1,17 @@
 import { StyleSheet, Text, View } from "react-native";
+import Categories from "../components/Categories";
 import Header from "../components/Header";
 import colors from "../utils/global/colors";
 
-const Home = () => {
+const Home = ({ handleCategorySelected, categorySelected }) => {
   return (
     <>
-      <Header />
+      <Header
+        title={categorySelected ? categorySelected : "Tienda"}
+        handleCategorySelected={handleCategorySelected}
+      />
       <View style={styles.container}>
-        <Text>Hola mundo!!!</Text>
+        <Categories handleCategorySelected={handleCategorySelected} />
       </View>
     </>
   );

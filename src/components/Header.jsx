@@ -5,20 +5,33 @@ import {
   StatusBar,
   Platform,
   Image,
+  Pressable,
 } from "react-native";
 import React from "react";
 import colors from "../utils/global/colors";
+import { AntDesign } from "@expo/vector-icons";
 
-const Header = ({ title = "Tienda" }) => {
+const Header = ({ title, handleCategorySelected }) => {
   return (
     <View style={styles.container}>
-      <View>
-        <Image
-          style={styles.logo}
-          source={require("../../assets/liquidStoreLogo.png")}
-        />
+      <Image
+        style={styles.logo}
+        source={require("../../assets/liquidStoreLogo.png")}
+      />
+      <View style={styles.nav}>
+        {title !== "Tienda" && (
+          <Pressable
+            style={styles.back}
+            onPress={() => handleCategorySelected("")}
+          >
+            <AntDesign name="left" size={30} color="black" />
+          </Pressable>
+        )}
+        <View></View>
+        <Text style={[styles.text]}>{title}</Text>
+        <View></View>
+        {title !== "Tienda" && <View style={styles.back}></View>}
       </View>
-      <Text style={styles.text}>{title}</Text>
     </View>
   );
 };
@@ -37,13 +50,26 @@ const styles = StyleSheet.create({
     maxWidth: "35%",
     maxHeight: 120,
     height: 50,
-
     resizeMode: "contain",
+  },
+  nav: {
+    flex: 1,
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  back: {
+    marginHorizontal: 20,
+
+    width: 30,
+    height: 30,
   },
   text: {
     fontSize: 36,
-    justifyContent: "flex-start",
     textAlignVertical: "top",
     marginBottom: 10,
+    alignSelf: "center",
+    justifyContent: "center",
   },
 });
