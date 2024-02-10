@@ -11,11 +11,14 @@ import ShadowPrimary from "./wrappers/ShadowPrimary";
 import { AntDesign } from "@expo/vector-icons";
 import fonts from "../utils/global/fonts";
 
-const ProductsList = ({ categorySelected, item, screenWidth }) => {
+const ProductsList = ({ item, screenWidth, handleProductSelectedId }) => {
   return (
     <>
       <ShadowPrimary style={[styles.container, { width: screenWidth - 40 }]}>
-        <Pressable style={styles.card}>
+        <Pressable
+          style={styles.card}
+          onPress={() => handleProductSelectedId(item.id)}
+        >
           <Image style={styles.cardImg} source={{ uri: item.img }} />
           <View style={styles.cardContainer}>
             <Text style={styles.cardText}>{item.title}</Text>

@@ -5,12 +5,20 @@ import ProductsByCategory from "./src/screens/ProductsByCategory";
 import colors from "./src/utils/global/colors";
 import { useFonts } from "expo-font";
 import { fontFamily } from "./src/utils/global/fonts";
+import ProductDetail from "./src/screens/ProductDetail";
 
 export default function App() {
   const [categorySelected, setCategorySelected] = useState("");
+  const [productSelectedId, setProductSelectedId] = useState(0);
   const screenWidth = Dimensions.get("window").width;
-  const handleCategorySelected = (cat) => {
+
+  const handleCategorySelected = (cat, id) => {
     setCategorySelected(cat);
+    handleProductSelectedId(id);
+  };
+
+  const handleProductSelectedId = (id) => {
+    setProductSelectedId(id);
   };
 
   const [fontsLoaded, fontError] = useFonts(fontFamily);
@@ -19,18 +27,26 @@ export default function App() {
     return null;
   }
 
-  useEffect(() => {
-    //console.log(categorySelected);
-  }, [categorySelected]);
-
   return (
     <View style={styles.container}>
       {categorySelected ? (
-        <ProductsByCategory
-          categorySelected={categorySelected}
-          handleCategorySelected={handleCategorySelected}
-          screenWidth={screenWidth}
-        />
+        productSelectedId ? (
+          <ProductDetail
+            screenWidth={screenWidth}
+            productSelectedId={productSelectedId}
+            categorySelected={categorySelected}
+            handleProductSelectedId={handleProductSelectedId}
+            handleCategorySelected={handleCategorySelected}
+          />
+        ) : (
+          <ProductsByCategory
+            categorySelected={categorySelected}
+            handleCategorySelected={handleCategorySelected}
+            handleProductSelectedId={handleProductSelectedId}
+            productSelectedId={productSelectedId}
+            screenWidth={screenWidth}
+          />
+        )
       ) : (
         <Home
           handleCategorySelected={handleCategorySelected}

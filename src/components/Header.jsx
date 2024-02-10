@@ -12,7 +12,20 @@ import colors from "../utils/global/colors";
 import { AntDesign } from "@expo/vector-icons";
 import fonts from "../utils/global/fonts";
 
-const Header = ({ title, handleCategorySelected }) => {
+const Header = ({
+  title,
+  handleCategorySelected,
+  productSelectedId,
+  handleProductSelectedId,
+}) => {
+  const path = () => {
+    if (!productSelectedId) {
+      return "";
+    } else {
+      handleProductSelectedId(0);
+      return title;
+    }
+  };
   return (
     <View style={styles.container}>
       <Image
@@ -23,7 +36,7 @@ const Header = ({ title, handleCategorySelected }) => {
         {title !== "Tienda" && (
           <Pressable
             style={styles.back}
-            onPress={() => handleCategorySelected("")}
+            onPress={() => handleCategorySelected(path)}
           >
             <AntDesign name="left" size={30} color={colors.textPrimary} />
           </Pressable>

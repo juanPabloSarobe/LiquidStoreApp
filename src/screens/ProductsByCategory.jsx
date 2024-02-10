@@ -9,6 +9,8 @@ const ProductsByCategory = ({
   categorySelected,
   handleCategorySelected,
   screenWidth,
+  handleProductSelectedId,
+  productSelectedId,
 }) => {
   const [productsByCategorySelected, setproductsByCategorySelected] = useState(
     []
@@ -31,6 +33,8 @@ const ProductsByCategory = ({
       <Header
         title={categorySelected}
         handleCategorySelected={handleCategorySelected}
+        productSelectedId={productSelectedId}
+        handleProductSelectedId={handleProductSelectedId}
       />
       <View style={styles.container}>
         <FlatList
@@ -38,9 +42,9 @@ const ProductsByCategory = ({
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <ProductsList
-              categorySelected={categorySelected}
               item={item}
               screenWidth={screenWidth}
+              handleProductSelectedId={handleProductSelectedId}
             />
           )}
         />
