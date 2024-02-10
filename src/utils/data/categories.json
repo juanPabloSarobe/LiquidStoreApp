@@ -1,0 +1,52 @@
+[
+  {
+    "id": 0,
+    "category": "Todos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1697320248/liquidStoreLogo_vrdfph.png"
+  },
+  {
+    "id": 1,
+    "category": "Licores",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104541/ron-havana-club-7-anos_s9mxc4.png"
+  },
+  {
+    "id": 2,
+    "category": "Combos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696106880/81Q7RtpoBWS_ncrgkf.jpg"
+  },
+  {
+    "id": 3,
+    "category": "Bebidas sin alcohol",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696106538/33cc3f47-d3e2-4ad7-8126-5e91e6d01007_1.59db4fe77e79edfa439e0429b229e0c9_fdc7nk.jpg"
+  },
+  {
+    "id": 4,
+    "category": "Cervezas",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104302/descarga_schjmg.jpg"
+  },
+  {
+    "id": 5,
+    "category": "Tés",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696105575/71jetkbRkKL._AC_UF894_1000_QL80__ef7ch9.jpg"
+  },
+  {
+    "id": 6,
+    "category": "Vinos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696105777/61qIyVR1_tL._AC_UF894_1000_QL80__kjhyze.jpg"
+  },
+  {
+    "id": 7,
+    "category": "Refrescos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696106656/refresco-chinotto-limon-rincon-abuela-venezolana_hsiaqv.jpg"
+  },
+  {
+    "id": 8,
+    "category": "Cafés",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696106706/81iid8jWYNL_czx6vl.jpg"
+  },
+  {
+    "id": 9,
+    "category": "Cócteles listos para beber",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696106401/81oUX6Rj1UL._AC_UF894_1000_QL80__habbaa.jpg"
+  }
+]

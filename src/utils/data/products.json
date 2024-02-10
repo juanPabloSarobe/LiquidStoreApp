@@ -1,0 +1,452 @@
+[
+  {
+    "id": 1,
+    "title": "Cerveza IPA",
+    "price": 5.99,
+    "stock": 5,
+    "description": "Cerveza India Pale Ale, ligeramente amarga y aromática.",
+    "category": "Cervezas",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104302/descarga_schjmg.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Vino Tinto Reserva",
+    "price": 12.99,
+    "stock": 30,
+    "description": "Vino tinto reserva de alta calidad, cosecha 2015.",
+    "category": "Vinos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104434/CeYiCOGWSUuyzWD_JuDsOg_ytj20a.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Whisky Escocés",
+    "price": 29.99,
+    "stock": 20,
+    "description": "Whisky escocés de malta, suave y ahumado.",
+    "category": "Licores",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104567/Jack-Daniels-Master-Distiller-N4-550x550_qvvkp4.png"
+  },
+  {
+    "id": 4,
+    "title": "Ron Añejo",
+    "price": 19.99,
+    "stock": 25,
+    "description": "Ron añejo de 7 años de barrica, ideal para cócteles.",
+    "category": "Licores",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104541/ron-havana-club-7-anos_s9mxc4.png"
+  },
+  {
+    "id": 5,
+    "title": "Ginebra Premium",
+    "price": 24.99,
+    "stock": 15,
+    "description": "Ginebra premium con una mezcla de botánicos.",
+    "category": "Licores",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104611/ventozelo-gin_tbmgg4.png"
+  },
+  {
+    "id": 6,
+    "title": "Soda Limón",
+    "price": 1.49,
+    "stock": 50,
+    "description": "Soda de limón refrescante, ideal para mezclar con licores.",
+    "category": "Refrescos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104654/61F7Y3rOWCL._AC_UF894_1000_QL80__xsimls.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Sidra",
+    "price": 6.99,
+    "stock": 35,
+    "description": "Sidra refrescante, perfecta para celebraciones.",
+    "category": "Cervezas",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104693/BOTELLA-2_06d65695-b6aa-47c7-947e-c08083799f92_ojv5ow.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Champán Brut",
+    "price": 35.99,
+    "stock": 10,
+    "description": "Champán brut de alta calidad, perfecto para celebraciones.",
+    "category": "Vinos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104758/Dom-Perignon-2000-Fullview-Vintage-Grapes-GmbH_j7bcxt.jpg"
+  },
+  {
+    "id": 9,
+    "title": "Tequila Reposado",
+    "price": 27.99,
+    "stock": 15,
+    "description": "Tequila reposado en barricas de roble, suave y elegante.",
+    "category": "Licores",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696105346/don-julio-reposado-web_xk0eft.png"
+  },
+  {
+    "id": 10,
+    "title": "Té de Manzanilla",
+    "price": 2.29,
+    "stock": 30,
+    "description": "Té de manzanilla calmante, perfecto para relajarse.",
+    "category": "Tés",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104790/41K9uMEPj8L._AC_UF894_1000_QL80__jugepp.jpg"
+  },
+  {
+    "id": 11,
+    "title": "Cerveza Lager",
+    "price": 4.99,
+    "stock": 60,
+    "description": "Cerveza Lager suave y refrescante, perfecta para cualquier ocasión.",
+    "category": "Cervezas",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104824/61uqEd22CxL._AC_UF1000_1000_QL80__xdft24.jpg"
+  },
+  {
+    "id": 12,
+    "title": "Ginebra de Bayas",
+    "price": 23.99,
+    "stock": 15,
+    "description": "Ginebra con infusiones de bayas silvestres, exquisitamente aromática.",
+    "category": "Licores",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104859/page_1_thumb_large_zizdmd.jpg"
+  },
+  {
+    "id": 13,
+    "title": "Refresco de Uva",
+    "price": 1.99,
+    "stock": 45,
+    "description": "Refresco de uva con un sabor dulce y refrescante.",
+    "category": "Refrescos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104891/7135S3EOy7L._AC_UF894_1000_QL80__ptojip.jpg"
+  },
+  {
+    "id": 14,
+    "title": "Jugo de Limón Natural",
+    "price": 2.49,
+    "stock": 50,
+    "description": "Jugo de limón recién exprimido, ideal para cócteles.",
+    "category": "Bebidas sin alcohol",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104959/61IT_XG5v5L._AC_UF894_1000_QL80__v17tc2.jpg"
+  },
+  {
+    "id": 15,
+    "title": "Cerveza Porter",
+    "price": 6.49,
+    "stock": 40,
+    "description": "Cerveza Porter oscura y robusta con notas a café y chocolate.",
+    "category": "Cervezas",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696105427/61OJjO1jYxL._AC_UF894_1000_QL80__n4h0sh.jpg"
+  },
+  {
+    "id": 16,
+    "title": "Vodka de Frambuesa",
+    "price": 29.99,
+    "stock": 20,
+    "description": "Vodka de frambuesa con un toque frutal y refrescante.",
+    "category": "Licores",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696105016/0000971_stolichnaya-vodka-375-ml_510_uzamkl.jpg"
+  },
+  {
+    "id": 17,
+    "title": "Té Verde con Menta",
+    "price": 2.29,
+    "stock": 30,
+    "description": "Té verde con menta fresca, ideal para momentos relajantes.",
+    "category": "Tés",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696105063/51on2OFxoZL._AC_UF1000_1000_QL80__o0ogwb.jpg"
+  },
+  {
+    "id": 18,
+    "title": "Whisky Bourbon",
+    "price": 22.99,
+    "stock": 25,
+    "description": "Whisky bourbon con un toque de caramelo y vainilla.",
+    "category": "Licores",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696105102/71ph6H8SaOL_bllbwt.jpg"
+  },
+  {
+    "id": 19,
+    "title": "Cerveza Ámbar",
+    "price": 5.99,
+    "stock": 30,
+    "description": "Cerveza ámbar con un equilibrio entre maltas y lúpulos.",
+    "category": "Cervezas",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696105186/weihenstephan-1516-kellerbier-escerveza-1_tjwver.jpg"
+  },
+  {
+    "id": 20,
+    "title": "Ron Blanco",
+    "price": 16.99,
+    "stock": 25,
+    "description": "Ron blanco suave y versátil, perfecto para cócteles.",
+    "category": "Licores",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696105230/bacardi-blanco-1_xneqpr.jpg"
+  },
+  {
+    "id": 21,
+    "title": "Vodka de Lujo",
+    "price": 39.99,
+    "stock": 12,
+    "description": "Vodka de lujo destilado varias veces, pureza excepcional.",
+    "category": "Licores",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696105267/beluga-noble-russian-vodka-70-cl_q7i4x2.jpg"
+  },
+  {
+    "id": 22,
+    "title": "Cerveza de Trigo",
+    "price": 5.99,
+    "stock": 40,
+    "description": "Cerveza de trigo suave y refrescante con notas a plátano y clavo.",
+    "category": "Cervezas",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696105303/4cb9d63b0a39d1857d57b29321856b29_640x640_ut8gdz.jpg"
+  },
+  {
+    "id": 23,
+    "title": "Ron Dorado",
+    "price": 14.99,
+    "stock": 20,
+    "description": "Ron dorado envejecido en barricas de roble, suavidad excepcional.",
+    "category": "Licores",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696105469/BarceloDorado_elu3gl.png"
+  },
+  {
+    "id": 24,
+    "title": "Agua con Gas",
+    "price": 1.79,
+    "stock": 60,
+    "description": "Agua mineral con gas, perfecta como refresco.",
+    "category": "Bebidas sin alcohol",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696105510/5190gMxiCdL_eblqqd.jpg"
+  },
+  {
+    "id": 25,
+    "title": "Té de Hibisco",
+    "price": 2.49,
+    "stock": 30,
+    "description": "Té de hibisco afrutado y refrescante, sin cafeína.",
+    "category": "Tés",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696105575/71jetkbRkKL._AC_UF894_1000_QL80__ef7ch9.jpg"
+  },
+  {
+    "id": 26,
+    "title": "Vino Rosado",
+    "price": 7.99,
+    "stock": 35,
+    "description": "Vino rosado ligero y afrutado, ideal para aperitivos.",
+    "category": "Vinos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696105607/lagosta-rose_s9kpdr.png"
+  },
+  {
+    "id": 27,
+    "title": "Ginebra de Enebro",
+    "price": 21.99,
+    "stock": 22,
+    "description": "Ginebra destilada con enebro y especias botánicas, perfecta para cócteles clásicos.",
+    "category": "Licores",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696106284/botella-seca-tradicional-con-las-bayas-enebro-del-verde-de-la-ginebra-estilo-plano-85863813_sicnar.jpg"
+  },
+  {
+    "id": 28,
+    "title": "Cerveza Blonde Ale",
+    "price": 5.29,
+    "stock": 28,
+    "description": "Cerveza Blonde Ale suave y equilibrada con toques de malta y lúpulo.",
+    "category": "Cervezas",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696106316/GUEST_e288f6a5-d863-41d9-a79a-de87807abf34_fykodt.jpg"
+  },
+  {
+    "id": 29,
+    "title": "Vino Tinto Reserva",
+    "price": 12.99,
+    "stock": 20,
+    "description": "Vino tinto reserva con cuerpo y sabores a frutos rojos y roble.",
+    "category": "Vinos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696106347/copy-of-estancia-mendoza-malbec-750-ml_jjdt0c.png"
+  },
+  {
+    "id": 30,
+    "title": "Cóctel Mojito",
+    "price": 7.99,
+    "stock": 30,
+    "description": "Cóctel Mojito refrescante con ron, menta, lima y soda.",
+    "category": "Cócteles listos para beber",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696106401/81oUX6Rj1UL._AC_UF894_1000_QL80__habbaa.jpg"
+  },
+  {
+    "id": 31,
+    "title": "Cerveza Amber Ale",
+    "price": 5.79,
+    "stock": 25,
+    "description": "Cerveza Amber Ale con un equilibrio perfecto entre malta y lúpulo.",
+    "category": "Cervezas",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696106428/ci-patagonia-amber-lager-84b4712bf160567e_akqwd8.png"
+  },
+  {
+    "id": 32,
+    "title": "Ron Añejado Dulce",
+    "price": 18.49,
+    "stock": 22,
+    "description": "Ron añejado suave y envejecido con notas de vainilla y caramelo.",
+    "category": "Licores",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696106499/Puntacana_Black-Rum-min-1_f68ncr.jpg"
+  },
+  {
+    "id": 33,
+    "title": "Agua Mineral",
+    "price": 1.29,
+    "stock": 60,
+    "description": "Agua mineral natural, perfecta para acompañar cualquier comida.",
+    "category": "Bebidas sin alcohol",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696106538/33cc3f47-d3e2-4ad7-8126-5e91e6d01007_1.59db4fe77e79edfa439e0429b229e0c9_fdc7nk.jpg"
+  },
+  {
+    "id": 34,
+    "title": "Cerveza Pale Ale",
+    "price": 5.49,
+    "stock": 30,
+    "description": "Cerveza Pale Ale con lúpulos aromáticos y notas cítricas.",
+    "category": "Cervezas",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696106571/Extra-Pale-Ale-Website_emczqe.png"
+  },
+  {
+    "id": 35,
+    "title": "Vodka Premium",
+    "price": 32.99,
+    "stock": 18,
+    "description": "Vodka premium destilado varias veces para pureza excepcional.",
+    "category": "Licores",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696106615/Pre-Order-Grey-Goose-Vodka_uhv1ku.jpg"
+  },
+  {
+    "id": 36,
+    "title": "Refresco de Limón",
+    "price": 1.49,
+    "stock": 40,
+    "description": "Refresco de limón refrescante y con un toque ácido.",
+    "category": "Refrescos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696106656/refresco-chinotto-limon-rincon-abuela-venezolana_hsiaqv.jpg"
+  },
+  {
+    "id": 37,
+    "title": "Refresco de Naranja",
+    "price": 1.79,
+    "stock": 50,
+    "description": "Refresco de naranja refrescante y lleno de sabor.",
+    "category": "Refrescos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696105807/Orange-Crush-Drink-12-oz-Refresco-de-Naranja_ae6399ca-5987-40c1-abd2-143d4e44984e_1.d57cb047bccd8d853fedacdd6af3bd9b_ue4tou.jpg"
+  },
+  {
+    "id": 38,
+    "title": "Vino Espumoso",
+    "price": 10.99,
+    "stock": 15,
+    "description": "Vino espumoso para brindis especiales, con burbujas finas.",
+    "category": "Vinos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696105777/61qIyVR1_tL._AC_UF894_1000_QL80__kjhyze.jpg"
+  },
+  {
+    "id": 39,
+    "title": "Tequila Silver",
+    "price": 19.99,
+    "stock": 20,
+    "description": "Tequila silver suave y cristalino, perfecto para chupitos.",
+    "category": "Licores",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696105727/blanko_20_281_29_grpqjd.png"
+  },
+  {
+    "id": 40,
+    "title": "Café Espresso Doble",
+    "price": 4.49,
+    "stock": 35,
+    "description": "Doble espresso con un sabor intenso y cuerpo aterciopelado.",
+    "category": "Cafés",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696106706/81iid8jWYNL_czx6vl.jpg"
+  },
+  {
+    "id": 41,
+    "title": "Combo de Cervezas",
+    "price": 15.99,
+    "stock": 20,
+    "description": "Disfruta de una selección de cervezas variadas, incluyendo cerveza IPA, Sidra y Cerveza Porter.",
+    "category": "Combos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696106774/carnaval_lupuladas_latasx12_2vasos_faghe7.png"
+  },
+  {
+    "id": 42,
+    "title": "Combo de Cócteles Clásicos",
+    "price": 24.99,
+    "stock": 15,
+    "description": "Saborea cócteles clásicos en casa, incluyendo Whisky Escocés, Ron Añejo y Vodka Premium.",
+    "category": "Combos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696106831/10-botellas-con-alcohol-para-cocteles_zwf8yo.webp"
+  },
+  {
+    "id": 43,
+    "title": "Combo de Refrescos Variados",
+    "price": 8.99,
+    "stock": 25,
+    "description": "Refresca tu día con una selección de refrescos variados, como Soda Limón, Refresco de Uva y Refresco de Naranja. ",
+    "category": "Combos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696106880/81Q7RtpoBWS_ncrgkf.jpg"
+  },
+  {
+    "id": 44,
+    "title": "Combo de Licores",
+    "price": 32.99,
+    "stock": 18,
+    "description": "Degusta una variedad de licores de alta calidad, como Ron Dorado, Ginebra de Bayas y Tequila Reposado.",
+    "category": "Combos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696108322/b24af6ac0fbd0499eccc5e6a8628795f_puc1kv.jpg"
+  },
+  {
+    "id": 45,
+    "title": "Combo de Vinos",
+    "price": 29.99,
+    "stock": 12,
+    "description": "Explora una selección de vinos premium, incluyendo Vino Tinto Reserva, Vino Blanco y Vino Espumoso.",
+    "category": "Combos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696108355/152969_nchigm.jpg"
+  },
+  {
+    "id": 46,
+    "title": "Combo de Cervezas Artesanales",
+    "price": 18.99,
+    "stock": 22,
+    "description": "Prueba una variedad de cervezas artesanales, como Stout, IPA y Ámbar, en este combo especial.",
+    "category": "Combos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696108734/DPR_20BEERS_20FINALES-4_aij7dt.jpg"
+  },
+  {
+    "id": 47,
+    "title": "Combo de Cervezas y Aperitivos",
+    "price": 21.99,
+    "stock": 17,
+    "description": "Acompaña tus cervezas con aperitivos variados, como nueces, papas fritas y pretzels, en este combo.",
+    "category": "Combos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696108403/Combo-cerveza-pilsener_geyney.jpg"
+  },
+  {
+    "id": 48,
+    "title": "Combo de Whiskys de Malta",
+    "price": 45.99,
+    "stock": 10,
+    "description": "Degusta una selección de whiskys de malta de diferentes regiones, perfecto para amantes del whisky.",
+    "category": "Combos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696108465/__opt__aboutcom__coeus__resources__content_migration__serious_eats__drinks.seriouseats.com__images__2012__02__20120209singlemaltvsblendwhisky-deeecdf7b8b94cb38532133b093fca8b_vqyeem.jpg"
+  },
+  {
+    "id": 49,
+    "title": "Combo de Vodka y Mixers",
+    "price": 27.99,
+    "stock": 14,
+    "description": "Crea tus propios cócteles con vodka y mixers variados incluidos en este combo.",
+    "category": "Combos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696108514/White_Claw_Vodka_Soda_Cans_yjiooe.png"
+  },
+  {
+    "id": 50,
+    "title": "Combo de Bebidas Tropicales",
+    "price": 19.99,
+    "stock": 20,
+    "description": "Viaja a través del sabor con una selección de bebidas tropicales, como Ron de Coco y Piña Colada mix.",
+    "category": "Combos",
+    "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696108680/D_NQ_NP_2X_758176-MLA48506337918_122021-F_bnflpu.webp"
+  }
+]
