@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { Button, FlatList, StyleSheet, Text, View } from "react-native";
 import Header from "../components/Header";
+import ProductsList from "../components/ProductsList";
 
 import products from "../utils/data/products.json";
 
-const ProductsByCategory = ({ categorySelected, handleCategorySelected }) => {
+const ProductsByCategory = ({
+  categorySelected,
+  handleCategorySelected,
+  screenWidth,
+}) => {
   const [productsByCategorySelected, setproductsByCategorySelected] = useState(
     []
   );
@@ -27,18 +32,27 @@ const ProductsByCategory = ({ categorySelected, handleCategorySelected }) => {
         title={categorySelected}
         handleCategorySelected={handleCategorySelected}
       />
-      <Button onPress={() => handleCategorySelected("")} title="volver" />
-
-      <FlatList
-        data={productsByCategorySelected}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <Text>{item.description} </Text>}
-      />
-      {/* <Product categorySelected={categorySelected} /> */}
+      <View style={styles.container}>
+        <FlatList
+          data={productsByCategorySelected}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <ProductsList
+              categorySelected={categorySelected}
+              item={item}
+              screenWidth={screenWidth}
+            />
+          )}
+        />
+      </View>
     </>
   );
 };
 
 export default ProductsByCategory;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

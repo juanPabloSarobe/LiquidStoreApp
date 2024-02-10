@@ -1,9 +1,11 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import colors from "../utils/global/colors";
+import fonts from "../utils/global/fonts";
+import ShadowPrimary from "./wrappers/ShadowPrimary";
 
 const CategoriesCard = ({ item, handleCategorySelected }) => {
   return (
-    <View style={styles.container}>
+    <ShadowPrimary style={styles.container}>
       <Pressable
         style={styles.container}
         onPress={() => handleCategorySelected(item.category)}
@@ -11,7 +13,7 @@ const CategoriesCard = ({ item, handleCategorySelected }) => {
         <Image style={styles.catImg} source={{ uri: item.img }} />
         <Text style={styles.catText}>{item.category}</Text>
       </Pressable>
-    </View>
+    </ShadowPrimary>
   );
 };
 
@@ -31,7 +33,7 @@ const styles = StyleSheet.create({
     height: 74,
     width: 74,
     borderRadius: 50,
-    backgroundColor: colors.bgPrimary,
+    backgroundColor: "white",
     resizeMode: "contain",
     margin: 3,
   },
@@ -39,5 +41,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     flex: 1,
     fontSize: 28,
+    color: colors.textSecondary,
+    fontFamily: fonts.robotoRegular,
   },
 });

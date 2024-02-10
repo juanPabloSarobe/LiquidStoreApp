@@ -10,6 +10,7 @@ import {
 import React from "react";
 import colors from "../utils/global/colors";
 import { AntDesign } from "@expo/vector-icons";
+import fonts from "../utils/global/fonts";
 
 const Header = ({ title, handleCategorySelected }) => {
   return (
@@ -24,7 +25,7 @@ const Header = ({ title, handleCategorySelected }) => {
             style={styles.back}
             onPress={() => handleCategorySelected("")}
           >
-            <AntDesign name="left" size={30} color="black" />
+            <AntDesign name="left" size={30} color={colors.textPrimary} />
           </Pressable>
         )}
         <View></View>
@@ -71,5 +72,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     alignSelf: "center",
     justifyContent: "center",
+    color: colors.textPrimary,
+    fontFamily: fonts.robotoMedium,
   },
 });
