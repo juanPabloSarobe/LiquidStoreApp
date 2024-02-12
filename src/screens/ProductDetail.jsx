@@ -25,6 +25,7 @@ const ProductDetail = ({
     <View>
       <Header
         title="Detalle Producto"
+        productSelectedId={productSelectedId}
         handleCategorySelected={() => handleCategorySelected(categorySelected)}
       />
       <ShadowPrimary style={[styles.container, { width: screenWidth - 40 }]}>

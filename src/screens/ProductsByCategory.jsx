@@ -15,6 +15,11 @@ const ProductsByCategory = ({
   const [productsByCategorySelected, setproductsByCategorySelected] = useState(
     []
   );
+  const [searchText, setSearchText] = useState("");
+
+  const handleSearchText = (t) => {
+    setSearchText(t.toLowerCase());
+  };
 
   useEffect(() => {
     const filterCategory = (filter) => {
@@ -23,10 +28,16 @@ const ProductsByCategory = ({
         return products.filter((product) => product.category === filter);
       }
     };
+    const primerFiltro = filterCategory(categorySelected);
 
-    if (categorySelected)
-      setproductsByCategorySelected(filterCategory(categorySelected));
-  }, [categorySelected]);
+    const filtroKeyword = primerFiltro.filter((prod) => {
+      const titulo = prod.title.toLowerCase();
+
+      return titulo.includes(searchText);
+    });
+
+    if (categorySelected) setproductsByCategorySelected(filtroKeyword);
+  }, [categorySelected, searchText]);
 
   return (
     <>
@@ -35,6 +46,8 @@ const ProductsByCategory = ({
         handleCategorySelected={handleCategorySelected}
         productSelectedId={productSelectedId}
         handleProductSelectedId={handleProductSelectedId}
+        handleSearchText={handleSearchText}
+        searchText={searchText}
       />
       <View style={styles.container}>
         <FlatList
