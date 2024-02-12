@@ -1,13 +1,23 @@
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Text, TextInput } from "react-native";
 import Animated from "react-native-reanimated";
 import { SlideInUp, SlideOutUp } from "react-native-reanimated";
 import colors from "../utils/global/colors";
 import ShadowPrimary from "./wrappers/ShadowPrimary";
-import { Fontisto, Feather } from "@expo/vector-icons";
 
-// return <Animated.View entering={FadeIn} exiting={FadeOut} />;
+import { useEffect, useState } from "react";
 
 const SearchBar = ({ isVisible, handleSearchText, searchText }) => {
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const expression = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+    if (expression.test(searchText)) {
+      setError("Caracteres no validos");
+      return;
+    }
+    setError("");
+  }, [searchText]);
+
   return (
     <>
       {isVisible && (
@@ -23,15 +33,8 @@ const SearchBar = ({ isVisible, handleSearchText, searchText }) => {
               onChangeText={handleSearchText}
               value={searchText}
             ></TextInput>
-            {/* <View style={styles.buttons}>
-              <Pressable style={styles.back}>
-                <Fontisto name="search" size={30} color={colors.textPrimary} />
-              </Pressable>
-              <Pressable style={styles.back}>
-                <Feather name="trash" size={30} color={colors.textPrimary} />
-              </Pressable>
-            </View> */}
           </Animated.View>
+          <Text>{error}</Text>
         </ShadowPrimary>
       )}
     </>
