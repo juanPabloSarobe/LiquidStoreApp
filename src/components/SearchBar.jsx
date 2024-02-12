@@ -34,7 +34,7 @@ const SearchBar = ({ isVisible, handleSearchText, searchText }) => {
               value={searchText}
             ></TextInput>
           </Animated.View>
-          <Text>{error}</Text>
+          {error && <Text>{error}</Text>}
         </ShadowPrimary>
       )}
     </>
