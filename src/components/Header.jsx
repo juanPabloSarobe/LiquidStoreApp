@@ -56,7 +56,13 @@ const Header = ({
   };
 
   return (
-    <>
+    <View style={styles.invertColumn}>
+      <SearchBar
+        isVisible={searchVisible}
+        style={styles.search}
+        handleSearchText={handleSearchText}
+        searchText={searchText}
+      />
       <View style={styles.container}>
         <Image
           style={styles.logo}
@@ -93,27 +99,25 @@ const Header = ({
           )}
         </View>
       </View>
-
-      <SearchBar
-        isVisible={searchVisible}
-        style={styles.search}
-        handleSearchText={handleSearchText}
-        searchText={searchText}
-      />
-    </>
+    </View>
   );
 };
 
 export default Header;
 
 const styles = StyleSheet.create({
+  invertColumn: {
+    flexDirection: "column-reverse",
+  },
+  search: {
+    // width: "10%",
+  },
   container: {
-    backgroundColor: colors.bgSecondary,
+    backgroundColor: "#EDF2F4",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     height: 150,
     justifyContent: "center",
     alignItems: "center",
-    zIndex: 12,
   },
   logo: {
     maxWidth: "35%",
@@ -122,6 +126,8 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   nav: {
+    backgroundColor: colors.bgSecondary,
+    paddingTop: 4,
     flex: 1,
     width: "100%",
     flexDirection: "row",
@@ -134,7 +140,7 @@ const styles = StyleSheet.create({
     height: 30,
   },
   text: {
-    fontSize: 36,
+    fontSize: 32,
     textAlignVertical: "top",
     marginBottom: 10,
     alignSelf: "center",
@@ -143,9 +149,5 @@ const styles = StyleSheet.create({
     fontFamily: fonts.robotoMedium,
     width: "65%",
     textAlign: "center",
-  },
-  search: {
-    width: "10%",
-    zIndex: 10,
   },
 });

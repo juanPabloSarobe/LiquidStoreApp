@@ -24,14 +24,13 @@ const ProductDetail = ({
   return (
     <View>
       <Header
-        title="Detalle Producto"
+        title={productSelected.title}
         productSelectedId={productSelectedId}
         handleCategorySelected={() => handleCategorySelected(categorySelected)}
       />
       <ShadowPrimary style={[styles.container, { width: screenWidth - 40 }]}>
         <Image style={styles.cardImg} source={{ uri: productSelected.img }} />
         <View style={styles.cardDetail}>
-          <Text style={styles.text}> {productSelected.title}</Text>
           <Text style={styles.description}> {productSelected.description}</Text>
           <View style={styles.priceZone}>
             <Text style={styles.price}> Precio: {productSelected.price}</Text>
