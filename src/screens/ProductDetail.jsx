@@ -10,14 +10,21 @@ import Header from "../components/Header";
 import ShadowPrimary from "../components/wrappers/ShadowPrimary";
 import colors from "../utils/global/colors";
 import products from "../utils/data/products.json";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import fonts from "../utils/global/fonts";
+
 const screenWidth = Dimensions.get("window").width;
 
-const ProductDetail = ({ navigate, route }) => {
+const ProductDetail = ({ route, navigation }) => {
   const { productSelectedId } = route.params;
-  console.log(productSelectedId);
+
   const [productSelected, setProductSelected] = useState({});
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTitle: productSelected.title,
+    });
+  }, [productSelected]);
 
   useEffect(() => {
     const filtro = products.filter(
@@ -27,7 +34,7 @@ const ProductDetail = ({ navigate, route }) => {
   }, [productSelectedId]);
 
   return (
-    <View>
+    <View style={styles.mainContainer}>
       <ShadowPrimary style={[styles.container, { width: screenWidth - 40 }]}>
         <Image style={styles.cardImg} source={{ uri: productSelected.img }} />
         <View style={styles.cardDetail}>
@@ -45,6 +52,10 @@ const ProductDetail = ({ navigate, route }) => {
 export default ProductDetail;
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    backgroundColor: colors.bgSecondary,
+  },
   container: {
     height: "70%",
     margin: 20,

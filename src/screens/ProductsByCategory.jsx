@@ -1,28 +1,57 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import {
   Button,
   Dimensions,
   FlatList,
+  Pressable,
   StyleSheet,
   Text,
   View,
 } from "react-native";
 import Header from "../components/Header";
 import ProductsList from "../components/ProductsList";
+import SearchBar from "../components/SearchBar";
+import { AntDesign, Fontisto } from "@expo/vector-icons";
 const screenWidth = Dimensions.get("window").width;
 
 import products from "../utils/data/products.json";
+import colors from "../utils/global/colors";
 
 const ProductsByCategory = ({ navigation, route }) => {
   const { categorySelected } = route.params;
+
+  const [searchVisible, setSearchVisible] = useState(false);
   const [productsByCategorySelected, setproductsByCategorySelected] = useState(
     []
   );
   const [searchText, setSearchText] = useState("");
 
+  const handleSearchVisible = () => {
+    setSearchVisible(!searchVisible);
+  };
+  const closeSearchVisible = () => {
+    setSearchVisible(false);
+    handleSearchText("");
+  };
+
   const handleSearchText = (t) => {
     setSearchText(t.toLowerCase());
   };
+  useEffect(() => {
+    navigation.setOptions({
+      headerTitle: categorySelected.category,
+      headerRight: () =>
+        !searchVisible ? (
+          <Pressable style={styles.back} onPress={handleSearchVisible}>
+            <Fontisto name="search" size={25} color={colors.textPrimary} />
+          </Pressable>
+        ) : (
+          <Pressable style={styles.back} onPress={closeSearchVisible}>
+            <Fontisto name="close-a" size={20} color={colors.textPrimary} />
+          </Pressable>
+        ),
+    });
+  }, [searchVisible]);
 
   useEffect(() => {
     const filterCategory = (filter) => {
@@ -39,12 +68,17 @@ const ProductsByCategory = ({ navigation, route }) => {
       return titulo.includes(searchText);
     });
 
-    if (categorySelected) setproductsByCategorySelected(primerFiltro);
+    if (categorySelected) setproductsByCategorySelected(filtroKeyword);
   }, [categorySelected, searchText]);
 
   return (
     <>
       <View style={styles.container}>
+        <SearchBar
+          isVisible={searchVisible}
+          handleSearchText={handleSearchText}
+          searchText={searchText}
+        />
         <FlatList
           data={productsByCategorySelected}
           keyExtractor={(item) => item.id}
@@ -52,6 +86,7 @@ const ProductsByCategory = ({ navigation, route }) => {
             <ProductsList
               item={item}
               screenWidth={screenWidth}
+              closeSearchVisible={closeSearchVisible}
               navigation={navigation}
             />
           )}
@@ -66,5 +101,6 @@ export default ProductsByCategory;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: colors.bgPrimary,
   },
 });

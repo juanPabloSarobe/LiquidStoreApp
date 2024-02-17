@@ -30,6 +30,7 @@ const SearchBar = ({ isVisible, handleSearchText, searchText }) => {
             <TextInput
               style={styles.textInput}
               placeholder="buscar producto..."
+              placeholderTextColor={colors.textSecondary}
               onChangeText={handleSearchText}
               value={searchText}
             ></TextInput>

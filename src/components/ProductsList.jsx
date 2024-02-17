@@ -11,15 +11,23 @@ import ShadowPrimary from "./wrappers/ShadowPrimary";
 import { AntDesign } from "@expo/vector-icons";
 import fonts from "../utils/global/fonts";
 
-const ProductsList = ({ item, screenWidth, navigation }) => {
+const ProductsList = ({
+  item,
+  screenWidth,
+  navigation,
+  closeSearchVisible,
+}) => {
   return (
     <>
       <ShadowPrimary style={[styles.container, { width: screenWidth - 40 }]}>
         <Pressable
           style={styles.card}
-          onPress={() =>
-            navigation.navigate("ProductDetail", { productSelectedId: item.id })
-          }
+          onPress={() => (
+            navigation.navigate("ProductDetail", {
+              productSelectedId: item.id,
+            }),
+            closeSearchVisible()
+          )}
         >
           <Image style={styles.cardImg} source={{ uri: item.img }} />
           <View style={styles.cardContainer}>
