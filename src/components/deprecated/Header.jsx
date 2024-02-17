@@ -1,4 +1,4 @@
-import {
+/* import {
   StyleSheet,
   Text,
   View,
@@ -8,10 +8,10 @@ import {
   Pressable,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import colors from "../utils/global/colors";
+import colors from "../../utils/global/colors";
 import { AntDesign, Fontisto } from "@expo/vector-icons";
-import fonts from "../utils/global/fonts";
-import SearchBar from "./SearchBar";
+import fonts from "../../utils/global/fonts";
+import SearchBar from "../SearchBar";
 
 const Header = ({
   title,
@@ -66,7 +66,7 @@ const Header = ({
       <View style={styles.container}>
         <Image
           style={styles.logo}
-          source={require("../../assets/liquidStoreLogo.png")}
+          //source={require("../../assets/liquidStoreLogo.png")}
         />
         <View style={styles.nav}>
           {title !== "Tienda" && (
@@ -151,3 +151,4 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
+ */

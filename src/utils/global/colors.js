@@ -1,6 +1,7 @@
 //Por el momento hasta que usemos estados lo voy a dejar como una funcion
 
 const colors1 = {
+  tipe: "light",
   bgPrimary: "#FBFCFD",
   bgSecondary: "#EDF2F4",
   bgWarning: "#D90429",
@@ -11,6 +12,7 @@ const colors1 = {
 
 //dark
 const colors = {
+  tipe: "dark",
   bgPrimary: "#0D1315",
   bgSecondary: "#2f3037",
   bgWarning: "#780000",

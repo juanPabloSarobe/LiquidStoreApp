@@ -1,17 +1,14 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
-  Button,
   Dimensions,
   FlatList,
   Pressable,
   StyleSheet,
-  Text,
   View,
 } from "react-native";
-import Header from "../components/Header";
 import ProductsList from "../components/ProductsList";
 import SearchBar from "../components/SearchBar";
-import { AntDesign, Fontisto } from "@expo/vector-icons";
+import { Fontisto } from "@expo/vector-icons";
 const screenWidth = Dimensions.get("window").width;
 
 import products from "../utils/data/products.json";

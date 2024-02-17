@@ -1,11 +1,7 @@
-import { useCallback, useEffect, useState } from "react";
-import { StyleSheet, Text, View, Dimensions } from "react-native";
-import Home from "./src/screens/Home";
-import ProductsByCategory from "./src/screens/ProductsByCategory";
+import { StyleSheet, Dimensions } from "react-native";
 import colors from "./src/utils/global/colors";
 import { useFonts } from "expo-font";
 import { fontFamily } from "./src/utils/global/fonts";
-import ProductDetail from "./src/screens/ProductDetail";
 import MainNavigator from "./src/routes/MainNavigator";
 
 export default function App() {

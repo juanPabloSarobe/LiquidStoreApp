@@ -1,20 +1,23 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "../screens/Home";
 import ProductsByCategory from "../screens/ProductsByCategory";
 import ProductDetail from "../screens/ProductDetail";
 import colors from "../utils/global/colors";
+import { StatusBar } from "expo-status-bar";
 
 const Stack = createNativeStackNavigator();
 
 const MainNavigator = () => {
   return (
     <>
+      <StatusBar style={colors.tipe == "light" ? "dark" : "light"} />
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="Home"
           screenOptions={{
+            headerTitle: "LiquidStore Tienda",
             headerStyle: {
               backgroundColor: colors.bgSecondary,
             },

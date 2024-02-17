@@ -6,7 +6,6 @@ import {
   Text,
   View,
 } from "react-native";
-import Header from "../components/Header";
 import ShadowPrimary from "../components/wrappers/ShadowPrimary";
 import colors from "../utils/global/colors";
 import products from "../utils/data/products.json";

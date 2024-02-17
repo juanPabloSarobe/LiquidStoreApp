@@ -1,11 +1,4 @@
-import {
-  Image,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-  ViewBase,
-} from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import colors from "../utils/global/colors";
 import ShadowPrimary from "./wrappers/ShadowPrimary";
 import { AntDesign } from "@expo/vector-icons";
