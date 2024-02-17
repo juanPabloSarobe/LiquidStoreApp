@@ -6,20 +6,10 @@ import colors from "./src/utils/global/colors";
 import { useFonts } from "expo-font";
 import { fontFamily } from "./src/utils/global/fonts";
 import ProductDetail from "./src/screens/ProductDetail";
+import MainNavigator from "./src/routes/MainNavigator";
 
 export default function App() {
-  const [categorySelected, setCategorySelected] = useState("");
-  const [productSelectedId, setProductSelectedId] = useState(0);
   const screenWidth = Dimensions.get("window").width;
-
-  const handleCategorySelected = (cat, id) => {
-    setCategorySelected(cat);
-    handleProductSelectedId(id);
-  };
-
-  const handleProductSelectedId = (id) => {
-    setProductSelectedId(id);
-  };
 
   const [fontsLoaded, fontError] = useFonts(fontFamily);
 
@@ -27,34 +17,7 @@ export default function App() {
     return null;
   }
 
-  return (
-    <View style={styles.container}>
-      {categorySelected ? (
-        productSelectedId ? (
-          <ProductDetail
-            screenWidth={screenWidth}
-            productSelectedId={productSelectedId}
-            categorySelected={categorySelected}
-            handleProductSelectedId={handleProductSelectedId}
-            handleCategorySelected={handleCategorySelected}
-          />
-        ) : (
-          <ProductsByCategory
-            categorySelected={categorySelected}
-            handleCategorySelected={handleCategorySelected}
-            handleProductSelectedId={handleProductSelectedId}
-            productSelectedId={productSelectedId}
-            screenWidth={screenWidth}
-          />
-        )
-      ) : (
-        <Home
-          handleCategorySelected={handleCategorySelected}
-          categorySelected={categorySelected}
-        />
-      )}
-    </View>
-  );
+  return <MainNavigator />;
 }
 
 const styles = StyleSheet.create({
@@ -63,3 +26,5 @@ const styles = StyleSheet.create({
     backgroundColor: colors.bgPrimary,
   },
 });
+
+/*   <View style={styles.container}></View>; */

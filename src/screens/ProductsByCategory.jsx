@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
-import { Button, FlatList, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  Dimensions,
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import Header from "../components/Header";
 import ProductsList from "../components/ProductsList";
+const screenWidth = Dimensions.get("window").width;
 
 import products from "../utils/data/products.json";
 
-const ProductsByCategory = ({
-  categorySelected,
-  handleCategorySelected,
-  screenWidth,
-  handleProductSelectedId,
-  productSelectedId,
-}) => {
+const ProductsByCategory = ({ navigation, route }) => {
+  const { categorySelected } = route.params;
   const [productsByCategorySelected, setproductsByCategorySelected] = useState(
     []
   );
@@ -28,7 +31,7 @@ const ProductsByCategory = ({
         return products.filter((product) => product.category === filter);
       }
     };
-    const primerFiltro = filterCategory(categorySelected);
+    const primerFiltro = filterCategory(categorySelected.category);
 
     const filtroKeyword = primerFiltro.filter((prod) => {
       const titulo = prod.title.toLowerCase();
@@ -36,19 +39,11 @@ const ProductsByCategory = ({
       return titulo.includes(searchText);
     });
 
-    if (categorySelected) setproductsByCategorySelected(filtroKeyword);
+    if (categorySelected) setproductsByCategorySelected(primerFiltro);
   }, [categorySelected, searchText]);
 
   return (
     <>
-      <Header
-        title={categorySelected}
-        handleCategorySelected={handleCategorySelected}
-        productSelectedId={productSelectedId}
-        handleProductSelectedId={handleProductSelectedId}
-        handleSearchText={handleSearchText}
-        searchText={searchText}
-      />
       <View style={styles.container}>
         <FlatList
           data={productsByCategorySelected}
@@ -57,7 +52,7 @@ const ProductsByCategory = ({
             <ProductsList
               item={item}
               screenWidth={screenWidth}
-              handleProductSelectedId={handleProductSelectedId}
+              navigation={navigation}
             />
           )}
         />

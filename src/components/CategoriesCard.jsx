@@ -3,12 +3,14 @@ import colors from "../utils/global/colors";
 import fonts from "../utils/global/fonts";
 import ShadowPrimary from "./wrappers/ShadowPrimary";
 
-const CategoriesCard = ({ item, handleCategorySelected }) => {
+const CategoriesCard = ({ item, navigation }) => {
   return (
     <ShadowPrimary style={styles.container}>
       <Pressable
         style={styles.container}
-        onPress={() => handleCategorySelected(item.category)}
+        onPress={() =>
+          navigation.navigate("ProductsByCategory", { categorySelected: item })
+        }
       >
         <Image style={styles.catImg} source={{ uri: item.img }} />
         <Text style={styles.catText}>{item.category}</Text>

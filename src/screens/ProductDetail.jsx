@@ -1,17 +1,22 @@
-import { Button, Image, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import Header from "../components/Header";
 import ShadowPrimary from "../components/wrappers/ShadowPrimary";
 import colors from "../utils/global/colors";
 import products from "../utils/data/products.json";
 import { useEffect, useState } from "react";
 import fonts from "../utils/global/fonts";
+const screenWidth = Dimensions.get("window").width;
 
-const ProductDetail = ({
-  productSelectedId,
-  handleCategorySelected,
-  categorySelected,
-  screenWidth,
-}) => {
+const ProductDetail = ({ navigate, route }) => {
+  const { productSelectedId } = route.params;
+  console.log(productSelectedId);
   const [productSelected, setProductSelected] = useState({});
 
   useEffect(() => {
@@ -23,11 +28,6 @@ const ProductDetail = ({
 
   return (
     <View>
-      <Header
-        title={productSelected.title}
-        productSelectedId={productSelectedId}
-        handleCategorySelected={() => handleCategorySelected(categorySelected)}
-      />
       <ShadowPrimary style={[styles.container, { width: screenWidth - 40 }]}>
         <Image style={styles.cardImg} source={{ uri: productSelected.img }} />
         <View style={styles.cardDetail}>

@@ -3,15 +3,11 @@ import Categories from "../components/Categories";
 import Header from "../components/Header";
 import colors from "../utils/global/colors";
 
-const Home = ({ handleCategorySelected, categorySelected }) => {
+const Home = ({ navigation }) => {
   return (
     <>
-      <Header
-        title={categorySelected ? categorySelected : "Tienda"}
-        handleCategorySelected={handleCategorySelected}
-      />
       <View style={styles.container}>
-        <Categories handleCategorySelected={handleCategorySelected} />
+        <Categories navigation={navigation} />
       </View>
     </>
   );
