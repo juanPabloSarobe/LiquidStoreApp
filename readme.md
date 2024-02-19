@@ -1,6 +1,6 @@
 <h1 align="center" id="title">LiquidStore</h1>
 
-<p align="center"><img src="https://raw.githubusercontent.com/juanPabloSarobe/react-47225/main/src/assets/img/liquidStoreLogo.png.jpg" alt="project-image"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/juanPabloSarobe/react-47225/main/src/assets/img/liquidStoreLogo.png" alt="project-image"></p>
 
 <h2 id="description">LiquidStore es un proyecto del curso de React NAtive dictado en CoderHouse comisión 53280</h2>
 
