@@ -7,7 +7,7 @@
  <h3>  La aplicación LiquidStoreApp es un store de venta de bebidas, se utiliza los mismos recursos que cree para el curso de react js.
 De esta forma implementó mis propias prácticas y me va a quedar el proyecto completo cuando lo termine para mi portfolio.
 </h3>
-<p >Pre-entrega clase 7: Como primera pantalla vemos la lista de categorías para seleccionar. Al seleccionar una lista cambia la pantalla a la lista de productos. Aquí se incluyó en la APPBar el botón de volver así como un botón para abrir el buscador.
+<p ><strong> Pre-entrega clase 7:</strong> Como primera pantalla vemos la lista de categorías para seleccionar. Al seleccionar una lista cambia la pantalla a la lista de productos. Aquí se incluyó en la APPBar el botón de volver así como un botón para abrir el buscador.
 Una vez abierto el buscador el botón cambia a una cruz para cerrarlo.
 El buscador es minimalista, solo tiene el input para buscar, y va realizando la búsqueda a medida que se va escribiendo. Al cerrar el buscador se reinician los valores.
 
