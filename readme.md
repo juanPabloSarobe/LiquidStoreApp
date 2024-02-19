@@ -2,7 +2,7 @@
 
 <p align="center"><img src="https://raw.githubusercontent.com/juanPabloSarobe/react-47225/main/src/assets/img/liquidStoreLogo.png" alt="project-image"></p>
 
-<h2 id="description">LiquidStore es un proyecto del curso de React NAtive dictado en CoderHouse comisión 53280</h2>
+<h2 id="description">LiquidStore es un proyecto del curso de React Native dictado en CoderHouse comisión 53280</h2>
 
  <h3>  La aplicación LiquidStoreApp es un store de venta de bebidas, se utiliza los mismos recursos que cree para el curso de react js.
 De esta forma implementó mis propias prácticas y me va a quedar el proyecto completo cuando lo termine para mi portfolio.
