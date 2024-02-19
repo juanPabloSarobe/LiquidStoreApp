@@ -1,3 +1,9 @@
+<h1 align="center" id="title">LiquidStore</h1>
+
+<p align="center"><img src="https://raw.githubusercontent.com/juanPabloSarobe/react-47225/main/src/assets/img/branca-store-logo-1604888191.jpg" alt="project-image"></p>
+
+<p id="description">LiquidStore es un proyecto del curso de React dictado en CoderHouse comisión 47225</p>
+
 La aplicación se llama LiquidStoreApp es un store de venta de bebidas, se utiliza los mismos recursos que cree para el curso de react js.
 De esta forma implementó mis propias prácticas y me va a quedar el proyecto completo cuando lo termine para mi portfolio.
 
