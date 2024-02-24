@@ -11,6 +11,7 @@ import colors from "../utils/global/colors";
 import products from "../utils/data/products.json";
 import { useEffect, useLayoutEffect, useState } from "react";
 import fonts from "../utils/global/fonts";
+import QuantitySelector from "../components/QuantitySelector";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -38,8 +39,16 @@ const ProductDetail = ({ route, navigation }) => {
         <Image style={styles.cardImg} source={{ uri: productSelected.img }} />
         <View style={styles.cardDetail}>
           <Text style={styles.description}> {productSelected.description}</Text>
+          <View style={styles.stockZone}>
+            <Text style={styles.description}>
+              Precio: {productSelected.price}
+            </Text>
+            <Text style={styles.description}>
+              Stock: {productSelected.stock}
+            </Text>
+          </View>
           <View style={styles.priceZone}>
-            <Text style={styles.price}> Precio: {productSelected.price}</Text>
+            <QuantitySelector item={productSelected} />
             <Button title="Comprar" color={colors.bgSuccess} />
           </View>
         </View>
@@ -73,6 +82,11 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 7,
   },
+  stockZone: {
+    flex: 3,
+    alignSelf: "flex-start",
+    flexDirection: "row",
+  },
   text: {
     fontFamily: fonts.robotoBold,
     color: colors.textPrimary,
@@ -83,7 +97,7 @@ const styles = StyleSheet.create({
     color: colors.textPrimary,
     fontFamily: fonts.robotoItalic,
     fontSize: 24,
-    flex: 6,
+    flex: 4,
   },
   priceZone: {
     flex: 2,

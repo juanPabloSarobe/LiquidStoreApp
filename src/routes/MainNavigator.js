@@ -26,6 +26,16 @@ const MainNavigator = () => {
             tabBarStyle: styles.tabBar,
             tabBarLabelStyle: styles.labelStyle,
             tabBarIconStyle: styles.iconStyle,
+
+            headerTitleAlign: "center",
+
+            headerStyle: {
+              backgroundColor: colors.bgSecondary,
+            },
+            headerTintColor: colors.textSecondary,
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
           }}
         >
           <Tab.Screen

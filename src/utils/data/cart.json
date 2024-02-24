@@ -1,0 +1,42 @@
+{
+  "items": [
+    {
+      "id": 2,
+      "title": "Vino Tinto Reserva",
+      "price": 12.99,
+      "stock": 30,
+      "quantity": 5,
+      "description": "Vino tinto reserva de alta calidad, cosecha 2015.",
+      "category": "Vinos",
+      "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104434/CeYiCOGWSUuyzWD_JuDsOg_ytj20a.jpg"
+    },
+    {
+      "id": 37,
+      "title": "Refresco de Naranja",
+      "price": 1.79,
+      "stock": 50,
+      "quantity": 3,
+      "description": "Refresco de naranja refrescante y lleno de sabor.",
+      "category": "Refrescos",
+      "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696105807/Orange-Crush-Drink-12-oz-Refresco-de-Naranja_ae6399ca-5987-40c1-abd2-143d4e44984e_1.d57cb047bccd8d853fedacdd6af3bd9b_ue4tou.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Ron Añejo",
+      "price": 19.99,
+      "stock": 25,
+      "description": "Ron añejo de 7 años de barrica, ideal para cócteles.",
+      "category": "Licores",
+      "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104541/ron-havana-club-7-anos_s9mxc4.png"
+    },
+    {
+      "id": 34,
+      "title": "Cerveza Pale Ale",
+      "price": 5.49,
+      "stock": 30,
+      "description": "Cerveza Pale Ale con lúpulos aromáticos y notas cítricas.",
+      "category": "Cervezas",
+      "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696106571/Extra-Pale-Ale-Website_emczqe.png"
+    }
+  ]
+}
