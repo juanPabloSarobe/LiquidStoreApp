@@ -1,54 +1,63 @@
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Home from "../screens/Home";
-import ProductsByCategory from "../screens/ProductsByCategory";
-import ProductDetail from "../screens/ProductDetail";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import colors from "../utils/global/colors";
 import { StatusBar } from "expo-status-bar";
+import ShopStackNavigation from "./ShopStackNavigation";
+import Cart from "../screens/Cart";
+import Orders from "../screens/Orders";
+import { Entypo, Octicons } from "@expo/vector-icons";
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 const MainNavigator = () => {
   return (
     <>
       <StatusBar style={colors.tipe == "light" ? "dark" : "light"} />
       <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="Home"
+        <Tab.Navigator
+          initialRouteName="Shop"
           screenOptions={{
-            headerTitle: "LiquidStore Tienda",
-            headerStyle: {
-              backgroundColor: colors.bgSecondary,
-            },
-            headerTintColor: colors.textSecondary,
-            headerTitleStyle: {
-              fontWeight: "bold",
-            },
+            tabBarActiveTintColor: colors.textPrimary,
+            tabBarInactiveTintColor: colors.textSecondary,
+            tabBarActiveBackgroundColor: colors.bgSecondary,
+            tabBarInactiveBackgroundColor: colors.bgPrimary,
+            tabBarHideOnKeyboard: true,
+            tabBarStyle: styles.tabBar,
+            tabBarLabelStyle: styles.labelStyle,
+            tabBarIconStyle: styles.iconStyle,
           }}
         >
-          <Stack.Screen
-            name="Home"
-            component={Home}
+          <Tab.Screen
+            name="Shop"
+            component={ShopStackNavigation}
             options={{
-              headerTitleAlign: "center",
+              headerShown: false,
+              tabBarIcon: ({ color }) => (
+                <Entypo name="shop" size={28} color={color} />
+              ),
             }}
           />
-          <Stack.Screen
-            name="ProductsByCategory"
-            component={ProductsByCategory}
+          <Tab.Screen
+            name="Cart"
+            component={Cart}
             options={{
-              headerBackTitleVisible: false,
+              tabBarIcon: ({ color }) => (
+                <Entypo name="shopping-cart" size={28} color={color} />
+              ),
+              tabBarBadge: 3,
             }}
           />
-          <Stack.Screen
-            name="ProductDetail"
-            component={ProductDetail}
+          <Tab.Screen
+            name="Orders"
+            component={Orders}
             options={{
-              headerBackTitleVisible: false,
+              tabBarIcon: ({ color }) => (
+                <Octicons name="list-unordered" size={28} color={color} />
+              ),
             }}
           />
-        </Stack.Navigator>
+        </Tab.Navigator>
       </NavigationContainer>
     </>
   );
@@ -57,6 +66,19 @@ const MainNavigator = () => {
 export default MainNavigator;
 
 const styles = StyleSheet.create({
+  tabBar: {
+    height: "9%",
+
+    backgroundColor: colors.bgPrimary,
+  },
+  iconStyle: {
+    marginTop: 2,
+  },
+  labelStyle: {
+    marginBottom: 4,
+    fontSize: 14,
+  },
+
   logo: {
     height: 50,
   },
