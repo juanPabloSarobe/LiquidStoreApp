@@ -27,7 +27,9 @@ const CartItem = ({ item }) => {
             <QuantitySelector item={item} />
             <View style={styles.totalStyle}>
               <Text style={styles.price}>Total</Text>
-              <Text style={styles.price}>{item.price * item.quantity}</Text>
+              <Text style={styles.price}>
+                {Math.round(item.price * item.quantity * 100) / 100}
+              </Text>
             </View>
           </View>
         </View>

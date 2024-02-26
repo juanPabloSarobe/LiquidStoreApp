@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const QuantitySelector = ({ item }) => {
   const [quantity, setQuantity] = useState(
-    item.quantity > 0 ? item.quantity : 0
+    item.quantity > 0 ? item.quantity : 1
   );
 
   const plusQuantity = () => {
@@ -13,7 +13,7 @@ const QuantitySelector = ({ item }) => {
   };
 
   const minusQuantity = () => {
-    quantity > 0 && setQuantity(quantity - 1);
+    quantity > 1 && setQuantity(quantity - 1);
   };
 
   return (
