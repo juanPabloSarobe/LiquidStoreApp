@@ -38,7 +38,10 @@ ${item.title} del carrito?`,
         <Image style={styles.cardImg} source={{ uri: item.img }} />
         <View style={styles.cardDetail}>
           <View style={styles.titleZone}>
-            <Text style={styles.text}> {item.title}</Text>
+            <Text style={styles.text} numberOfLines={1} ellipsizeMode="tail">
+              {" "}
+              {item.title}
+            </Text>
             <Pressable
               style={styles.removeItem}
               onPress={() => deleteItem(item)}
@@ -93,11 +96,13 @@ const styles = StyleSheet.create({
   cardDetail: {
     flex: 1,
     padding: 7,
+    width: "70%",
   },
   titleZone: {
     flex: 2,
     flexDirection: "row",
     justifyContent: "space-between",
+    width: "95%",
   },
   text: {
     fontFamily: fonts.robotoBold,
@@ -107,6 +112,7 @@ const styles = StyleSheet.create({
   removeItem: {
     height: 30,
     width: 30,
+    marginHorizontal: 5,
   },
   description: {
     color: colors.textPrimary,
