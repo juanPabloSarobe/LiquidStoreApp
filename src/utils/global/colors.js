@@ -1,6 +1,6 @@
 //Por el momento hasta que usemos estados lo voy a dejar como una funcion
 
-const colors = {
+const colors1 = {
   tipe: "light",
   bgPrimary: "#FBFCFD",
   bgSecondary: "#EDF2F4",
@@ -11,7 +11,7 @@ const colors = {
 };
 
 //dark
-const colors1 = {
+const colors = {
   tipe: "dark",
   bgPrimary: "#0D1315",
   bgSecondary: "#2f3037",

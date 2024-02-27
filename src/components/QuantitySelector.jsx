@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
   },
   quantityText: {
     fontSize: 24,
+    color: colors.textPrimary,
   },
   button: {
     borderRadius: 50,
