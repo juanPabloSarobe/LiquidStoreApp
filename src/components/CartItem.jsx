@@ -5,26 +5,55 @@ import {
   Dimensions,
   Image,
   Button,
+  Pressable,
+  Alert,
 } from "react-native";
 import React from "react";
 import colors from "../utils/global/colors";
 import fonts from "../utils/global/fonts";
 import ShadowPrimary from "./wrappers/ShadowPrimary";
-import QuantitySelector from "./QuantitySelector";
+import QuantitySelectorCart from "./QuantitySelectorCart";
+import { useDispatch, useSelector } from "react-redux";
+import { FontAwesome } from "@expo/vector-icons";
+import { removeItemFromCart } from "../features/cart/cartSlice";
 
 const CartItem = ({ item }) => {
   const screenWidth = Dimensions.get("window").width;
+  const dispatch = useDispatch();
+  const deleteItem = (item) => {
+    Alert.alert(
+      "Atención",
+      `Esta seguro desea eliminar el producto 
+${item.title} del carrito?`,
+      [
+        { text: "Cancel", style: "cancel" },
+        { text: "OK", onPress: () => dispatch(removeItemFromCart(item)) },
+      ]
+    );
+  };
 
   return (
     <View style={styles.mainContainer}>
       <ShadowPrimary style={[styles.container, { width: screenWidth - 40 }]}>
         <Image style={styles.cardImg} source={{ uri: item.img }} />
         <View style={styles.cardDetail}>
-          <Text style={styles.text}> {item.title}</Text>
+          <View style={styles.titleZone}>
+            <Text style={styles.text}> {item.title}</Text>
+            <Pressable
+              style={styles.removeItem}
+              onPress={() => deleteItem(item)}
+            >
+              <FontAwesome
+                name="remove"
+                size={25}
+                color={colors.textSecondary}
+              />
+            </Pressable>
+          </View>
           <Text style={styles.description}> {item.description}</Text>
           <Text style={styles.description}>Precio: {item.price}</Text>
           <View style={styles.priceZone}>
-            <QuantitySelector item={item} />
+            <QuantitySelectorCart item={item} />
             <View style={styles.totalStyle}>
               <Text style={styles.price}>Total</Text>
               <Text style={styles.price}>
@@ -65,11 +94,19 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 7,
   },
+  titleZone: {
+    flex: 2,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
   text: {
     fontFamily: fonts.robotoBold,
     color: colors.textPrimary,
     fontSize: 24,
-    flex: 2,
+  },
+  removeItem: {
+    height: 30,
+    width: 30,
   },
   description: {
     color: colors.textPrimary,

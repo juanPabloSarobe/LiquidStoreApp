@@ -7,10 +7,12 @@ import ShopStackNavigation from "./ShopStackNavigation";
 import Cart from "../screens/Cart";
 import Orders from "../screens/Orders";
 import { Entypo, Octicons } from "@expo/vector-icons";
-
+import { useSelector } from "react-redux";
 const Tab = createBottomTabNavigator();
 
 const MainNavigator = () => {
+  const cart = useSelector((state) => state.cart);
+
   return (
     <>
       <StatusBar style={colors.tipe == "light" ? "dark" : "light"} />
@@ -55,7 +57,10 @@ const MainNavigator = () => {
               tabBarIcon: ({ color }) => (
                 <Entypo name="shopping-cart" size={28} color={color} />
               ),
-              tabBarBadge: 3,
+              tabBarBadge: cart.quantityTotal > 0 && cart.quantityTotal,
+              tabBarBadgeStyle: cart.quantityTotal <= 0 && {
+                backgroundColor: "transparent",
+              },
             }}
           />
           <Tab.Screen

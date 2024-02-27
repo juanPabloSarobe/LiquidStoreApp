@@ -22,3 +22,8 @@ Por ultimo se agrego el componente ActivityIndicator mientras se carga la fuente
 Para estos trabajos se fueron creando ramas, donde se dejaron copias de la version anterior.
 
 </p>
+
+<p>Librerias utilizadas </p> 
+<ul>
+Redux
+ </ul>

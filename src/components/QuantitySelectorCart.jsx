@@ -1,8 +1,36 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import colors from "../utils/global/colors";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addItemToCart } from "../features/cart/cartSlice";
 
-const QuantitySelector = ({ plusQuantity, minusQuantity, quantity }) => {
+const QuantitySelectorCart = ({ item }) => {
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
+
+  const [quantity, setQuantity] = useState(cart.quantity);
+  const [newItem, setNewItem] = useState({});
+
+  const plusQuantity = () => {
+    quantity < item.stock && setQuantity(quantity + 1);
+  };
+  const minusQuantity = () => {
+    quantity > 1 && setQuantity(quantity - 1);
+  };
+  useEffect(() => {
+    if (quantity < item.quantity || quantity > item.quantity)
+      dispatch(addItemToCart(newItem));
+  }, [newItem]);
+
+  useEffect(() => {
+    setNewItem({ ...item, quantity: quantity });
+  }, [quantity]);
+
+  useEffect(() => {
+    setQuantity(item.quantity);
+  }, [cart]);
+
   return (
     <View>
       <View style={styles.selector}>
@@ -22,7 +50,7 @@ const QuantitySelector = ({ plusQuantity, minusQuantity, quantity }) => {
   );
 };
 
-export default QuantitySelector;
+export default QuantitySelectorCart;
 
 const styles = StyleSheet.create({
   selector: {

@@ -21,7 +21,7 @@
     "id": 3,
     "title": "Whisky Escocés",
     "price": 29.99,
-    "stock": 20,
+    "stock": 0,
     "description": "Whisky escocés de malta, suave y ahumado.",
     "category": "Licores",
     "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104567/Jack-Daniels-Master-Distiller-N4-550x550_qvvkp4.png"

@@ -1,21 +1,29 @@
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import colors from "../utils/global/colors";
-import cart from "../utils/data/cart.json";
+
 import CartItem from "./CartItem";
 import { useEffect } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import fonts from "../utils/global/fonts";
 import { Alert } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteAllitems } from "../features/cart/cartSlice";
 
 const CartList = ({ navigation }) => {
-  const emptyCart = cart.items.length > 0 ? false : true;
-
-  const deleteCart = () =>
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  const emptyCart = cart.quantityTotal > 0 ? false : true;
+  const deleteCart = () => {
     Alert.alert(
       "Atención",
       `Seguro desea eliminar el carrito? 
-Esta accion no se podra deshacer`
+Esta accion no se podra deshacer`,
+      [
+        { text: "Cancel", style: "cancel" },
+        { text: "OK", onPress: () => dispatch(deleteAllitems()) },
+      ]
     );
+  };
   useEffect(() => {
     navigation.setOptions({
       headerRight: () =>
@@ -25,7 +33,7 @@ Esta accion no se podra deshacer`
           </Pressable>
         ),
     });
-  }, []);
+  }, [cart]);
   if (emptyCart) {
     return (
       <View style={styles.container}>
@@ -48,7 +56,7 @@ Esta accion no se podra deshacer`
       <View style={styles.buyZone}>
         <View style={styles.buyTotal}>
           <Text style={styles.buyTotalLabel}>Total: $</Text>
-          <Text style={styles.buyPrice}> 3000</Text>
+          <Text style={styles.buyPrice}> {cart.total}</Text>
         </View>
         <Pressable style={styles.buyButton}>
           <Text style={styles.buyButtonText}>Finalizar compra</Text>

@@ -3,6 +3,8 @@ import colors from "./src/utils/global/colors";
 import { useFonts } from "expo-font";
 import { fontFamily } from "./src/utils/global/fonts";
 import MainNavigator from "./src/routes/MainNavigator";
+import store from "./src/app/store";
+import { Provider } from "react-redux";
 
 export default function App() {
   const screenWidth = Dimensions.get("window").width;
@@ -19,7 +21,11 @@ export default function App() {
     );
   }
 
-  return <MainNavigator />;
+  return (
+    <Provider store={store}>
+      <MainNavigator />
+    </Provider>
+  );
 }
 
 const styles = StyleSheet.create({

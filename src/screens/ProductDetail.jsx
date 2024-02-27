@@ -12,26 +12,42 @@ import products from "../utils/data/products.json";
 import { useEffect, useLayoutEffect, useState } from "react";
 import fonts from "../utils/global/fonts";
 import QuantitySelector from "../components/QuantitySelector";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../features/cart/cartSlice";
 
 const screenWidth = Dimensions.get("window").width;
 
 const ProductDetail = ({ route, navigation }) => {
   const { productSelectedId } = route.params;
-
   const [productSelected, setProductSelected] = useState({});
+  const [quantity, setQuantity] = useState(0);
+  const [item, setItem] = useState({});
+
+  const dispatch = useDispatch();
+
+  const plusQuantity = () => {
+    quantity < productSelected.stock && setQuantity(quantity + 1);
+  };
+  const minusQuantity = () => {
+    quantity > 1 && setQuantity(quantity - 1);
+  };
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: productSelected.title,
     });
+    setQuantity(productSelected.stock >= 1 ? 1 : 0);
   }, [productSelected]);
 
   useEffect(() => {
     const filtro = products.filter(
       (product) => product.id === productSelectedId
     );
-    setProductSelected(...filtro);
+    setProductSelected(...filtro, { quantity: 1 });
   }, [productSelectedId]);
+  useEffect(() => {
+    setItem({ ...productSelected, quantity: quantity });
+  }, [quantity]);
 
   return (
     <View style={styles.mainContainer}>
@@ -48,8 +64,17 @@ const ProductDetail = ({ route, navigation }) => {
             </Text>
           </View>
           <View style={styles.priceZone}>
-            <QuantitySelector item={productSelected} />
-            <Button title="Comprar" color={colors.bgSuccess} />
+            <QuantitySelector
+              plusQuantity={plusQuantity}
+              minusQuantity={minusQuantity}
+              quantity={quantity}
+            />
+            <Button
+              title="Comprar"
+              color={colors.bgSuccess}
+              disabled={quantity === 0 && true}
+              onPress={() => dispatch(addItemToCart(item))}
+            />
           </View>
         </View>
       </ShadowPrimary>
