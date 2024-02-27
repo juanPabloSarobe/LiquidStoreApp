@@ -22,8 +22,19 @@ Por ultimo se agrego el componente ActivityIndicator mientras se carga la fuente
 Para estos trabajos se fueron creando ramas, donde se dejaron copias de la version anterior.
 
 </p>
+<p><strong> Preentrega clase 11: </strong> Para esta preentrega se requiere la implementación de una Bottom Tab Bar y de manejo de Estados mediante Redux, las cuales se implementaron correctamente.
+Respecto de la tab bar, se utilizaron métodos diferentes al profesor para darle estilos a los botones cuando están o no seleccionados. También se modificó el main navigator.js para que sea la TabBar la principal y el Stack Navigation la secundaria dentro de una Tab. Para la Tab Shop se utiliza el header de del Stack, para el resto se utiliza el header de la TabBar.
+En la segunda Tab se implementa el carrito, el cual contiene en su header un botón para vaciarlo, previo verificarlo con el usuario mediante un Alert.Luego contiene una lista de los productos que se van agregando.Como valor agregado se desarrolló un componente que permite manipular la cantidad de unidades a agregar de un mismo producto, el mismo tiene controles para que no sea menor a cero, ni mayor al stock, así como también que en caso de no haber stock no habilita el botón comprar.Otro componente similar se agregó en las Card del carrito con la diferencia que al agregar o quitar productos se actualiza en tiempo real el carrito.
+
+Mediante la implementación de Redux, se construyó un estado general para el carrito, se agregaron más datos como Cantidad Total, la cual también va actualizando el Badge del TabBar del carrito.Se diseñaron funciones dentro del Slice que se reutilizan para actualizar el importe total y la cantidad total al momento de agregar o sacar unidades y eliminar un productoSe agregaron todos los controles y funcionalidades para agregar unidades o productos, eliminar unidades, eliminar productos previa confirmación y eliminar el carrito completo, así como su visualización cuando está vacío.
+
+</p>
 
 <p>Librerias utilizadas </p> 
-<ul>
-Redux
- </ul>
+<ul>Expo </ul>
+<ul>Expo-fonts </ul>
+<ul>Expo-status-bar </ul>
+<ul>React Native Reanimated </ul>
+<ul>Navigation </ul>
+<ul>Vector Icons </ul>
+<ul>Redux </ul>
