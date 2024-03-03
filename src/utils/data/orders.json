@@ -1,0 +1,112 @@
+[
+  {
+    "buyed": true,
+    "fecha": "3/3/2024, 5:06:39 PM",
+    "id": "17:06:39 GMT+0000",
+    "items": [
+      {
+        "category": "Cervezas",
+        "description": "Sidra refrescante, perfecta para celebraciones.",
+        "id": 7,
+        "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104693/BOTELLA-2_06d65695-b6aa-47c7-947e-c08083799f92_ojv5ow.jpg",
+        "price": 6.99,
+        "quantity": 2,
+        "stock": 35,
+        "title": "Sidra"
+      }
+    ],
+    "payMethod": "",
+    "quantityTotal": 2,
+    "total": 13.98
+  },
+  {
+    "buyed": true,
+    "fecha": "3/3/2024, 5:13:44 PM",
+    "id": "17:13:44 GMT+0000",
+    "items": [
+      {
+        "category": "Licores",
+        "description": "Ron añejo de 7 años de barrica, ideal para cócteles.",
+        "id": 4,
+        "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104541/ron-havana-club-7-anos_s9mxc4.png",
+        "price": 19.99,
+        "quantity": 5,
+        "stock": 25,
+        "title": "Ron Añejo"
+      },
+      {
+        "category": "Licores",
+        "description": "Ginebra premium con una mezcla de botánicos.",
+        "id": 5,
+        "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104611/ventozelo-gin_tbmgg4.png",
+        "price": 24.99,
+        "quantity": 1,
+        "stock": 15,
+        "title": "Ginebra Premium"
+      },
+      {
+        "category": "Cervezas",
+        "description": "Cerveza Lager suave y refrescante, perfecta para cualquier ocasión.",
+        "id": 11,
+        "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104824/61uqEd22CxL._AC_UF1000_1000_QL80__xdft24.jpg",
+        "price": 4.99,
+        "quantity": 4,
+        "stock": 60,
+        "title": "Cerveza Lager"
+      },
+      {
+        "category": "Cafés",
+        "description": "Doble espresso con un sabor intenso y cuerpo aterciopelado.",
+        "id": 40,
+        "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696106706/81iid8jWYNL_czx6vl.jpg",
+        "price": 4.49,
+        "quantity": 3,
+        "stock": 35,
+        "title": "Café Espresso Doble"
+      }
+    ],
+    "payMethod": "",
+    "quantityTotal": 13,
+    "total": 158.37
+  },
+  {
+    "buyed": true,
+    "fecha": "3/3/2024, 5:15:03 PM",
+    "id": "17:15:16 GMT+0000",
+    "items": [
+      {
+        "category": "Vinos",
+        "description": "Champán brut de alta calidad, perfecto para celebraciones.",
+        "id": 8,
+        "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696104758/Dom-Perignon-2000-Fullview-Vintage-Grapes-GmbH_j7bcxt.jpg",
+        "price": 35.99,
+        "quantity": 4,
+        "stock": 10,
+        "title": "Champán Brut"
+      },
+      {
+        "category": "Vinos",
+        "description": "Vino rosado ligero y afrutado, ideal para aperitivos.",
+        "id": 26,
+        "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696105607/lagosta-rose_s9kpdr.png",
+        "price": 7.99,
+        "quantity": 1,
+        "stock": 35,
+        "title": "Vino Rosado"
+      },
+      {
+        "category": "Vinos",
+        "description": "Vino espumoso para brindis especiales, con burbujas finas.",
+        "id": 38,
+        "img": "https://res.cloudinary.com/dg8ndxl2y/image/upload/v1696105777/61qIyVR1_tL._AC_UF894_1000_QL80__kjhyze.jpg",
+        "price": 10.99,
+        "quantity": 1,
+        "stock": 15,
+        "title": "Vino Espumoso"
+      }
+    ],
+    "payMethod": "",
+    "quantityTotal": 6,
+    "total": 162.94
+  }
+]

@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import OrdersList from "../components/OrdersList";
 
-const Orders = () => {
+const Orders = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>Pantalla del resumen de las ordenes</Text>
+      <OrdersList navigation={navigation} />
     </View>
   );
 };

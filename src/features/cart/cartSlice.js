@@ -1,10 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+/* const setId = (state) => {
+  state.id = new Date();
+}; */
+
 const initialState = {
+  id: new Date().toTimeString(),
   items: [],
   total: 0,
   quantityTotal: 0,
   fecha: new Date().toLocaleString(),
+  payMethod: "",
+  buyed: false,
 };
 
 const setQuantityTotal = (state) => {
@@ -50,12 +57,19 @@ export const cartSlice = createSlice({
 
     deleteAllitems: (state) => {
       state.items = [];
+      state.payMethod = "";
+      state.buyed = false;
       setQuantityTotal(state);
       setTotal(state);
+      state.id = new Date().toTimeString();
+    },
+    buyCart: (state) => {
+      state.buyed = true;
+      console.log(state);
     },
   },
 });
 
-export const { addItemToCart, removeItemFromCart, deleteAllitems } =
+export const { addItemToCart, removeItemFromCart, deleteAllitems, buyCart } =
   cartSlice.actions;
 export default cartSlice.reducer;

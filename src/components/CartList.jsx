@@ -7,12 +7,12 @@ import { FontAwesome } from "@expo/vector-icons";
 import fonts from "../utils/global/fonts";
 import { Alert } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteAllitems } from "../features/cart/cartSlice";
+import { deleteAllitems, buyCart } from "../features/cart/cartSlice";
 
 const CartList = ({ navigation }) => {
   const cart = useSelector((state) => state.cart);
-  const dispatch = useDispatch();
   const emptyCart = cart.quantityTotal > 0 ? false : true;
+  const dispatch = useDispatch();
   const deleteCart = () => {
     Alert.alert(
       "Atención",
@@ -34,6 +34,7 @@ Esta accion no se podra deshacer`,
         ),
     });
   }, [cart]);
+
   if (emptyCart) {
     return (
       <View style={styles.container}>
@@ -58,7 +59,7 @@ Esta accion no se podra deshacer`,
           <Text style={styles.buyTotalLabel}>Total: $</Text>
           <Text style={styles.buyPrice}> {cart.total}</Text>
         </View>
-        <Pressable style={styles.buyButton}>
+        <Pressable style={styles.buyButton} onPress={() => dispatch(buyCart())}>
           <Text style={styles.buyButtonText}>Finalizar compra</Text>
         </Pressable>
       </View>
