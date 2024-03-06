@@ -6,7 +6,7 @@ import OrderItem from "./OrderItem";
 
 const OrdersList = ({ navigation }) => {
   const [orders, setOrders] = useState(ordersArr);
-  console.log(orders);
+
   const emptyOrders = false;
   if (emptyOrders) {
     return (
@@ -41,8 +41,11 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   flatStyle: {
+    marginTop: 15,
     flex: 1,
     height: "100%",
+    width: "100%",
+    marginVertical: 20,
   },
   text: {
     textAlign: "center",
