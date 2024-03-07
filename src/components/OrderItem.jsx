@@ -5,7 +5,6 @@ import fonts from "../utils/global/fonts";
 import OrderItemProduct from "./OrderItemProduct";
 
 const OrderItem = ({ navigation, item }) => {
-  console.log(item.items);
   return (
     <View style={styles.mainContainer}>
       <View style={styles.titleZone}>
@@ -47,7 +46,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   date: {
+    fontFamily: fonts.robotoBold,
     color: colors.textSecondary,
+    fontSize: 12,
   },
   container: {
     flexDirection: "row",
@@ -64,8 +65,8 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: fonts.robotoBold,
-    color: colors.textPrimary,
-    fontSize: 16,
+    color: colors.textSecondary,
+    fontSize: 12,
   },
   totalZone: {
     flexDirection: "row",
@@ -84,6 +85,6 @@ const styles = StyleSheet.create({
     fontFamily: fonts.robotoBold,
     color: colors.textPrimary,
     fontSize: 24,
-    marginTop: 5,
+    marginTop: 15,
   },
 });

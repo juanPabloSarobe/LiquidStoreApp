@@ -11,11 +11,20 @@ import SearchBar from "../components/SearchBar";
 import { Fontisto } from "@expo/vector-icons";
 const screenWidth = Dimensions.get("window").width;
 
-import products from "../utils/data/products.json";
+//import products from "../utils/data/products.json";
 import colors from "../utils/global/colors";
+import {
+  useGetProductsByCategoryQuery,
+  useGetProductsQuery,
+} from "../app/services/shop";
 
 const ProductsByCategory = ({ navigation, route }) => {
   const { categorySelected } = route.params;
+  console.log(categorySelected.category);
+  const { data: products } = useGetProductsByCategoryQuery(
+    categorySelected.category
+  );
+  console.log(products);
 
   const [searchVisible, setSearchVisible] = useState(false);
   const [productsByCategorySelected, setproductsByCategorySelected] = useState(
@@ -51,7 +60,8 @@ const ProductsByCategory = ({ navigation, route }) => {
   }, [searchVisible]);
 
   useEffect(() => {
-    const filterCategory = (filter) => {
+    setproductsByCategorySelected(products);
+    /*  const filterCategory = (filter) => {
       if (filter === "Todos") return products;
       else {
         return products.filter((product) => product.category === filter);
@@ -65,8 +75,8 @@ const ProductsByCategory = ({ navigation, route }) => {
       return titulo.includes(searchText);
     });
 
-    if (categorySelected) setproductsByCategorySelected(filtroKeyword);
-  }, [categorySelected, searchText]);
+    if (categorySelected) setproductsByCategorySelected(filtroKeyword); */
+  }, [categorySelected, searchText, products]);
 
   return (
     <>

@@ -6,7 +6,7 @@ import OrderItem from "./OrderItem";
 
 const OrdersList = ({ navigation }) => {
   const [orders, setOrders] = useState(ordersArr);
-
+  console.log(orders);
   const emptyOrders = false;
   if (emptyOrders) {
     return (

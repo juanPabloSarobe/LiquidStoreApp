@@ -5,7 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 }; */
 
 const initialState = {
-  id: new Date().toTimeString(),
+  id: Date.now(),
   items: [],
   total: 0,
   quantityTotal: 0,
