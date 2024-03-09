@@ -14,6 +14,10 @@ import fonts from "../utils/global/fonts";
 import QuantitySelector from "../components/QuantitySelector";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "../features/cart/cartSlice";
+import {
+  useGetProductsByCategoryQuery,
+  useGetProductsQuery,
+} from "../app/services/shop";
 
 const screenWidth = Dimensions.get("window").width;
 

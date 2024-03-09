@@ -1,10 +1,10 @@
 import { StyleSheet, Dimensions, ActivityIndicator, View } from "react-native";
-import colors from "./src/utils/global/colors";
 import { useFonts } from "expo-font";
 import { fontFamily } from "./src/utils/global/fonts";
 import MainNavigator from "./src/routes/MainNavigator";
 import { store } from "./src/app/store";
 import { Provider } from "react-redux";
+import IsLoading from "./src/components/IsLoading";
 
 export default function App() {
   const screenWidth = Dimensions.get("window").width;
@@ -14,9 +14,7 @@ export default function App() {
   if (!fontsLoaded && !fontError) {
     return (
       <>
-        <View style={styles.container}>
-          <ActivityIndicator size={50} color={colors.textPrimary} />
-        </View>
+        <IsLoading />
       </>
     );
   }
@@ -28,12 +26,6 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.bgPrimary,
-    justifyContent: "center",
-  },
-});
+const styles = StyleSheet.create({});
 
 /*   <View style={styles.container}></View>; */

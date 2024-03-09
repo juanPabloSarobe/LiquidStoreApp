@@ -4,6 +4,7 @@ import {
   FlatList,
   Pressable,
   StyleSheet,
+  Text,
   View,
 } from "react-native";
 import ProductsList from "../components/ProductsList";
@@ -11,20 +12,20 @@ import SearchBar from "../components/SearchBar";
 import { Fontisto } from "@expo/vector-icons";
 const screenWidth = Dimensions.get("window").width;
 
-//import products from "../utils/data/products.json";
 import colors from "../utils/global/colors";
 import {
   useGetProductsByCategoryQuery,
   useGetProductsQuery,
 } from "../app/services/shop";
+import IsLoading from "../components/IsLoading";
 
 const ProductsByCategory = ({ navigation, route }) => {
   const { categorySelected } = route.params;
-  console.log(categorySelected.category);
-  const { data: products } = useGetProductsByCategoryQuery(
-    categorySelected.category
-  );
-  console.log(products);
+
+  const { data: products, isLoading: isLoadingProductsByCategory } =
+    useGetProductsByCategoryQuery(categorySelected.category);
+  const { data: allProducts, isLoading: isLoaingAllProducts } =
+    useGetProductsQuery();
 
   const [searchVisible, setSearchVisible] = useState(false);
   const [productsByCategorySelected, setproductsByCategorySelected] = useState(
@@ -60,23 +61,20 @@ const ProductsByCategory = ({ navigation, route }) => {
   }, [searchVisible]);
 
   useEffect(() => {
-    setproductsByCategorySelected(products);
-    /*  const filterCategory = (filter) => {
-      if (filter === "Todos") return products;
-      else {
-        return products.filter((product) => product.category === filter);
-      }
-    };
-    const primerFiltro = filterCategory(categorySelected.category);
+    if (categorySelected.category == "Todos") {
+      setproductsByCategorySelected(allProducts);
+    } else {
+      setproductsByCategorySelected(products);
+    }
 
-    const filtroKeyword = primerFiltro.filter((prod) => {
+    const filtroKeyword = productsByCategorySelected?.filter((prod) => {
       const titulo = prod.title.toLowerCase();
 
       return titulo.includes(searchText);
     });
 
-    if (categorySelected) setproductsByCategorySelected(filtroKeyword); */
-  }, [categorySelected, searchText, products]);
+    if (searchText) setproductsByCategorySelected(filtroKeyword);
+  }, [categorySelected, searchText, products, allProducts]);
 
   return (
     <>
@@ -86,18 +84,23 @@ const ProductsByCategory = ({ navigation, route }) => {
           handleSearchText={handleSearchText}
           searchText={searchText}
         />
-        <FlatList
-          data={productsByCategorySelected}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <ProductsList
-              item={item}
-              screenWidth={screenWidth}
-              closeSearchVisible={closeSearchVisible}
-              navigation={navigation}
-            />
-          )}
-        />
+
+        {isLoadingProductsByCategory || isLoaingAllProducts ? (
+          <IsLoading />
+        ) : (
+          <FlatList
+            data={productsByCategorySelected}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <ProductsList
+                item={item}
+                screenWidth={screenWidth}
+                closeSearchVisible={closeSearchVisible}
+                navigation={navigation}
+              />
+            )}
+          />
+        )}
       </View>
     </>
   );
