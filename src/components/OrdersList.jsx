@@ -1,13 +1,32 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import colors from "../utils/global/colors";
 import ordersArr from "../utils/data/orders.json";
 import OrderItem from "./OrderItem";
+import {
+  useGetOrdersQuery,
+  useGetOrdersByUserQuery,
+} from "../app/services/shop";
+import IsLoading from "./IsLoading";
 
 const OrdersList = ({ navigation }) => {
-  const [orders, setOrders] = useState(ordersArr);
-  console.log(orders);
-  const emptyOrders = false;
+  const [emptyOrders, setEmptyOrders] = useState(false);
+  const { data, isLoading, isSuccess } = useGetOrdersByUserQuery("userName");
+
+  const [orders, setOrders] = useState(!isLoading ? data : []);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setOrders(data);
+      if (data.length == 0) {
+        setEmptyOrders(true);
+      } else {
+        setEmptyOrders(false);
+      }
+    }
+  }, [data]);
+
+  if (isLoading) return <IsLoading />;
   if (emptyOrders) {
     return (
       <View style={styles.container}>

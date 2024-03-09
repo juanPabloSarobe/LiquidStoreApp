@@ -1,9 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-/* const setId = (state) => {
-  state.id = new Date();
-}; */
-
 const initialState = {
   id: Date.now(),
   items: [],
@@ -61,11 +57,10 @@ export const cartSlice = createSlice({
       state.buyed = false;
       setQuantityTotal(state);
       setTotal(state);
-      state.id = new Date().toTimeString();
+      state.id = Date.now();
     },
     buyCart: (state) => {
       state.buyed = true;
-      console.log(state);
     },
   },
 });

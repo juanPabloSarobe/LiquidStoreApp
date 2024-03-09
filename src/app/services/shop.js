@@ -22,16 +22,38 @@ export const shopApi = createApi({
       },
     }),
     getProduct: builder.query({
+      //de esta forma se consulta por el nombre del objeto en product/5.json
       //query: (id) => `products/${id}.json?`,
       query: (id) => `products.json?orderBy="id"&equalTo=${id}`,
       transformResponse: (response) => {
         const data = Object.values(response);
-
+        //cuando la respuesta debe devolver un solo item convertimos en array y retornamos el primer valor
         return data[0];
       },
     }),
     getCategories: builder.query({
       query: () => "categories.json",
+    }),
+    postOrder: builder.mutation({
+      query: ({ ...order }) => ({
+        url: "orders.json",
+        method: "POST",
+        body: order,
+      }),
+    }),
+    getOrders: builder.query({
+      query: () => "orders.json",
+      transformResponse: (response) => {
+        const data = Object.values(response);
+        return data;
+      },
+    }),
+    getOrdersByUser: builder.query({
+      query: (user) => `orders.json?orderBy="user"&equalTo="${user}"`,
+      transformResponse: (response) => {
+        const data = Object.values(response);
+        return data;
+      },
     }),
   }),
 });
@@ -41,4 +63,7 @@ export const {
   useGetCategoriesQuery,
   useGetProductsQuery,
   useGetProductQuery,
+  usePostOrderMutation,
+  useGetOrdersQuery,
+  useGetOrdersByUserQuery,
 } = shopApi;

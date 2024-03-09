@@ -17,7 +17,8 @@
     ],
     "payMethod": "",
     "quantityTotal": 2,
-    "total": 13.98
+    "total": 13.98,
+    "user": "userName"
   },
   {
     "buyed": true,
@@ -67,7 +68,8 @@
     ],
     "payMethod": "",
     "quantityTotal": 13,
-    "total": 158.37
+    "total": 158.37,
+    "user": "userName"
   },
   {
     "buyed": true,
@@ -107,6 +109,7 @@
     ],
     "payMethod": "",
     "quantityTotal": 6,
-    "total": 162.94
+    "total": 162.94,
+    "user": "userName"
   }
 ]

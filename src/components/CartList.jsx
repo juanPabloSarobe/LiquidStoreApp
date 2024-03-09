@@ -8,11 +8,13 @@ import fonts from "../utils/global/fonts";
 import { Alert } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteAllitems, buyCart } from "../features/cart/cartSlice";
+import { usePostOrderMutation } from "../app/services/shop";
 
 const CartList = ({ navigation }) => {
   const cart = useSelector((state) => state.cart);
   const emptyCart = cart.quantityTotal > 0 ? false : true;
   const dispatch = useDispatch();
+  const [triggerPost, result] = usePostOrderMutation();
   const deleteCart = () => {
     Alert.alert(
       "Atención",
@@ -33,8 +35,15 @@ Esta accion no se podra deshacer`,
           </Pressable>
         ),
     });
+    if (cart.buyed == true) {
+      triggerPost({ ...cart, user: "userName" });
+      dispatch(deleteAllitems());
+    }
   }, [cart]);
-
+  const confirmCart = () => {
+    dispatch(buyCart());
+    navigation.navigate("Orders");
+  };
   if (emptyCart) {
     return (
       <View style={styles.container}>
@@ -59,7 +68,7 @@ Esta accion no se podra deshacer`,
           <Text style={styles.buyTotalLabel}>Total: $</Text>
           <Text style={styles.buyPrice}> {cart.total}</Text>
         </View>
-        <Pressable style={styles.buyButton} onPress={() => dispatch(buyCart())}>
+        <Pressable style={styles.buyButton} onPress={() => confirmCart()}>
           <Text style={styles.buyButtonText}>Finalizar compra</Text>
         </Pressable>
       </View>
