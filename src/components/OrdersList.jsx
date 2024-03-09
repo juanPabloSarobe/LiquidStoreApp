@@ -1,7 +1,7 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import colors from "../utils/global/colors";
-import ordersArr from "../utils/data/orders.json";
+//import ordersArr from "../utils/data/orders.json";
 import OrderItem from "./OrderItem";
 import {
   useGetOrdersQuery,

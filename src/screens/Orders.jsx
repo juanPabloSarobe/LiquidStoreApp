@@ -6,7 +6,6 @@ import colors from "../utils/global/colors";
 const Orders = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}> Ordenes de Compras</Text>
       <OrdersList navigation={navigation} />
     </View>
   );

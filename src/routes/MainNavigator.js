@@ -61,6 +61,7 @@ const MainNavigator = () => {
               tabBarBadgeStyle: cart.quantityTotal <= 0 && {
                 backgroundColor: "transparent",
               },
+              headerTitle: "Carrito",
             }}
           />
           <Tab.Screen
@@ -70,6 +71,7 @@ const MainNavigator = () => {
               tabBarIcon: ({ color }) => (
                 <Octicons name="list-unordered" size={28} color={color} />
               ),
+              headerTitle: "Compras",
             }}
           />
         </Tab.Navigator>
