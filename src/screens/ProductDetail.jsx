@@ -8,22 +8,25 @@ import {
 } from "react-native";
 import ShadowPrimary from "../components/wrappers/ShadowPrimary";
 import colors from "../utils/global/colors";
-import products from "../utils/data/products.json";
+//import products from "../utils/data/products.json";
 import { useEffect, useLayoutEffect, useState } from "react";
 import fonts from "../utils/global/fonts";
 import QuantitySelector from "../components/QuantitySelector";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "../features/cart/cartSlice";
-import {
-  useGetProductsByCategoryQuery,
-  useGetProductsQuery,
-} from "../app/services/shop";
+import { useGetProductQuery } from "../app/services/shop";
+import IsLoading from "../components/IsLoading";
 
 const screenWidth = Dimensions.get("window").width;
 
 const ProductDetail = ({ route, navigation }) => {
   const { productSelectedId } = route.params;
-  const [productSelected, setProductSelected] = useState({});
+  const { data: product, isLoading: isLoadingProduct } =
+    useGetProductQuery(productSelectedId);
+
+  const [productSelected, setProductSelected] = useState(
+    !isLoadingProduct ? product : {}
+  );
   const [quantity, setQuantity] = useState(0);
   const [item, setItem] = useState({});
 
@@ -38,20 +41,20 @@ const ProductDetail = ({ route, navigation }) => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerTitle: productSelected.title,
+      headerTitle: productSelected?.title,
     });
-    setQuantity(productSelected.stock >= 1 ? 1 : 0);
+    setQuantity(productSelected?.stock >= 1 ? 1 : 0);
   }, [productSelected]);
 
   useEffect(() => {
-    const filtro = products.filter(
-      (product) => product.id === productSelectedId
-    );
-    setProductSelected(...filtro, { quantity: 1 });
-  }, [productSelectedId]);
+    setProductSelected(product);
+  }, [product, productSelectedId]);
+
   useEffect(() => {
     setItem({ ...productSelected, quantity: quantity });
   }, [quantity]);
+
+  if (!productSelected) return <IsLoading />;
 
   return (
     <View style={styles.mainContainer}>
