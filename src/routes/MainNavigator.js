@@ -6,8 +6,10 @@ import { StatusBar } from "expo-status-bar";
 import ShopStackNavigation from "./ShopStackNavigation";
 import Cart from "../screens/Cart";
 import Orders from "../screens/Orders";
-import { Entypo, Octicons } from "@expo/vector-icons";
+import Login from "../screens/Login";
+import { Entypo, Octicons, FontAwesome } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
+import AuthDrawerNavigation from "./AuthDrawerNavigation";
 const Tab = createBottomTabNavigator();
 
 const MainNavigator = () => {
@@ -72,6 +74,19 @@ const MainNavigator = () => {
                 <Octicons name="list-unordered" size={28} color={color} />
               ),
               headerTitle: "Compras",
+              unmountOnBlur: true,
+            }}
+          />
+
+          <Tab.Screen
+            name="UserTab"
+            component={AuthDrawerNavigation}
+            options={{
+              tabBarIcon: ({ color }) => (
+                <FontAwesome name="user" size={28} color={color} />
+              ),
+              tabBarLabel: "usuario",
+              headerShown: false,
             }}
           />
         </Tab.Navigator>

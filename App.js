@@ -1,3 +1,4 @@
+import "react-native-gesture-handler";
 import { StyleSheet, Dimensions, ActivityIndicator, View } from "react-native";
 import { useFonts } from "expo-font";
 import { fontFamily } from "./src/utils/global/fonts";

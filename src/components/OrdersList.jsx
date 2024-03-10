@@ -8,12 +8,17 @@ import {
   useGetOrdersByUserQuery,
 } from "../app/services/shop";
 import IsLoading from "./IsLoading";
+import { useIsFocused } from "@react-navigation/native";
 
 const OrdersList = ({ navigation }) => {
   const [emptyOrders, setEmptyOrders] = useState(false);
+  const isFocused = useIsFocused();
   const { data, isLoading, isSuccess } = useGetOrdersByUserQuery("userName");
-
   const [orders, setOrders] = useState(!isLoading ? data : []);
+
+  useEffect(() => {
+    navigation.addListener("focus", () => {});
+  }, []);
 
   useEffect(() => {
     if (isSuccess) {
@@ -24,7 +29,7 @@ const OrdersList = ({ navigation }) => {
         setEmptyOrders(false);
       }
     }
-  }, [data]);
+  }, [data, isFocused]);
 
   if (isLoading) return <IsLoading />;
   if (emptyOrders) {
