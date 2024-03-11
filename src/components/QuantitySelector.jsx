@@ -1,15 +1,16 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import colors from "../utils/global/colors";
+import { useSelector } from "react-redux";
 
 const QuantitySelector = ({ plusQuantity, minusQuantity, quantity }) => {
+  const colors = useSelector((state) => state.colors);
   return (
     <View>
-      <View style={styles.selector}>
+      <View style={styles.selector(colors)}>
         <Pressable style={styles.button} onPress={minusQuantity}>
           <AntDesign name="minus" size={30} color={colors.textPrimary} />
         </Pressable>
-        <Text style={styles.quantityText}>
+        <Text style={styles.quantityText(colors)}>
           {"  "}
           {quantity}
           {"  "}
@@ -25,19 +26,23 @@ const QuantitySelector = ({ plusQuantity, minusQuantity, quantity }) => {
 export default QuantitySelector;
 
 const styles = StyleSheet.create({
-  selector: {
-    flexDirection: "row",
-    width: 130,
-    height: 40,
-    borderColor: colors.textSecondary,
-    borderWidth: 0.5,
-    borderRadius: 50,
-    justifyContent: "space-between",
-    alignItems: "center",
+  selector: (colors) => {
+    return {
+      flexDirection: "row",
+      width: 130,
+      height: 40,
+      borderColor: colors.textSecondary,
+      borderWidth: 0.5,
+      borderRadius: 50,
+      justifyContent: "space-between",
+      alignItems: "center",
+    };
   },
-  quantityText: {
-    fontSize: 24,
-    color: colors.textPrimary,
+  quantityText: (colors) => {
+    return {
+      fontSize: 24,
+      color: colors.textPrimary,
+    };
   },
   button: {
     borderRadius: 50,

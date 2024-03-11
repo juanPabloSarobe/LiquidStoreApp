@@ -1,8 +1,9 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
-import colors from "../utils/global/colors";
+
 import ShadowPrimary from "./wrappers/ShadowPrimary";
 import { AntDesign } from "@expo/vector-icons";
 import fonts from "../utils/global/fonts";
+import { useSelector } from "react-redux";
 
 const ProductsList = ({
   item,
@@ -10,9 +11,12 @@ const ProductsList = ({
   navigation,
   closeSearchVisible,
 }) => {
+  const colors = useSelector((state) => state.colors);
   return (
     <>
-      <ShadowPrimary style={[styles.container, { width: screenWidth - 40 }]}>
+      <ShadowPrimary
+        style={[styles.container(colors), { width: screenWidth - 40 }]}
+      >
         <Pressable
           style={styles.card}
           onPress={() => (
@@ -24,8 +28,10 @@ const ProductsList = ({
         >
           <Image style={styles.cardImg} source={{ uri: item.img }} />
           <View style={styles.cardContainer}>
-            <Text style={styles.cardText}>{item.title}</Text>
-            <Text style={styles.cardDescription}>{item.description}</Text>
+            <Text style={styles.cardText(colors)}>{item.title}</Text>
+            <Text style={styles.cardDescription(colors)}>
+              {item.description}
+            </Text>
             <View style={styles.cardIcons}>
               <View style={styles.cardIcon}>
                 <AntDesign name="right" size={30} color={colors.textPrimary} />
@@ -41,13 +47,15 @@ const ProductsList = ({
 export default ProductsList;
 
 const styles = StyleSheet.create({
-  container: {
-    height: 180,
-    backgroundColor: colors.bgSecondary,
-    borderRadius: 10,
-    margin: 20,
-    alignItems: "center",
-    justifyContent: "center",
+  container: (colors) => {
+    return {
+      height: 180,
+      backgroundColor: colors.bgSecondary,
+      borderRadius: 10,
+      margin: 20,
+      alignItems: "center",
+      justifyContent: "center",
+    };
   },
   card: {
     height: "100%",
@@ -60,7 +68,6 @@ const styles = StyleSheet.create({
   cardContainer: {
     width: "66%",
     height: "100%",
-    //backgroundColor: "red",
     borderRadius: 10,
   },
   cardImg: {
@@ -71,22 +78,26 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     resizeMode: "contain",
   },
-  cardText: {
-    paddingTop: 5,
-    marginLeft: 15,
-    fontSize: 20,
-    width: "66%",
-    color: colors.textPrimary,
-    flex: 3,
-    fontFamily: fonts.robotoBold,
+  cardText: (colors) => {
+    return {
+      paddingTop: 5,
+      marginLeft: 15,
+      fontSize: 20,
+      width: "66%",
+      color: colors.textPrimary,
+      flex: 3,
+      fontFamily: fonts.robotoBold,
+    };
   },
-  cardDescription: {
-    fontSize: 16,
-    color: colors.textSecondary,
-    width: "90%",
-    flex: 5,
-    margin: 10,
-    fontFamily: fonts.robotItalic,
+  cardDescription: (colors) => {
+    return {
+      fontSize: 16,
+      color: colors.textSecondary,
+      width: "90%",
+      flex: 5,
+      margin: 10,
+      fontFamily: fonts.robotoItalic,
+    };
   },
   cardIcons: {
     width: "100%",

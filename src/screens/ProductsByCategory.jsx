@@ -12,16 +12,16 @@ import SearchBar from "../components/SearchBar";
 import { Fontisto } from "@expo/vector-icons";
 const screenWidth = Dimensions.get("window").width;
 
-import colors from "../utils/global/colors";
 import {
   useGetProductsByCategoryQuery,
   useGetProductsQuery,
 } from "../app/services/shop";
 import IsLoading from "../components/IsLoading";
+import { useSelector } from "react-redux";
 
 const ProductsByCategory = ({ navigation, route }) => {
   const { categorySelected } = route.params;
-
+  const colors = useSelector((state) => state.colors);
   const { data: products, isLoading: isLoadingProductsByCategory } =
     useGetProductsByCategoryQuery(categorySelected.category);
   const { data: allProducts, isLoading: isLoaingAllProducts } =
@@ -78,7 +78,7 @@ const ProductsByCategory = ({ navigation, route }) => {
 
   return (
     <>
-      <View style={styles.container}>
+      <View style={styles.container(colors)}>
         <SearchBar
           isVisible={searchVisible}
           handleSearchText={handleSearchText}
@@ -109,8 +109,10 @@ const ProductsByCategory = ({ navigation, route }) => {
 export default ProductsByCategory;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.bgPrimary,
+  container: (colors) => {
+    return {
+      flex: 1,
+      backgroundColor: colors.bgPrimary,
+    };
   },
 });

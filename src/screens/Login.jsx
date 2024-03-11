@@ -3,9 +3,8 @@ import { StyleSheet, Text, View, Pressable } from "react-native";
 import { useLoginMutation } from "../app/services/auth";
 import InputForm from "../components/InputForm";
 import SubmitButton from "../components/SubmitButton";
-import colors from "../utils/global/colors";
 import fonts from "../utils/global/fonts";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../features/counter/counterSlice";
 
 const Login = ({ navigation }) => {
@@ -15,6 +14,7 @@ const Login = ({ navigation }) => {
   const [errorPassword, setErrorPassword] = useState("");
   const [triggerLogin] = useLoginMutation();
   const dispatch = useDispatch();
+  const colors = useSelector((state) => state.colors);
   const onSubmit = async () => {
     const { data } = await triggerLogin({
       email,
@@ -31,9 +31,9 @@ const Login = ({ navigation }) => {
     );
   };
   return (
-    <View style={styles.container}>
+    <View style={styles.container(colors)}>
       <View style={styles.submit}>
-        <Text style={styles.title}>Inicio de Sesión</Text>
+        <Text style={styles.title(colors)}>Inicio de Sesión</Text>
       </View>
       <InputForm
         value={email}
@@ -62,17 +62,21 @@ const Login = ({ navigation }) => {
 export default Login;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.bgPrimary,
-    alignItems: "center",
-    paddingBottom: 10,
+  container: (colors) => {
+    return {
+      flex: 1,
+      backgroundColor: colors.bgPrimary,
+      alignItems: "center",
+      paddingBottom: 10,
+    };
   },
-  title: {
-    color: colors.textPrimary,
-    fontFamily: fonts.robotoBold,
-    fontSize: 20,
-    marginTop: 10,
+  title: (colors) => {
+    return {
+      color: colors.textPrimary,
+      fontFamily: fonts.robotoBold,
+      fontSize: 20,
+      marginTop: 10,
+    };
   },
 
   submit: {

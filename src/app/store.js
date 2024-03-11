@@ -3,12 +3,14 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import { shopApi } from "./services/shop";
 import cartReducer from "../features/cart/cartSlice";
 import counterReducer from "../features/counter/counterSlice";
+import colorsReducer from "../features/colors/colorsSlice";
 import { authApi } from "./services/auth";
 
 export const store = configureStore({
   reducer: {
     cart: cartReducer,
     counter: counterReducer,
+    colors: colorsReducer,
     [shopApi.reducerPath]: shopApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
   },

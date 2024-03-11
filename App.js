@@ -15,7 +15,9 @@ export default function App() {
   if (!fontsLoaded && !fontError) {
     return (
       <>
-        <IsLoading />
+        <Provider store={store}>
+          <IsLoading />
+        </Provider>
       </>
     );
   }

@@ -1,11 +1,12 @@
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 
 import React from "react";
-import colors from "../utils/global/colors";
+import { useSelector } from "react-redux";
 
 const IsLoading = () => {
+  const colors = useSelector((state) => state.colors);
   return (
-    <View style={styles.container}>
+    <View style={styles.container(colors)}>
       <ActivityIndicator size={50} color={colors.textPrimary} />
     </View>
   );
@@ -14,9 +15,11 @@ const IsLoading = () => {
 export default IsLoading;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.bgPrimary,
-    justifyContent: "center",
+  container: (colors) => {
+    return {
+      flex: 1,
+      backgroundColor: colors.bgPrimary,
+      justifyContent: "center",
+    };
   },
 });

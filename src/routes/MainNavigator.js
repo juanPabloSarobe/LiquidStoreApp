@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import colors from "../utils/global/colors";
+//import colors from "../utils/global/colors";
 import { StatusBar } from "expo-status-bar";
 import ShopStackNavigation from "./ShopStackNavigation";
 import Cart from "../screens/Cart";
@@ -15,6 +15,7 @@ const Tab = createBottomTabNavigator();
 const MainNavigator = () => {
   const user = useSelector((state) => state.counter);
   const cart = useSelector((state) => state.cart);
+  const colors = useSelector((state) => state.colors);
 
   return (
     <>
@@ -28,7 +29,7 @@ const MainNavigator = () => {
             tabBarActiveBackgroundColor: colors.bgSecondary,
             tabBarInactiveBackgroundColor: colors.bgPrimary,
             tabBarHideOnKeyboard: true,
-            tabBarStyle: styles.tabBar,
+            tabBarStyle: styles.tabBar(colors),
             tabBarLabelStyle: styles.labelStyle,
             tabBarIconStyle: styles.iconStyle,
 
@@ -99,10 +100,12 @@ const MainNavigator = () => {
 export default MainNavigator;
 
 const styles = StyleSheet.create({
-  tabBar: {
-    height: "9%",
+  tabBar: (colors) => {
+    return {
+      height: "9%",
 
-    backgroundColor: colors.bgPrimary,
+      backgroundColor: colors.bgPrimary,
+    };
   },
   iconStyle: {
     marginTop: 2,

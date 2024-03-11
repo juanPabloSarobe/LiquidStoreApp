@@ -9,7 +9,6 @@ import {
   Alert,
 } from "react-native";
 import React from "react";
-import colors from "../utils/global/colors";
 import fonts from "../utils/global/fonts";
 import ShadowPrimary from "./wrappers/ShadowPrimary";
 import QuantitySelectorCart from "./QuantitySelectorCart";
@@ -18,6 +17,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { removeItemFromCart } from "../features/cart/cartSlice";
 
 const CartItem = ({ item }) => {
+  const colors = useSelector((state) => state.colors);
   const screenWidth = Dimensions.get("window").width;
   const dispatch = useDispatch();
   const deleteItem = (item) => {
@@ -33,12 +33,18 @@ ${item.title} del carrito?`,
   };
 
   return (
-    <View style={styles.mainContainer}>
-      <ShadowPrimary style={[styles.container, { width: screenWidth - 40 }]}>
+    <View style={styles.mainContainer(colors)}>
+      <ShadowPrimary
+        style={[styles.container(colors), { width: screenWidth - 40 }]}
+      >
         <Image style={styles.cardImg} source={{ uri: item.img }} />
         <View style={styles.cardDetail}>
           <View style={styles.titleZone}>
-            <Text style={styles.text} numberOfLines={1} ellipsizeMode="tail">
+            <Text
+              style={styles.text(colors)}
+              numberOfLines={1}
+              ellipsizeMode="tail"
+            >
               {" "}
               {item.title}
             </Text>
@@ -53,13 +59,13 @@ ${item.title} del carrito?`,
               />
             </Pressable>
           </View>
-          <Text style={styles.description}> {item.description}</Text>
-          <Text style={styles.description}>Precio: {item.price}</Text>
+          <Text style={styles.description(colors)}> {item.description}</Text>
+          <Text style={styles.description(colors)}>Precio: {item.price}</Text>
           <View style={styles.priceZone}>
             <QuantitySelectorCart item={item} />
             <View style={styles.totalStyle}>
-              <Text style={styles.price}>Total</Text>
-              <Text style={styles.price}>
+              <Text style={styles.price(colors)}>Total</Text>
+              <Text style={styles.price(colors)}>
                 {Math.round(item.price * item.quantity * 100) / 100}
               </Text>
             </View>
@@ -73,18 +79,22 @@ ${item.title} del carrito?`,
 export default CartItem;
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    flex: 1,
-    backgroundColor: colors.bgSecondary,
-    height: "100%",
+  mainContainer: (colors) => {
+    return {
+      flex: 1,
+      backgroundColor: colors.bgSecondary,
+      height: "100%",
+    };
   },
-  container: {
-    flexDirection: "row",
-    height: 200,
-    margin: 20,
-    backgroundColor: colors.bgSecondary,
-    borderTopLeftRadius: 15,
-    borderBottomLeftRadius: 15,
+  container: (colors) => {
+    return {
+      flexDirection: "row",
+      height: 200,
+      margin: 20,
+      backgroundColor: colors.bgSecondary,
+      borderTopLeftRadius: 15,
+      borderBottomLeftRadius: 15,
+    };
   },
   cardImg: {
     height: "100%",
@@ -104,21 +114,25 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     width: "95%",
   },
-  text: {
-    fontFamily: fonts.robotoBold,
-    color: colors.textPrimary,
-    fontSize: 24,
+  text: (colors) => {
+    return {
+      fontFamily: fonts.robotoBold,
+      color: colors.textPrimary,
+      fontSize: 24,
+    };
   },
   removeItem: {
     height: 30,
     width: 30,
     marginHorizontal: 5,
   },
-  description: {
-    color: colors.textPrimary,
-    fontFamily: fonts.robotoItalic,
-    fontSize: 18,
-    flex: 3,
+  description: (colors) => {
+    return {
+      color: colors.textPrimary,
+      fontFamily: fonts.robotoItalic,
+      fontSize: 18,
+      flex: 3,
+    };
   },
   totalStyle: {
     flexDirection: "column",
@@ -130,8 +144,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 5,
   },
-  price: {
-    fontSize: 24,
-    color: colors.textPrimary,
+  price: (colors) => {
+    return {
+      fontSize: 24,
+      color: colors.textPrimary,
+    };
   },
 });

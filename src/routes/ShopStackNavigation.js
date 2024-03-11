@@ -2,12 +2,14 @@ import { StyleSheet, Text, View } from "react-native";
 import Home from "../screens/Home";
 import ProductsByCategory from "../screens/ProductsByCategory";
 import ProductDetail from "../screens/ProductDetail";
-import colors from "../utils/global/colors";
+//import colors from "../utils/global/colors";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useSelector } from "react-redux";
 
 const Stack = createNativeStackNavigator();
 
 const ShopStackNavigation = () => {
+  const colors = useSelector((state) => state.colors);
   return (
     <Stack.Navigator
       initialRouteName="Home"

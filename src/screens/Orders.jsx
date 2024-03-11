@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import OrdersList from "../components/OrdersList";
-import colors from "../utils/global/colors";
+import { useSelector } from "react-redux";
 
 const Orders = ({ navigation }) => {
+  const colors = useSelector((state) => state.colors);
   return (
-    <View style={styles.container}>
+    <View style={styles.container(colors)}>
       <OrdersList navigation={navigation} />
     </View>
   );
@@ -14,15 +15,11 @@ const Orders = ({ navigation }) => {
 export default Orders;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.bgPrimary,
-    width: "100%",
-  },
-  text: {
-    textAlign: "center",
-    fontSize: 32,
-    color: colors.textSecondary,
-    marginHorizontal: 20,
+  container: (colors) => {
+    return {
+      flex: 1,
+      backgroundColor: colors.bgPrimary,
+      width: "100%",
+    };
   },
 });

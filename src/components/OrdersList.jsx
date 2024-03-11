@@ -1,7 +1,6 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
-import colors from "../utils/global/colors";
-//import ordersArr from "../utils/data/orders.json";
+
 import OrderItem from "./OrderItem";
 import { useGetOrdersByUserQuery } from "../app/services/shop";
 import IsLoading from "./IsLoading";
@@ -11,17 +10,15 @@ import { Alert } from "react-native";
 
 const OrdersList = ({ navigation }) => {
   const user = useSelector((state) => state.counter);
+  const colors = useSelector((state) => state.colors);
   const [emptyOrders, setEmptyOrders] = useState(false);
   const isFocused = useIsFocused();
+
   const {
     data: orders,
     isLoading,
     isSuccess,
   } = useGetOrdersByUserQuery(user?.localId);
-
-  useEffect(() => {
-    navigation.addListener("focus", () => {});
-  }, []);
 
   useEffect(() => {
     if (isSuccess) {
@@ -36,13 +33,15 @@ const OrdersList = ({ navigation }) => {
   if (isLoading) return <IsLoading />;
   if (emptyOrders) {
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>Aun no ha realizado ninguna compra</Text>
+      <View style={styles.container(colors)}>
+        <Text style={styles.text(colors)}>
+          Aun no ha realizado ninguna compra
+        </Text>
       </View>
     );
   }
   return (
-    <View style={styles.container}>
+    <View style={styles.container(colors)}>
       <FlatList
         style={styles.flatStyle}
         data={orders}
@@ -58,13 +57,15 @@ const OrdersList = ({ navigation }) => {
 export default OrdersList;
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: colors.bgPrimary,
-    flex: 1,
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100%",
+  container: (colors) => {
+    return {
+      backgroundColor: colors.bgPrimary,
+      flex: 1,
+      width: "100%",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100%",
+    };
   },
   flatStyle: {
     marginTop: 15,
@@ -73,10 +74,12 @@ const styles = StyleSheet.create({
     width: "100%",
     marginVertical: 20,
   },
-  text: {
-    textAlign: "center",
-    fontSize: 32,
-    color: colors.textSecondary,
-    marginHorizontal: 20,
+  text: (colors) => {
+    return {
+      textAlign: "center",
+      fontSize: 32,
+      color: colors.textSecondary,
+      marginHorizontal: 20,
+    };
   },
 });

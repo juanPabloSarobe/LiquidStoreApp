@@ -2,13 +2,13 @@ import { StyleSheet, Text, View, Pressable } from "react-native";
 import InputForm from "../components/InputForm";
 import SubmitButton from "../components/SubmitButton";
 import { useState } from "react";
-import colors from "../utils/global/colors";
 import fonts from "../utils/global/fonts";
 import { useRegisterMutation } from "../app/services/auth";
-import { useDispatch } from "react-redux";
-//import { getUser } from "../features/auth/authSlice2";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../features/counter/counterSlice";
 
 const Register = ({ navigation }) => {
+  const colors = useSelector((state) => state.colors);
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,7 +27,7 @@ const Register = ({ navigation }) => {
       password,
       displayName: nombre,
     });
-
+    console.log("register", data);
     dispatch(
       getUser({
         email: data.email,
@@ -39,9 +39,9 @@ const Register = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container(colors)}>
       <View style={styles.submit}>
-        <Text style={styles.title}>Crea tu cuenta</Text>
+        <Text style={styles.title(colors)}>Crea tu cuenta</Text>
       </View>
       <InputForm
         value={nombre}
@@ -84,17 +84,21 @@ const Register = ({ navigation }) => {
 export default Register;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.bgPrimary,
-    alignItems: "center",
-    paddingBottom: 10,
+  container: (colors) => {
+    return {
+      flex: 1,
+      backgroundColor: colors.bgPrimary,
+      alignItems: "center",
+      paddingBottom: 10,
+    };
   },
-  title: {
-    color: colors.textPrimary,
-    fontFamily: fonts.robotoBold,
-    fontSize: 20,
-    marginTop: 10,
+  title: (colors) => {
+    return {
+      color: colors.textPrimary,
+      fontFamily: fonts.robotoBold,
+      fontSize: 20,
+      marginTop: 10,
+    };
   },
   submit: {
     marginTop: 20,

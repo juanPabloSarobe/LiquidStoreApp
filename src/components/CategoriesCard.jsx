@@ -1,11 +1,13 @@
 import { Image, Pressable, StyleSheet, Text } from "react-native";
-import colors from "../utils/global/colors";
+import { useSelector } from "react-redux";
+//import colors from "../utils/global/colors";
 import fonts from "../utils/global/fonts";
 import ShadowPrimary from "./wrappers/ShadowPrimary";
 
 const CategoriesCard = ({ item, navigation }) => {
+  const colors = useSelector((state) => state.colors);
   return (
-    <ShadowPrimary style={styles.container}>
+    <ShadowPrimary style={styles.container(colors)}>
       <Pressable
         style={styles.container}
         onPress={() =>
@@ -13,7 +15,7 @@ const CategoriesCard = ({ item, navigation }) => {
         }
       >
         <Image style={styles.catImg} source={{ uri: item.img }} />
-        <Text style={styles.catText}>{item.category}</Text>
+        <Text style={styles.catText(colors)}>{item.category}</Text>
       </Pressable>
     </ShadowPrimary>
   );
@@ -22,14 +24,16 @@ const CategoriesCard = ({ item, navigation }) => {
 export default CategoriesCard;
 
 const styles = StyleSheet.create({
-  container: {
-    height: 80,
-    backgroundColor: colors.bgSecondary,
-    borderRadius: 7,
-    margin: 20,
-    width: "90%",
-    flexDirection: "row",
-    alignItems: "center",
+  container: (colors) => {
+    return {
+      height: 80,
+      backgroundColor: colors.bgSecondary,
+      borderRadius: 7,
+      margin: 20,
+      width: "90%",
+      flexDirection: "row",
+      alignItems: "center",
+    };
   },
   catImg: {
     height: 74,
@@ -39,11 +43,13 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     margin: 3,
   },
-  catText: {
-    marginLeft: 15,
-    flex: 1,
-    fontSize: 28,
-    color: colors.textSecondary,
-    fontFamily: fonts.robotoRegular,
+  catText: (colors) => {
+    return {
+      marginLeft: 15,
+      flex: 1,
+      fontSize: 28,
+      color: colors.textSecondary,
+      fontFamily: fonts.robotoRegular,
+    };
   },
 });

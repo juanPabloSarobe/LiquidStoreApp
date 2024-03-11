@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { StyleSheet, Text, View, TextInput } from "react-native";
-import colors from "../utils/global/colors";
 import fonts from "../utils/global/fonts";
 import Animated, {
   Easing,
@@ -8,6 +7,7 @@ import Animated, {
   useAnimatedStyle,
   withTiming,
 } from "react-native-reanimated";
+import { useSelector } from "react-redux";
 
 const InputForm = ({
   label,
@@ -19,7 +19,7 @@ const InputForm = ({
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const labelPositionY = useSharedValue(20); // Altura inicial del label
-
+  const colors = useSelector((state) => state.colors);
   const handleFocus = () => {
     setIsFocused(true);
     labelPositionY.value = withTiming(0, {
@@ -49,7 +49,7 @@ const InputForm = ({
       <TextInput
         value={value}
         onChangeText={onChangeText}
-        style={styles.input}
+        style={styles.input(colors)}
         secureTextEntry={isSecure}
         placeholder={!isFocused ? placeholder : null}
         placeholderTextColor={colors.textSecondary}
@@ -72,20 +72,22 @@ const styles = StyleSheet.create({
     width: "100%",
     marginTop: 20,
   },
-  input: {
-    width: "90%",
-    borderWidth: 0,
-    borderBottomWidth: 3,
-    borderBottomColor: "white",
-    borderRadius: 10,
-    padding: 10,
-    fontFamily: fonts.robotoBlack,
-    fontSize: 16,
-    marginHorizontal: "5%",
-    marginVertical: 10,
-    marginTop: 10,
-    backgroundColor: colors.bgSecondary,
-    color: colors.textPrimary,
+  input: (colors) => {
+    return {
+      width: "90%",
+      borderWidth: 0,
+      borderBottomWidth: 3,
+      borderBottomColor: "white",
+      borderRadius: 10,
+      padding: 10,
+      fontFamily: fonts.robotoBlack,
+      fontSize: 16,
+      marginHorizontal: "5%",
+      marginVertical: 10,
+      marginTop: 10,
+      backgroundColor: colors.bgSecondary,
+      color: colors.textPrimary,
+    };
   },
   titleInput: {
     width: "90%",

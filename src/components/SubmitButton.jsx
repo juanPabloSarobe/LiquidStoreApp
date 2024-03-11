@@ -1,9 +1,10 @@
 import { StyleSheet, Text, Pressable } from "react-native";
-import colors from "../utils/global/colors";
+import { useSelector } from "react-redux";
 
 const SubmitButton = ({ title, onPress }) => {
+  const colors = useSelector((state) => state.colors);
   return (
-    <Pressable style={styles.button} onPress={onPress}>
+    <Pressable style={styles.button(colors)} onPress={onPress}>
       <Text style={styles.text}>{title}</Text>
     </Pressable>
   );
@@ -12,12 +13,14 @@ const SubmitButton = ({ title, onPress }) => {
 export default SubmitButton;
 
 const styles = StyleSheet.create({
-  button: {
-    width: "60%",
-    backgroundColor: colors.bgSuccess,
-    padding: 10,
-    alignItems: "center",
-    borderRadius: 10,
+  button: (colors) => {
+    return {
+      width: "60%",
+      backgroundColor: colors.bgSuccess,
+      padding: 10,
+      alignItems: "center",
+      borderRadius: 10,
+    };
   },
   text: {
     textAlign: "center",

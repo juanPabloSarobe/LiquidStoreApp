@@ -7,12 +7,12 @@ import {
   View,
 } from "react-native";
 import ShadowPrimary from "../components/wrappers/ShadowPrimary";
-import colors from "../utils/global/colors";
+//import colors from "../utils/global/colors";
 //import products from "../utils/data/products.json";
 import { useEffect, useLayoutEffect, useState } from "react";
 import fonts from "../utils/global/fonts";
 import QuantitySelector from "../components/QuantitySelector";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart } from "../features/cart/cartSlice";
 import { useGetProductQuery } from "../app/services/shop";
 import IsLoading from "../components/IsLoading";
@@ -20,6 +20,7 @@ import IsLoading from "../components/IsLoading";
 const screenWidth = Dimensions.get("window").width;
 
 const ProductDetail = ({ route, navigation }) => {
+  const colors = useSelector((state) => state.colors);
   const { productSelectedId } = route.params;
   const { data: product, isLoading: isLoadingProduct } =
     useGetProductQuery(productSelectedId);
@@ -57,16 +58,21 @@ const ProductDetail = ({ route, navigation }) => {
   if (!productSelected) return <IsLoading />;
 
   return (
-    <View style={styles.mainContainer}>
-      <ShadowPrimary style={[styles.container, { width: screenWidth - 40 }]}>
+    <View style={styles.mainContainer(colors)}>
+      <ShadowPrimary
+        style={[styles.container(colors), { width: screenWidth - 40 }]}
+      >
         <Image style={styles.cardImg} source={{ uri: productSelected.img }} />
         <View style={styles.cardDetail}>
-          <Text style={styles.description}> {productSelected.description}</Text>
+          <Text style={styles.description(colors)}>
+            {" "}
+            {productSelected.description}
+          </Text>
           <View style={styles.stockZone}>
-            <Text style={styles.description}>
+            <Text style={styles.description(colors)}>
               Precio: {productSelected.price}
             </Text>
-            <Text style={styles.description}>
+            <Text style={styles.description(colors)}>
               Stock: {productSelected.stock}
             </Text>
           </View>
@@ -92,16 +98,20 @@ const ProductDetail = ({ route, navigation }) => {
 export default ProductDetail;
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    flex: 1,
-    backgroundColor: colors.bgSecondary,
+  mainContainer: (colors) => {
+    return {
+      flex: 1,
+      backgroundColor: colors.bgSecondary,
+    };
   },
-  container: {
-    height: "70%",
-    margin: 20,
-    backgroundColor: colors.bgSecondary,
-    borderTopRightRadius: 15,
-    borderTopLeftRadius: 15,
+  container: (colors) => {
+    return {
+      height: "70%",
+      margin: 20,
+      backgroundColor: colors.bgSecondary,
+      borderTopRightRadius: 15,
+      borderTopLeftRadius: 15,
+    };
   },
   cardImg: {
     height: "50%",
@@ -119,17 +129,21 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     flexDirection: "row",
   },
-  text: {
-    fontFamily: fonts.robotoBold,
-    color: colors.textPrimary,
-    fontSize: 32,
-    flex: 3,
+  text: (colors) => {
+    return {
+      fontFamily: fonts.robotoBold,
+      color: colors.textPrimary,
+      fontSize: 32,
+      flex: 3,
+    };
   },
-  description: {
-    color: colors.textPrimary,
-    fontFamily: fonts.robotoItalic,
-    fontSize: 24,
-    flex: 4,
+  description: (colors) => {
+    return {
+      color: colors.textPrimary,
+      fontFamily: fonts.robotoItalic,
+      fontSize: 24,
+      flex: 4,
+    };
   },
   priceZone: {
     flex: 2,
@@ -137,8 +151,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     padding: 5,
   },
-  price: {
-    fontSize: 24,
-    color: colors.textPrimary,
+  price: (colors) => {
+    return {
+      fontSize: 24,
+      color: colors.textPrimary,
+    };
   },
 });

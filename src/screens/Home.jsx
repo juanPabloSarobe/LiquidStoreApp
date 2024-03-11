@@ -1,12 +1,12 @@
 import { StyleSheet, View } from "react-native";
+import { useSelector } from "react-redux";
 import Categories from "../components/Categories";
 
-import colors from "../utils/global/colors";
-
 const Home = ({ navigation }) => {
+  const colors = useSelector((state) => state.colors);
   return (
     <>
-      <View style={styles.container}>
+      <View style={[styles.container, { backgroundColor: colors.bgPrimary }]}>
         <Categories navigation={navigation} />
       </View>
     </>
@@ -18,7 +18,6 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.bgPrimary,
     alignItems: "center",
     paddingBottom: 10,
   },

@@ -1,6 +1,5 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import colors from "../utils/global/colors";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart } from "../features/cart/cartSlice";
@@ -8,6 +7,7 @@ import { addItemToCart } from "../features/cart/cartSlice";
 const QuantitySelectorCart = ({ item }) => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+  const colors = useSelector((state) => state.colors);
 
   const [quantity, setQuantity] = useState(cart.quantity);
   const [newItem, setNewItem] = useState({});
@@ -33,11 +33,11 @@ const QuantitySelectorCart = ({ item }) => {
 
   return (
     <View>
-      <View style={styles.selector}>
+      <View style={styles.selector(colors)}>
         <Pressable style={styles.button} onPress={minusQuantity}>
           <AntDesign name="minus" size={30} color={colors.textPrimary} />
         </Pressable>
-        <Text style={styles.quantityText}>
+        <Text style={styles.quantityText(colors)}>
           {"  "}
           {quantity}
           {"  "}
@@ -53,19 +53,23 @@ const QuantitySelectorCart = ({ item }) => {
 export default QuantitySelectorCart;
 
 const styles = StyleSheet.create({
-  selector: {
-    flexDirection: "row",
-    width: 130,
-    height: 40,
-    borderColor: colors.textSecondary,
-    borderWidth: 0.5,
-    borderRadius: 50,
-    justifyContent: "space-between",
-    alignItems: "center",
+  selector: (colors) => {
+    return {
+      flexDirection: "row",
+      width: 130,
+      height: 40,
+      borderColor: colors.textSecondary,
+      borderWidth: 0.5,
+      borderRadius: 50,
+      justifyContent: "space-between",
+      alignItems: "center",
+    };
   },
-  quantityText: {
-    fontSize: 24,
-    color: colors.textPrimary,
+  quantityText: (colors) => {
+    return {
+      fontSize: 24,
+      color: colors.textPrimary,
+    };
   },
   button: {
     borderRadius: 50,

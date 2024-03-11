@@ -3,13 +3,13 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import Login from "../screens/Login";
 import Register from "../screens/Register";
 import User from "../screens/User";
-import colors from "../utils/global/colors";
+//import colors from "../utils/global/colors";
 import { useSelector } from "react-redux";
 const Drawer = createDrawerNavigator();
 
 const AuthDrawerNavigation = () => {
   const user = useSelector((state) => state.counter);
-
+  const colors = useSelector((state) => state.colors);
   return (
     <Drawer.Navigator
       /* initialRouteName="Login" */
