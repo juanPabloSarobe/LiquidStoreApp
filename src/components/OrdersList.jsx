@@ -13,25 +13,25 @@ const OrdersList = ({ navigation }) => {
   const user = useSelector((state) => state.counter);
   const [emptyOrders, setEmptyOrders] = useState(false);
   const isFocused = useIsFocused();
-  const { data, isLoading, isSuccess } = useGetOrdersByUserQuery(user?.localId);
-  const [orders, setOrders] = useState(!isLoading ? data : []);
+  const {
+    data: orders,
+    isLoading,
+    isSuccess,
+  } = useGetOrdersByUserQuery(user?.localId);
 
   useEffect(() => {
-    navigation.addListener("focus", () => {
-      Alert.alert("onFocus");
-    });
+    navigation.addListener("focus", () => {});
   }, []);
 
   useEffect(() => {
     if (isSuccess) {
-      setOrders(data);
-      if (data.length == 0) {
+      if (orders.length == 0) {
         setEmptyOrders(true);
       } else {
         setEmptyOrders(false);
       }
     }
-  }, [data, isFocused]);
+  }, [orders, isFocused]);
 
   if (isLoading) return <IsLoading />;
   if (emptyOrders) {
