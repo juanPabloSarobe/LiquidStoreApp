@@ -6,6 +6,7 @@ import fonts from "../utils/global/fonts";
 import { useRegisterMutation } from "../app/services/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../features/counter/counterSlice";
+import { registerSchema } from "../utils/validations/authSchema";
 
 const Register = ({ navigation }) => {
   const colors = useSelector((state) => state.colors);
@@ -22,20 +23,43 @@ const Register = ({ navigation }) => {
   const [triggerRegister] = useRegisterMutation();
 
   const onSubmit = async () => {
-    const { data } = await triggerRegister({
-      email,
-      password,
-      displayName: nombre,
-    });
-    console.log("register", data);
-    dispatch(
-      getUser({
-        email: data.email,
-        idToken: data.idToken,
-        displayName: data.displayName,
-        localId: data.localId,
-      })
-    );
+    try {
+      registerSchema.validateSync({ nombre, email, password, confirmPassword });
+      const { data } = await triggerRegister({
+        email,
+        password,
+        displayName: nombre,
+      });
+      dispatch(
+        getUser({
+          email: data.email,
+          idToken: data.idToken,
+          displayName: data.displayName,
+          localId: data.localId,
+        })
+      );
+    } catch (error) {
+      setErrorNombre("");
+      setErrorEmail("");
+      setErrorPassword("");
+      setErrorConfirmPassword("");
+      switch (error.path) {
+        case "nombre":
+          setErrorNombre(error.message);
+          break;
+        case "email":
+          setErrorEmail(error.message);
+          break;
+        case "password":
+          setErrorPassword(error.message);
+          break;
+        case "confirmPassword":
+          setErrorConfirmPassword(error.message);
+          break;
+        default:
+          break;
+      }
+    }
   };
 
   return (

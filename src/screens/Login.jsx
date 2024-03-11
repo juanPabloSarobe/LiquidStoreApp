@@ -6,6 +6,7 @@ import SubmitButton from "../components/SubmitButton";
 import fonts from "../utils/global/fonts";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../features/counter/counterSlice";
+import { loginSchema } from "../utils/validations/authSchema";
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -16,19 +17,36 @@ const Login = ({ navigation }) => {
   const dispatch = useDispatch();
   const colors = useSelector((state) => state.colors);
   const onSubmit = async () => {
-    const { data } = await triggerLogin({
-      email,
-      password,
-    });
-    console.log("login", data);
-    dispatch(
-      getUser({
-        email: data.email,
-        idToken: data.idToken,
-        displayName: data.displayName,
-        localId: data.localId,
-      })
-    );
+    try {
+      loginSchema.validateSync({ email, password });
+      const { data } = await triggerLogin({
+        email,
+        password,
+      });
+      dispatch(
+        getUser({
+          email: data.email,
+          idToken: data.idToken,
+          displayName: data.displayName,
+          localId: data.localId,
+        })
+      );
+    } catch (error) {
+      setErrorEmail("");
+      setErrorPassword("");
+
+      switch (error.path) {
+        case "email":
+          setErrorEmail(error.message);
+          break;
+        case "password":
+          setErrorPassword(error.message);
+          break;
+        default:
+          console.log(error.message);
+          break;
+      }
+    }
   };
   return (
     <View style={styles.container(colors)}>
