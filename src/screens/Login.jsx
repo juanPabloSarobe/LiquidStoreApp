@@ -1,18 +1,34 @@
 import { useState } from "react";
 import { StyleSheet, Text, View, Pressable } from "react-native";
+import { useLoginMutation } from "../app/services/auth";
 import InputForm from "../components/InputForm";
 import SubmitButton from "../components/SubmitButton";
 import colors from "../utils/global/colors";
 import fonts from "../utils/global/fonts";
+import { useDispatch } from "react-redux";
+import { getUser } from "../features/counter/counterSlice";
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
-
-  const onSubmit = () => {
-    console.log("onSubmit");
+  const [triggerLogin] = useLoginMutation();
+  const dispatch = useDispatch();
+  const onSubmit = async () => {
+    const { data } = await triggerLogin({
+      email,
+      password,
+    });
+    console.log("login", data);
+    dispatch(
+      getUser({
+        email: data.email,
+        idToken: data.idToken,
+        displayName: data.displayName,
+        localId: data.localId,
+      })
+    );
   };
   return (
     <View style={styles.container}>

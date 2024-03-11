@@ -1,11 +1,22 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import { useSelector } from "react-redux";
 import colors from "../utils/global/colors";
 import fonts from "../utils/global/fonts";
+import { useDispatch } from "react-redux";
+import { clearUser } from "../features/counter/counterSlice";
+import { Button } from "react-native";
 
 const User = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.counter);
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>User Screen</Text>
+      <Text style={styles.title}>Bienvenido {user.displayName}</Text>
+      <Button
+        title="Salir"
+        color={colors.bgWarning}
+        onPress={() => dispatch(clearUser())}
+      />
     </View>
   );
 };

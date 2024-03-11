@@ -3,21 +3,23 @@ import React, { useEffect, useState } from "react";
 import colors from "../utils/global/colors";
 //import ordersArr from "../utils/data/orders.json";
 import OrderItem from "./OrderItem";
-import {
-  useGetOrdersQuery,
-  useGetOrdersByUserQuery,
-} from "../app/services/shop";
+import { useGetOrdersByUserQuery } from "../app/services/shop";
 import IsLoading from "./IsLoading";
 import { useIsFocused } from "@react-navigation/native";
+import { useSelector } from "react-redux";
+import { Alert } from "react-native";
 
 const OrdersList = ({ navigation }) => {
+  const user = useSelector((state) => state.counter);
   const [emptyOrders, setEmptyOrders] = useState(false);
   const isFocused = useIsFocused();
-  const { data, isLoading, isSuccess } = useGetOrdersByUserQuery("userName");
+  const { data, isLoading, isSuccess } = useGetOrdersByUserQuery(user?.localId);
   const [orders, setOrders] = useState(!isLoading ? data : []);
 
   useEffect(() => {
-    navigation.addListener("focus", () => {});
+    navigation.addListener("focus", () => {
+      Alert.alert("onFocus");
+    });
   }, []);
 
   useEffect(() => {

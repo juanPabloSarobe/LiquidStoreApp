@@ -1,6 +1,5 @@
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import colors from "../utils/global/colors";
-
 import CartItem from "./CartItem";
 import { useEffect } from "react";
 import { FontAwesome } from "@expo/vector-icons";
@@ -9,8 +8,10 @@ import { Alert } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteAllitems, buyCart } from "../features/cart/cartSlice";
 import { usePostOrderMutation } from "../app/services/shop";
+import { UseSelector } from "react-redux";
 
 const CartList = ({ navigation }) => {
+  const user = useSelector((state) => state.counter);
   const cart = useSelector((state) => state.cart);
   const emptyCart = cart.quantityTotal > 0 ? false : true;
   const dispatch = useDispatch();
@@ -36,13 +37,20 @@ Esta accion no se podra deshacer`,
         ),
     });
     if (cart.buyed == true) {
-      triggerPost({ ...cart, user: "userName" });
+      triggerPost({ ...cart, user: user.localId });
       dispatch(deleteAllitems());
     }
   }, [cart]);
   const confirmCart = () => {
-    dispatch(buyCart());
-    navigation.navigate("Orders");
+    if (!user.idToken) {
+      Alert.alert("Atención", `Debe estar logueado para hacer una compra`, [
+        { text: "Cancel", style: "cancel" },
+        { text: "login", onPress: () => navigation.navigate("Login") },
+      ]);
+    } else {
+      dispatch(buyCart());
+      navigation.navigate("Orders");
+    }
   };
   if (emptyCart) {
     return (

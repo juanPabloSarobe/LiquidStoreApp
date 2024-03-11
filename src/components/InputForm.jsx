@@ -70,7 +70,7 @@ export default InputForm;
 const styles = StyleSheet.create({
   inputContainer: {
     width: "100%",
-    marginVertical: 20,
+    marginTop: 20,
   },
   input: {
     width: "90%",

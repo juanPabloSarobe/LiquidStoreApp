@@ -6,13 +6,14 @@ import { StatusBar } from "expo-status-bar";
 import ShopStackNavigation from "./ShopStackNavigation";
 import Cart from "../screens/Cart";
 import Orders from "../screens/Orders";
-import Login from "../screens/Login";
 import { Entypo, Octicons, FontAwesome } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 import AuthDrawerNavigation from "./AuthDrawerNavigation";
+
 const Tab = createBottomTabNavigator();
 
 const MainNavigator = () => {
+  const user = useSelector((state) => state.counter);
   const cart = useSelector((state) => state.cart);
 
   return (
@@ -85,7 +86,7 @@ const MainNavigator = () => {
               tabBarIcon: ({ color }) => (
                 <FontAwesome name="user" size={28} color={color} />
               ),
-              tabBarLabel: "usuario",
+              tabBarLabel: user.idToken ? user.displayName : "login",
               headerShown: false,
             }}
           />

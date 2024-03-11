@@ -4,12 +4,15 @@ import Login from "../screens/Login";
 import Register from "../screens/Register";
 import User from "../screens/User";
 import colors from "../utils/global/colors";
+import { useSelector } from "react-redux";
 const Drawer = createDrawerNavigator();
 
 const AuthDrawerNavigation = () => {
+  const user = useSelector((state) => state.counter);
+
   return (
     <Drawer.Navigator
-      initialRouteName="Login"
+      /* initialRouteName="Login" */
       screenOptions={{
         headerStyle: {
           backgroundColor: colors.bgSecondary,
@@ -27,9 +30,14 @@ const AuthDrawerNavigation = () => {
         drawerInactiveTintColor: colors.textSecondary,
       }}
     >
-      <Drawer.Screen name="User" component={User} />
-      <Drawer.Screen name="Login" component={Login} />
-      <Drawer.Screen name="Register" component={Register} />
+      {user.idToken ? (
+        <Drawer.Screen name="User" component={User} />
+      ) : (
+        <>
+          <Drawer.Screen name="Login" component={Login} />
+          <Drawer.Screen name="Register" component={Register} />
+        </>
+      )}
     </Drawer.Navigator>
   );
 };
