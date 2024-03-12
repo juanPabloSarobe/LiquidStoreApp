@@ -5,6 +5,7 @@ import cartReducer from "../features/cart/cartSlice";
 import counterReducer from "../features/counter/counterSlice";
 import colorsReducer from "../features/colors/colorsSlice";
 import { authApi } from "./services/auth";
+import { profileApi } from "./services/profile";
 
 export const store = configureStore({
   reducer: {
@@ -13,9 +14,14 @@ export const store = configureStore({
     colors: colorsReducer,
     [shopApi.reducerPath]: shopApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
+    [profileApi.reducerPath]: profileApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(shopApi.middleware, authApi.middleware),
+    getDefaultMiddleware().concat(
+      shopApi.middleware,
+      authApi.middleware,
+      profileApi.middleware
+    ),
 });
 
 setupListeners(store.dispatch);

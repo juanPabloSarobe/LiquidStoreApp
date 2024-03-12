@@ -2,8 +2,8 @@ import { StyleSheet, Text, View } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Login from "../screens/Login";
 import Register from "../screens/Register";
-import User from "../screens/User";
-//import colors from "../utils/global/colors";
+import UserStack from "../routes/UserStack";
+
 import { useSelector } from "react-redux";
 const Drawer = createDrawerNavigator();
 
@@ -31,7 +31,13 @@ const AuthDrawerNavigation = () => {
       }}
     >
       {user.idToken ? (
-        <Drawer.Screen name="User" component={User} />
+        <Drawer.Screen
+          name="UserStack"
+          component={UserStack}
+          options={{
+            headerShown: false,
+          }}
+        />
       ) : (
         <>
           <Drawer.Screen name="Login" component={Login} />

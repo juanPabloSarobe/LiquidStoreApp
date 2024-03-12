@@ -43,7 +43,6 @@ const Login = ({ navigation }) => {
           setErrorPassword(error.message);
           break;
         default:
-          console.log(error.message);
           break;
       }
     }
