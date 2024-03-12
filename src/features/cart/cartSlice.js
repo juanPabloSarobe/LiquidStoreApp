@@ -55,9 +55,9 @@ export const cartSlice = createSlice({
       state.items = [];
       state.payMethod = "";
       state.buyed = false;
+      state.id = Date.now();
       setQuantityTotal(state);
       setTotal(state);
-      state.id = Date.now();
     },
     buyCart: (state) => {
       state.buyed = true;
