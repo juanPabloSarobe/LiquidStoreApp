@@ -28,8 +28,8 @@ const User = ({ navigation }) => {
 
   return (
     <View style={styles.container(colors)}>
-      <Text style={styles.title(colors)}>Bienvenido {user.displayName}</Text>
-      <View>
+      <Text style={styles.title(colors)}>Configuración de perfil</Text>
+      <View style={styles.buttonZone}>
         <Image
           source={data ? { uri: data.image } : require("../../assets/user.png")}
           style={styles.image}
@@ -40,8 +40,12 @@ const User = ({ navigation }) => {
           onPress={() => navigation.navigate("ImageSelector")}
           color={colors.bgSuccess}
         />
+        <Button
+          title={"Agregar ubicacion"}
+          onPress={() => navigation.navigate("LocationSelector")}
+          color={colors.bgSuccess}
+        />
       </View>
-      <Text style={styles.title(colors)}>Configuration</Text>
       <View style={styles.colorThemeZone}>
         <Text style={styles.title(colors)}> Color Theme</Text>
         <Switch
@@ -78,8 +82,11 @@ const styles = StyleSheet.create({
       color: colors.textPrimary,
       fontFamily: fonts.robotoBold,
       fontSize: 20,
-      marginTop: 10,
+      marginVertical: 20,
     };
+  },
+  buttonZone: {
+    gap: 10,
   },
   colorThemeZone: {
     flexDirection: "row",
