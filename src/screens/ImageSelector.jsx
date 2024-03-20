@@ -2,7 +2,7 @@ import { Button, Image, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import {
-  useGetProfileImageQuery,
+  useGetProfileQuery,
   usePutProfileImageMutation,
 } from "../app/services/profile";
 
@@ -13,11 +13,11 @@ const ImageSelector = ({ navigation }) => {
   const [newImage, setNewImage] = useState(false);
   const [image, setImage] = useState("");
   const [triggerImage] = usePutProfileImageMutation();
-  const { data, isSuccess } = useGetProfileImageQuery(localId);
+  const { data, isSuccess } = useGetProfileQuery(localId);
 
   useEffect(() => {
     if (isSuccess) {
-      setImage(data.image);
+      setImage(data.image.image);
     }
   }, [isSuccess, data]);
 
@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
       alignItems: "center",
       paddingTop: 20,
       backgroundColor: colors.bgPrimary,
+      gap: 20,
     };
   },
   image: {

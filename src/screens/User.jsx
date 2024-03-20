@@ -7,31 +7,53 @@ import { clearUser } from "../features/counter/counterSlice";
 import { setLight, setDark } from "../features/colors/colorsSlice";
 import { Button } from "react-native";
 import { useEffect, useState } from "react";
-import { useGetProfileImageQuery } from "../app/services/profile";
+import {
+  useGetProfileQuery,
+  usePutUserColorThemeMutation,
+} from "../app/services/profile";
 
 const User = ({ navigation }) => {
   const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
   const colors = useSelector((state) => state.colors);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.counter);
+  const [triggerPutUserColorTheme] = usePutUserColorThemeMutation();
+  const { data, isLoading, isSuccess } = useGetProfileQuery(user.localId);
 
-  const { data } = useGetProfileImageQuery(user.localId);
+  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setIsEnabled(data.colorTheme.dark);
+    }
+  }, [data]);
 
   useEffect(() => {
     if (!isEnabled) {
       dispatch(setLight());
+      triggerPutUserColorTheme({ localId: user.localId, dark: false });
     } else {
       dispatch(setDark());
+      triggerPutUserColorTheme({ localId: user.localId, dark: true });
     }
+    console.log(data?.colorTheme);
   }, [isEnabled]);
+
+  const handlerExit = () => {
+    dispatch(setLight());
+    dispatch(clearUser());
+  };
 
   return (
     <View style={styles.container(colors)}>
       <Text style={styles.title(colors)}>Configuración de perfil</Text>
       <View style={styles.buttonZone}>
         <Image
-          source={data ? { uri: data.image } : require("../../assets/user.png")}
+          source={
+            data?.image
+              ? { uri: data?.image?.image }
+              : require("../../assets/user.png")
+          }
           style={styles.image}
           resizeMode="cover"
         />
@@ -40,6 +62,9 @@ const User = ({ navigation }) => {
           onPress={() => navigation.navigate("ImageSelector")}
           color={colors.bgSuccess}
         />
+        <Text style={styles.title(colors)}>
+          {data?.address ? data?.address?.address : "Direccion no agregada"}
+        </Text>
         <Button
           title={"Agregar ubicacion"}
           onPress={() => navigation.navigate("LocationSelector")}
@@ -60,7 +85,7 @@ const User = ({ navigation }) => {
       <Button
         title="Salir"
         color={colors.bgWarning}
-        onPress={() => dispatch(clearUser())}
+        onPress={() => handlerExit()}
       />
     </View>
   );
@@ -87,6 +112,8 @@ const styles = StyleSheet.create({
   },
   buttonZone: {
     gap: 10,
+    justifyContent: "center",
+    alignItems: "center",
   },
   colorThemeZone: {
     flexDirection: "row",

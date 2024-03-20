@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const base_url = "https://identitytoolkit.googleapis.com/v1/";
-const apiKey = "AIzaSyBYuAu245c0s2i7yAVtuSvB2aEFnWJhE50";
+
+const apiKey = process.env.EXPO_PUBLIC_AUTH_KEY;
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({ baseUrl: base_url }),

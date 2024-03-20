@@ -9,20 +9,40 @@ export const profileApi = createApi({
   endpoints: (builder) => ({
     putProfileImage: builder.mutation({
       query: ({ image, localId }) => ({
-        url: `/profile/${localId}.json`,
+        url: `/profile/${localId}/image.json`,
         method: "PUT",
         body: { image },
       }),
       invalidatesTags: ["User"],
     }),
-    getProfileImage: builder.query({
+    getProfile: builder.query({
       query: (localId) => ({
         url: `profile/${localId}.json`,
       }),
       providesTags: ["User"],
     }),
+    putUserLocation: builder.mutation({
+      query: ({ localId, address }) => ({
+        url: `profile/${localId}/address.json`,
+        method: "PUT",
+        body: { address },
+      }),
+      invalidatesTags: ["User"],
+    }),
+    putUserColorTheme: builder.mutation({
+      query: ({ localId, dark }) => ({
+        url: `profile/${localId}/colorTheme.json`,
+        method: "PUT",
+        body: { dark },
+      }),
+      invalidatesTags: ["User"],
+    }),
   }),
 });
 
-export const { usePutProfileImageMutation, useGetProfileImageQuery } =
-  profileApi;
+export const {
+  usePutProfileImageMutation,
+  useGetProfileQuery,
+  usePutUserLocationMutation,
+  usePutUserColorThemeMutation,
+} = profileApi;

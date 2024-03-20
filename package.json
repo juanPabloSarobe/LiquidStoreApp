@@ -15,6 +15,7 @@
     "@react-navigation/native": "^6.1.10",
     "@react-navigation/native-stack": "^6.9.18",
     "@reduxjs/toolkit": "^2.2.1",
+    "eas-cli": "^7.6.0",
     "expo": "~50.0.6",
     "expo-font": "~11.10.2",
     "expo-image-picker": "~14.7.1",

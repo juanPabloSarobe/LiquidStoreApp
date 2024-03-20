@@ -21,13 +21,19 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.juanitosar15.LiquidStoreApp"
     },
     "web": {
       "favicon": "./assets/favicon.ico"
     },
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "18b7e9ac-94e0-4315-89e1-404d7f56a538"
+      }
+    }
   }
 }

@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import MapPreview from "../components/MapPreview";
 import fonts from "../utils/global/fonts";
 import * as Location from "expo-location";
+import { usePutUserLocationMutation } from "../app/services/profile";
 
 const LocationSelector = ({ navigation }) => {
   const [location, setLocation] = useState({
@@ -13,11 +14,12 @@ const LocationSelector = ({ navigation }) => {
   const [errorMSg, setErrorMSg] = useState(null);
   const [address, setAddress] = useState("");
   const colors = useSelector((state) => state.colors);
-
+  const { localId } = useSelector((state) => state.counter);
+  const [triggerPutUserLocation] = usePutUserLocationMutation();
   const mapsKey = process.env.EXPO_PUBLIC_MAPS_KEY;
 
   useEffect(() => {
-    //Funciona anonima autoexecutable,
+    //Funcion anonima autoexecutable,
     /* primer parentesis declaracion de la funcion
         segundo parentesis recibe variables
         llaves lo que vamos a ejecutar
@@ -34,7 +36,7 @@ const LocationSelector = ({ navigation }) => {
         return;
       }
       let location = await Location.getCurrentPositionAsync();
-      console.log(location);
+
       setLocation({
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
@@ -42,17 +44,31 @@ const LocationSelector = ({ navigation }) => {
     })();
   }, []);
 
-  const confirmLocation = () => {
+  useEffect(() => {
+    (async () => {
+      if (location.latitude) {
+        const response = await fetch(
+          `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.latitude},${location.longitude}&key=${mapsKey}`
+        );
+        const data = await response.json();
+        setAddress(data?.results[0]?.formatted_address);
+      }
+    })();
+  }, [location]);
+
+  const confirmLocation = async () => {
+    console.log({ localId, address });
+    await triggerPutUserLocation({ localId, address });
     navigation.goBack();
   };
 
   return (
     <View style={styles.container(colors)}>
       <Text style={styles.title(colors)}>Agregar ubicacion a tu perfil</Text>
-      <Text style={styles.title(colors)}>San Martin 1923, Neuquen Capital</Text>
+      <Text style={styles.title(colors)}>{address}</Text>
       <MapPreview latitude={location.latitude} longitude={location.longitude} />
       <Button
-        title="Confirmar foto"
+        title="Confirmar Ubicación"
         onPress={confirmLocation}
         color={colors.bgSuccess}
         disabled={location.latitude ? false : true}
