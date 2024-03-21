@@ -7,6 +7,7 @@ import { clearUser } from "../features/counter/counterSlice";
 import { setLight, setDark } from "../features/colors/colorsSlice";
 import { Button } from "react-native";
 import { useEffect, useState } from "react";
+import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import {
   useGetProfileQuery,
   usePutUserColorThemeMutation,
@@ -14,6 +15,7 @@ import {
 
 const User = ({ navigation }) => {
   const [isEnabled, setIsEnabled] = useState(false);
+  const [disabled, setDisabled] = useState(false);
   const colors = useSelector((state) => state.colors);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.counter);
@@ -28,11 +30,12 @@ const User = ({ navigation }) => {
       triggerPutUserColorTheme({ localId: user.localId, dark: true });
       //setIsEnabled(true);
     }
+    setDisabled(true);
   };
 
   useEffect(() => {
     if (isSuccess) {
-      setIsEnabled(data.colorTheme.dark);
+      setIsEnabled(data?.colorTheme?.dark);
     }
   }, [data]);
 
@@ -42,7 +45,7 @@ const User = ({ navigation }) => {
     } else {
       dispatch(setDark());
     }
-    console.log(data?.colorTheme);
+    setDisabled(false);
   }, [isEnabled]);
 
   const handlerExit = () => {
@@ -63,19 +66,35 @@ const User = ({ navigation }) => {
           style={styles.image}
           resizeMode="cover"
         />
-        <Button
-          title={"Agregar Imagen de perfil"}
+        <Pressable
+          style={styles.back(colors)}
           onPress={() => navigation.navigate("ImageSelector")}
-          color={colors.bgSuccess}
-        />
-        <Text style={styles.title(colors)}>
-          {data?.address ? data?.address?.address : "Direccion no agregada"}
-        </Text>
-        <Button
-          title={"Agregar ubicacion"}
-          onPress={() => navigation.navigate("LocationSelector")}
-          color={colors.bgSuccess}
-        />
+        >
+          <FontAwesome name="edit" size={25} color={colors.textSecondary} />
+        </Pressable>
+        <View style={styles.profileDetails}>
+          <Text style={styles.title(colors)}>
+            {user?.displayName ? user?.displayName : "Nombre no cargado"}
+          </Text>
+          <Text style={styles.title(colors)}>
+            {user?.email ? user?.email : "email no cargado"}
+          </Text>
+          <View style={styles.locationZone}>
+            <Text style={styles.title(colors)}>
+              {data?.address ? data?.address?.address : "Agregar dirección"}
+            </Text>
+            <Pressable
+              style={styles.location(colors)}
+              onPress={() => navigation.navigate("LocationSelector")}
+            >
+              <FontAwesome5
+                name="chevron-right"
+                size={25}
+                color={colors.textSecondary}
+              />
+            </Pressable>
+          </View>
+        </View>
       </View>
       <View style={styles.colorThemeZone}>
         <Text style={styles.title(colors)}> Color Theme</Text>
@@ -85,6 +104,7 @@ const User = ({ navigation }) => {
           ios_backgroundColor="#3e3e3e"
           onValueChange={toggleSwitch}
           value={isEnabled}
+          disabled={disabled}
         />
       </View>
 
@@ -113,20 +133,60 @@ const styles = StyleSheet.create({
       color: colors.textPrimary,
       fontFamily: fonts.robotoBold,
       fontSize: 20,
-      marginVertical: 20,
+      marginVertical: 8,
+      marginLeft: 6,
     };
   },
   buttonZone: {
-    gap: 10,
-    justifyContent: "center",
-    alignItems: "center",
+    flexDirection: "row",
+
+    gap: 15,
+    //justifyContent: "center",
+    // alignItems: "center",
+    position: "relative",
+    width: "100%",
+    // backgroundColor: "red",
   },
   colorThemeZone: {
     flexDirection: "row",
   },
   image: {
     borderRadius: 100,
-    width: 200,
-    height: 200,
+    width: 90,
+    height: 90,
+  },
+  back: (colors) => {
+    return {
+      position: "absolute",
+      top: 55,
+      left: 50,
+      width: 50,
+      height: 50,
+      backgroundColor: colors.bgSecondary,
+      justifyContent: "center",
+      alignItems: "center",
+      borderRadius: 50,
+    };
+  },
+  locationZone: {
+    position: "relative",
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    //backgroundColor: "red",
+  },
+  location: (colors) => {
+    return {
+      width: 50,
+      height: 50,
+      // backgroundColor: colors.bgSecondary,
+      justifyContent: "center",
+      alignItems: "center",
+      borderRadius: 50,
+    };
+  },
+  profileDetails: {
+    width: "70%",
   },
 });

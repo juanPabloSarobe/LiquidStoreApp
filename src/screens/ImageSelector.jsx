@@ -17,7 +17,7 @@ const ImageSelector = ({ navigation }) => {
 
   useEffect(() => {
     if (isSuccess) {
-      setImage(data.image.image);
+      setImage(data?.image?.image);
     }
   }, [isSuccess, data]);
 
