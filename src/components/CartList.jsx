@@ -44,7 +44,7 @@ Esta accion no se podra deshacer`,
     if (!user.idToken) {
       Alert.alert("Atención", `Debe estar logueado para hacer una compra`, [
         { text: "Cancel", style: "cancel" },
-        { text: "login", onPress: () => navigation.navigate("Login") },
+        { text: "login", onPress: () => navigation.navigate("UserTab") },
       ]);
     } else {
       dispatch(buyCart());

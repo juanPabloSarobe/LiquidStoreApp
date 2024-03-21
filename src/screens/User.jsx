@@ -20,7 +20,15 @@ const User = ({ navigation }) => {
   const [triggerPutUserColorTheme] = usePutUserColorThemeMutation();
   const { data, isLoading, isSuccess } = useGetProfileQuery(user.localId);
 
-  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+  const toggleSwitch = () => {
+    if (isEnabled) {
+      triggerPutUserColorTheme({ localId: user.localId, dark: false });
+      //setIsEnabled(false);
+    } else {
+      triggerPutUserColorTheme({ localId: user.localId, dark: true });
+      //setIsEnabled(true);
+    }
+  };
 
   useEffect(() => {
     if (isSuccess) {
@@ -31,10 +39,8 @@ const User = ({ navigation }) => {
   useEffect(() => {
     if (!isEnabled) {
       dispatch(setLight());
-      triggerPutUserColorTheme({ localId: user.localId, dark: false });
     } else {
       dispatch(setDark());
-      triggerPutUserColorTheme({ localId: user.localId, dark: true });
     }
     console.log(data?.colorTheme);
   }, [isEnabled]);

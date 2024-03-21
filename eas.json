@@ -8,9 +8,18 @@
       "distribution": "internal"
     },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_MAPS_KEY": "AIzaSyBPb5XLcHsytmChC_unPg8Qmo3l78kTAUE",
+        "EXPO_PUBLIC_AUTH_KEY": "AIzaSyBYuAu245c0s2i7yAVtuSvB2aEFnWJhE50"
+      }
     },
-    "production": {}
+    "production": {
+      "env": {
+        "EXPO_PUBLIC_MAPS_KEY": "AIzaSyBPb5XLcHsytmChC_unPg8Qmo3l78kTAUE",
+        "EXPO_PUBLIC_AUTH_KEY": "AIzaSyBYuAu245c0s2i7yAVtuSvB2aEFnWJhE50"
+      }
+    }
   },
   "submit": {
     "production": {}
