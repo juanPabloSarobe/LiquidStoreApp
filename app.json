@@ -11,7 +11,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -25,11 +27,14 @@
     "web": {
       "favicon": "./assets/favicon.ico"
     },
-    "plugins": ["expo-font"],
+    "plugins": [
+      "expo-font"
+    ],
     "extra": {
       "eas": {
         "projectId": "18b7e9ac-94e0-4315-89e1-404d7f56a538"
       }
-    }
+    },
+    "owner": "juanitosar15"
   }
 }
