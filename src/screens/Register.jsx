@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Pressable } from "react-native";
 import InputForm from "../components/InputForm";
 import SubmitButton from "../components/SubmitButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import fonts from "../utils/global/fonts";
 import { useRegisterMutation } from "../app/services/auth";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,18 +18,27 @@ const Register = ({ navigation }) => {
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
   const [errorConfirmPassword, setErrorConfirmPassword] = useState("");
+  const [isLoginError, setIsLoginError] = useState(false);
   const dispatch = useDispatch();
 
   const [triggerRegister] = useRegisterMutation();
 
+  useEffect(() => {
+    setIsLoginError(false);
+  }, [nombre, email, password, confirmPassword]);
+
   const onSubmit = async () => {
     try {
       registerSchema.validateSync({ nombre, email, password, confirmPassword });
-      const { data } = await triggerRegister({
+      const { data, error } = await triggerRegister({
         email,
         password,
         displayName: nombre,
       });
+      if (error) {
+        console.log(error);
+        setIsLoginError(true);
+      }
       dispatch(
         getUser({
           email: data.email,
@@ -95,6 +104,13 @@ const Register = ({ navigation }) => {
         error={errorConfirmPassword}
         placeholder={"Confirmar Password"}
       />
+      {isLoginError && (
+        <View style={styles.loginErrorZone}>
+          <Text style={styles.loginErrorText(colors)}>
+            Error: El usuario que intentas crear ya existe, elije otro email.
+          </Text>
+        </View>
+      )}
       <View style={styles.submit}>
         <SubmitButton onPress={onSubmit} title="Registrarme" />
       </View>
@@ -122,6 +138,16 @@ const styles = StyleSheet.create({
       fontFamily: fonts.robotoBold,
       fontSize: 20,
       marginTop: 10,
+    };
+  },
+  loginErrorZone: {
+    height: 40,
+    width: "80%",
+  },
+  loginErrorText: (colors) => {
+    return {
+      textAlign: "center",
+      color: colors.bgWarning,
     };
   },
   submit: {

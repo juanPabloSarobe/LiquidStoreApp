@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Pressable } from "react-native";
 import { useLoginMutation } from "../app/services/auth";
 import InputForm from "../components/InputForm";
@@ -13,16 +13,26 @@ const Login = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
+  const [isLoginError, setIsLoginError] = useState(false);
   const [triggerLogin] = useLoginMutation();
   const dispatch = useDispatch();
   const colors = useSelector((state) => state.colors);
+
+  useEffect(() => {
+    setIsLoginError(false);
+  }, [email, password]);
+
   const onSubmit = async () => {
     try {
       loginSchema.validateSync({ email, password });
-      const { data } = await triggerLogin({
+      const { data, error } = await triggerLogin({
         email,
         password,
       });
+      if (error) {
+        console.log(error);
+        setIsLoginError(true);
+      }
       dispatch(
         getUser({
           email: data.email,
@@ -66,6 +76,13 @@ const Login = ({ navigation }) => {
         error={errorPassword}
         placeholder={"password"}
       />
+      {isLoginError && (
+        <View style={styles.loginErrorZone}>
+          <Text style={styles.loginErrorText(colors)}>
+            Error: Usuario o password incorrecto
+          </Text>
+        </View>
+      )}
       <View style={styles.submit}>
         <SubmitButton onPress={onSubmit} title="Iniciar Sesion" />
       </View>
@@ -95,7 +112,14 @@ const styles = StyleSheet.create({
       marginTop: 10,
     };
   },
-
+  loginErrorZone: {
+    height: 20,
+  },
+  loginErrorText: (colors) => {
+    return {
+      color: colors.bgWarning,
+    };
+  },
   submit: {
     marginTop: 20,
     width: 400,
