@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 //import colors from "../utils/global/colors";
 import fonts from "../utils/global/fonts";
 import { useDispatch } from "react-redux";
-import { clearUser } from "../features/counter/counterSlice";
+import { clearUser } from "../features/auth/authSlice";
 import { setLight, setDark } from "../features/colors/colorsSlice";
 import { Button } from "react-native";
 import { useEffect, useState } from "react";
@@ -18,7 +18,8 @@ const User = ({ navigation }) => {
   const [disabled, setDisabled] = useState(false);
   const colors = useSelector((state) => state.colors);
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.counter);
+  //const user = useSelector((state) => state.counter);
+  const user = useSelector((state) => state.auth);
   const [triggerPutUserColorTheme] = usePutUserColorThemeMutation();
   const { data, isLoading, isSuccess } = useGetProfileQuery(user.localId);
 

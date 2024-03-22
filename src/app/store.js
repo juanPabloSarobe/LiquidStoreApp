@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { shopApi } from "./services/shop";
 import cartReducer from "../features/cart/cartSlice";
-import counterReducer from "../features/counter/counterSlice";
+import authReducer from "../features/auth/authSlice";
 import colorsReducer from "../features/colors/colorsSlice";
 import { authApi } from "./services/auth";
 import { profileApi } from "./services/profile";
@@ -10,7 +10,8 @@ import { profileApi } from "./services/profile";
 export const store = configureStore({
   reducer: {
     cart: cartReducer,
-    counter: counterReducer,
+
+    auth: authReducer,
     colors: colorsReducer,
     [shopApi.reducerPath]: shopApi.reducer,
     [authApi.reducerPath]: authApi.reducer,

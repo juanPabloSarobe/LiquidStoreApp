@@ -8,7 +8,8 @@ import { useSelector } from "react-redux";
 const Drawer = createDrawerNavigator();
 
 const AuthDrawerNavigation = () => {
-  const user = useSelector((state) => state.counter);
+  // const user = useSelector((state) => state.counter);
+  const user = useSelector((state) => state.auth);
   const colors = useSelector((state) => state.colors);
   return (
     <Drawer.Navigator

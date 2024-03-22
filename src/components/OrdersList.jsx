@@ -9,7 +9,8 @@ import { useSelector } from "react-redux";
 import { Alert } from "react-native";
 
 const OrdersList = ({ navigation }) => {
-  const user = useSelector((state) => state.counter);
+  //const user = useSelector((state) => state.counter);
+  const user = useSelector((state) => state.auth);
   const colors = useSelector((state) => state.colors);
   const [emptyOrders, setEmptyOrders] = useState(false);
   const isFocused = useIsFocused();

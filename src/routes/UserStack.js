@@ -7,7 +7,8 @@ import LocationSelector from "../screens/LocationSelector";
 const Stack = createNativeStackNavigator();
 const ProfileStack = ({ navigation }) => {
   const colors = useSelector((state) => state.colors);
-  const user = useSelector((state) => state.counter);
+  //const user = useSelector((state) => state.counter);
+  const user = useSelector((state) => state.auth);
   return (
     <Stack.Navigator
       initialRouteName="User"

@@ -14,7 +14,8 @@ const LocationSelector = ({ navigation }) => {
   const [errorMSg, setErrorMSg] = useState(null);
   const [address, setAddress] = useState("");
   const colors = useSelector((state) => state.colors);
-  const { localId } = useSelector((state) => state.counter);
+  //const { localId } = useSelector((state) => state.counter);
+  const { localId } = useSelector((state) => state.auth);
   const [triggerPutUserLocation] = usePutUserLocationMutation();
   const mapsKey = process.env.EXPO_PUBLIC_MAPS_KEY;
 
@@ -57,7 +58,6 @@ const LocationSelector = ({ navigation }) => {
   }, [location]);
 
   const confirmLocation = async () => {
-    console.log({ localId, address });
     await triggerPutUserLocation({ localId, address });
     navigation.goBack();
   };

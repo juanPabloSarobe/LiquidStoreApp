@@ -13,7 +13,8 @@ import AuthDrawerNavigation from "./AuthDrawerNavigation";
 const Tab = createBottomTabNavigator();
 
 const MainNavigator = () => {
-  const user = useSelector((state) => state.counter);
+  //const user = useSelector((state) => state.counter);
+  const user = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.cart);
   const colors = useSelector((state) => state.colors);
 

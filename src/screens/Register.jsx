@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import fonts from "../utils/global/fonts";
 import { useRegisterMutation } from "../app/services/auth";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../features/counter/counterSlice";
+import { getUser } from "../features/auth/authSlice";
 import { registerSchema } from "../utils/validations/authSchema";
 
 const Register = ({ navigation }) => {
@@ -36,7 +36,6 @@ const Register = ({ navigation }) => {
         displayName: nombre,
       });
       if (error) {
-        console.log(error);
         setIsLoginError(true);
       }
       dispatch(

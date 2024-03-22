@@ -5,7 +5,7 @@ import InputForm from "../components/InputForm";
 import SubmitButton from "../components/SubmitButton";
 import fonts from "../utils/global/fonts";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../features/counter/counterSlice";
+import { getUser } from "../features/auth/authSlice";
 import { loginSchema } from "../utils/validations/authSchema";
 
 const Login = ({ navigation }) => {
@@ -30,7 +30,6 @@ const Login = ({ navigation }) => {
         password,
       });
       if (error) {
-        console.log(error);
         setIsLoginError(true);
       }
       dispatch(

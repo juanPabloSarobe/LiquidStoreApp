@@ -9,7 +9,8 @@ import { deleteAllitems, buyCart } from "../features/cart/cartSlice";
 import { usePostOrderMutation } from "../app/services/shop";
 
 const CartList = ({ navigation }) => {
-  const user = useSelector((state) => state.counter);
+  // const user = useSelector((state) => state.counter);
+  const user = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.cart);
   const colors = useSelector((state) => state.colors);
   const emptyCart = cart.quantityTotal > 0 ? false : true;

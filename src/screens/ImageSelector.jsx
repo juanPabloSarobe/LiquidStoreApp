@@ -9,7 +9,8 @@ import {
 import * as ImagePicker from "expo-image-picker";
 const ImageSelector = ({ navigation }) => {
   const colors = useSelector((state) => state.colors);
-  const { localId } = useSelector((state) => state.counter);
+  // const { localId } = useSelector((state) => state.counter);
+  const { localId } = useSelector((state) => state.auth);
   const [newImage, setNewImage] = useState(false);
   const [image, setImage] = useState("");
   const [triggerImage] = usePutProfileImageMutation();
