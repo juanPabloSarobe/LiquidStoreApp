@@ -19,15 +19,18 @@ const Register = ({ navigation }) => {
   const [errorPassword, setErrorPassword] = useState("");
   const [errorConfirmPassword, setErrorConfirmPassword] = useState("");
   const [isLoginError, setIsLoginError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
   const [triggerRegister] = useRegisterMutation();
 
   useEffect(() => {
     setIsLoginError(false);
+    setIsLoading(false);
   }, [nombre, email, password, confirmPassword]);
 
   const onSubmit = async () => {
+    setIsLoading(true);
     try {
       registerSchema.validateSync({ nombre, email, password, confirmPassword });
       const { data, error } = await triggerRegister({
@@ -67,6 +70,8 @@ const Register = ({ navigation }) => {
         default:
           break;
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -111,7 +116,11 @@ const Register = ({ navigation }) => {
         </View>
       )}
       <View style={styles.submit}>
-        <SubmitButton onPress={onSubmit} title="Registrarme" />
+        <SubmitButton
+          onPress={onSubmit}
+          title="Registrarme"
+          isLoading={isLoading}
+        />
       </View>
       <Pressable onPress={() => navigation.navigate("Login")}>
         <Text style={styles.login}>ya tenes una cuenta?</Text>

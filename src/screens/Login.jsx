@@ -13,6 +13,7 @@ const Login = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [isLoginError, setIsLoginError] = useState(false);
   const [triggerLogin] = useLoginMutation();
   const dispatch = useDispatch();
@@ -20,9 +21,11 @@ const Login = ({ navigation }) => {
 
   useEffect(() => {
     setIsLoginError(false);
+    setIsLoading(false);
   }, [email, password]);
 
   const onSubmit = async () => {
+    setIsLoading(true);
     try {
       loginSchema.validateSync({ email, password });
       const { data, error } = await triggerLogin({
@@ -54,6 +57,8 @@ const Login = ({ navigation }) => {
         default:
           break;
       }
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
@@ -83,7 +88,11 @@ const Login = ({ navigation }) => {
         </View>
       )}
       <View style={styles.submit}>
-        <SubmitButton onPress={onSubmit} title="Iniciar Sesion" />
+        <SubmitButton
+          onPress={onSubmit}
+          title="Iniciar Sesion"
+          isLoading={isLoading}
+        />
       </View>
       <Pressable onPress={() => navigation.navigate("Register")}>
         <Text style={styles.register}>No tenes una cuenta?</Text>
