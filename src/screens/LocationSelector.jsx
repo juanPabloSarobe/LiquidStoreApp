@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import MapPreview from "../components/MapPreview";
 import fonts from "../utils/global/fonts";
 import * as Location from "expo-location";
-import { usePutUserLocationMutation } from "../app/services/profile";
+import { usePatchUserLocationMutation } from "../app/services/profile";
 
 const LocationSelector = ({ navigation }) => {
   const [location, setLocation] = useState({
@@ -16,7 +16,7 @@ const LocationSelector = ({ navigation }) => {
   const colors = useSelector((state) => state.colors);
   //const { localId } = useSelector((state) => state.counter);
   const { localId } = useSelector((state) => state.auth);
-  const [triggerPutUserLocation] = usePutUserLocationMutation();
+  const [triggerPatchUserLocation] = usePatchUserLocationMutation();
   const mapsKey = process.env.EXPO_PUBLIC_MAPS_KEY;
 
   useEffect(() => {
@@ -58,7 +58,7 @@ const LocationSelector = ({ navigation }) => {
   }, [location]);
 
   const confirmLocation = async () => {
-    await triggerPutUserLocation({ localId, address });
+    await triggerPatchUserLocation({ localId, address });
     navigation.goBack();
   };
 

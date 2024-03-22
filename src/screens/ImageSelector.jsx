@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import {
   useGetProfileQuery,
-  usePutProfileImageMutation,
+  usePatchProfileImageMutation,
 } from "../app/services/profile";
 
 import * as ImagePicker from "expo-image-picker";
@@ -13,12 +13,12 @@ const ImageSelector = ({ navigation }) => {
   const { localId } = useSelector((state) => state.auth);
   const [newImage, setNewImage] = useState(false);
   const [image, setImage] = useState("");
-  const [triggerImage] = usePutProfileImageMutation();
+  const [triggerImage] = usePatchProfileImageMutation();
   const { data, isSuccess } = useGetProfileQuery(localId);
 
   useEffect(() => {
     if (isSuccess) {
-      setImage(data?.image?.image);
+      setImage(data?.image);
     }
   }, [isSuccess, data]);
 

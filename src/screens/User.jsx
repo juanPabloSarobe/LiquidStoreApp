@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import {
   useGetProfileQuery,
-  usePutUserColorThemeMutation,
+  usePatchUserColorThemeMutation,
 } from "../app/services/profile";
 
 const User = ({ navigation }) => {
@@ -20,7 +20,7 @@ const User = ({ navigation }) => {
   const dispatch = useDispatch();
   //const user = useSelector((state) => state.counter);
   const user = useSelector((state) => state.auth);
-  const [triggerPutUserColorTheme] = usePutUserColorThemeMutation();
+  const [triggerPutUserColorTheme] = usePatchUserColorThemeMutation();
   const { data, isLoading, isSuccess } = useGetProfileQuery(user.localId);
 
   const toggleSwitch = () => {
@@ -36,7 +36,7 @@ const User = ({ navigation }) => {
 
   useEffect(() => {
     if (isSuccess) {
-      setIsEnabled(data?.colorTheme?.dark);
+      setIsEnabled(data?.dark);
     }
   }, [data]);
 
@@ -61,7 +61,7 @@ const User = ({ navigation }) => {
         <Image
           source={
             data?.image
-              ? { uri: data?.image?.image }
+              ? { uri: data?.image }
               : require("../../assets/user.png")
           }
           style={styles.image}
@@ -82,7 +82,7 @@ const User = ({ navigation }) => {
           </Text>
           <View style={styles.locationZone}>
             <Text style={styles.title(colors)}>
-              {data?.address ? data?.address?.address : "Agregar dirección"}
+              {data?.address ? data?.address : "Agregar dirección"}
             </Text>
             <Pressable
               style={styles.location(colors)}

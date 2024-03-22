@@ -7,10 +7,10 @@ export const profileApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: base_url }),
   tagTypes: ["Post", "User"],
   endpoints: (builder) => ({
-    putProfileImage: builder.mutation({
+    patchProfileImage: builder.mutation({
       query: ({ image, localId }) => ({
-        url: `/profile/${localId}/image.json`,
-        method: "PUT",
+        url: `/profile/${localId}.json`,
+        method: "PATCH",
         body: { image },
       }),
       invalidatesTags: ["User"],
@@ -21,18 +21,18 @@ export const profileApi = createApi({
       }),
       providesTags: ["User"],
     }),
-    putUserLocation: builder.mutation({
+    patchUserLocation: builder.mutation({
       query: ({ localId, address }) => ({
-        url: `profile/${localId}/address.json`,
-        method: "PUT",
+        url: `profile/${localId}.json`,
+        method: "PATCH",
         body: { address },
       }),
       invalidatesTags: ["User"],
     }),
-    putUserColorTheme: builder.mutation({
+    patchUserColorTheme: builder.mutation({
       query: ({ localId, dark }) => ({
-        url: `profile/${localId}/colorTheme.json`,
-        method: "PUT",
+        url: `profile/${localId}.json`,
+        method: "PATCH",
         body: { dark },
       }),
       invalidatesTags: ["User"],
@@ -41,8 +41,8 @@ export const profileApi = createApi({
 });
 
 export const {
-  usePutProfileImageMutation,
+  usePatchProfileImageMutation,
   useGetProfileQuery,
-  usePutUserLocationMutation,
-  usePutUserColorThemeMutation,
+  usePatchUserLocationMutation,
+  usePatchUserColorThemeMutation,
 } = profileApi;
