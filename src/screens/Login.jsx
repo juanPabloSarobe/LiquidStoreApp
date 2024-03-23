@@ -7,6 +7,7 @@ import fonts from "../utils/global/fonts";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../features/auth/authSlice";
 import { loginSchema } from "../utils/validations/authSchema";
+import { deleteSession, insertSession, insertSession2 } from "../utils/db";
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -31,7 +32,9 @@ const Login = ({ navigation }) => {
       const { data, error } = await triggerLogin({
         email,
         password,
+        returnSecureToken: true,
       });
+
       if (error) {
         setIsLoginError(true);
       }
@@ -43,6 +46,10 @@ const Login = ({ navigation }) => {
           localId: data.localId,
         })
       );
+      deleteSession();
+      console.log(data);
+      const del = await insertSession(data);
+      console.log(del);
     } catch (error) {
       setErrorEmail("");
       setErrorPassword("");

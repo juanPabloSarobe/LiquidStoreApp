@@ -9,6 +9,8 @@ import Orders from "../screens/Orders";
 import { Entypo, Octicons, FontAwesome } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 import AuthDrawerNavigation from "./AuthDrawerNavigation";
+import { useEffect } from "react";
+import { eraseTable, fetchSession, show } from "../utils/db";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,6 +19,16 @@ const MainNavigator = () => {
   const user = useSelector((state) => state.auth);
   const cart = useSelector((state) => state.cart);
   const colors = useSelector((state) => state.colors);
+
+  useEffect(() => {
+    (async () => {
+      const session = await fetchSession();
+      console.log(session.rows._array);
+
+      const tables = await show();
+      console.log(tables.rows._array);
+    })();
+  }, [user]);
 
   return (
     <>

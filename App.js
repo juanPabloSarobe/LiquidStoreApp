@@ -6,7 +6,10 @@ import MainNavigator from "./src/routes/MainNavigator";
 import { store } from "./src/app/store";
 import { Provider } from "react-redux";
 import IsLoading from "./src/components/IsLoading";
+import { eraseTable, init } from "./src/utils/db";
 
+//eraseTable();
+init();
 export default function App() {
   const screenWidth = Dimensions.get("window").width;
 
