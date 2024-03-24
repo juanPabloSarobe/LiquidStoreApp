@@ -14,6 +14,7 @@ export const init = () => {
   });
   return promise;
 };
+//Consulta para eliminar la tabla para volver a crearla de cero por si queremos agregar columnas
 export const eraseTable = () => {
   const promise = new Promise((resolve, reject) => {
     db.transaction((tx) => {
@@ -27,6 +28,8 @@ export const eraseTable = () => {
   });
   return promise;
 };
+
+//consulta que nos permite ver todas las tabls que tenemos creadas y su composicion
 export const show = () => {
   const promise = new Promise((resolve, reject) => {
     db.transaction((tx) => {

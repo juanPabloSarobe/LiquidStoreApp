@@ -21,7 +21,18 @@ export const authApi = createApi({
         body: user,
       }),
     }),
+    refreshLogin: builder.mutation({
+      query: (user) => ({
+        url: `token?key=${apiKey}`,
+        method: "POST",
+        body: user,
+      }),
+    }),
   }),
 });
 
-export const { useRegisterMutation, useLoginMutation } = authApi;
+export const {
+  useRegisterMutation,
+  useLoginMutation,
+  useRefreshLoginMutation,
+} = authApi;

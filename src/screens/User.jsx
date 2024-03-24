@@ -12,6 +12,7 @@ import {
   useGetProfileQuery,
   usePatchUserColorThemeMutation,
 } from "../app/services/profile";
+import { deleteSession } from "../utils/db";
 
 const User = ({ navigation }) => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -51,6 +52,7 @@ const User = ({ navigation }) => {
 
   const handlerExit = () => {
     dispatch(setLight());
+    deleteSession();
     dispatch(clearUser());
   };
 

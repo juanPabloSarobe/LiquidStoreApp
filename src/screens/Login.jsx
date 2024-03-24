@@ -34,7 +34,7 @@ const Login = ({ navigation }) => {
         password,
         returnSecureToken: true,
       });
-
+      console.log(data);
       if (error) {
         setIsLoginError(true);
       }
@@ -47,9 +47,7 @@ const Login = ({ navigation }) => {
         })
       );
       deleteSession();
-      console.log(data);
-      const del = await insertSession(data);
-      console.log(del);
+      insertSession(data);
     } catch (error) {
       setErrorEmail("");
       setErrorPassword("");
