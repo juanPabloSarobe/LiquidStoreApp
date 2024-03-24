@@ -33,15 +33,15 @@ const MainNavigator = () => {
     (async () => {
       const session = await fetchSession();
 
+      //Esta consulta sirve para listar la cantidad de tablas creadas en la DB, es a fines informativos
       /* const tables = await show();
-      console.log(tables.rows._array); */
+       */
 
       if (session.rows.length) {
         const now = Math.floor(Date.now() / 1000);
         const updateAt = session.rows._array[0].updateAt;
         const sessionTime = now - updateAt;
         if (sessionTime < 40) {
-          console.log(sessionTime);
           const data = session.rows._array[0];
           dispatch(
             getUser({

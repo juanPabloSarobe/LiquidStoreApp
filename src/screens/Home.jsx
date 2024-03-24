@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Modal, StyleSheet, Text, View } from "react-native";
+import { Alert, Modal, StyleSheet, Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { useRefreshLoginMutation } from "../app/services/auth";
 import Categories from "../components/Categories";
@@ -30,10 +30,8 @@ const Home = ({ navigation }) => {
         const sessionTime = now - updateAt;
 
         setRefreshToken(session?.rows._array[0].refreshToken);
-        console.log("session: ", session.rows._array[0].updateAt);
 
         if (sessionTime > 30) {
-          console.log(sessionTime);
           setRefreshModalVisible(true);
         }
       } else {
@@ -45,14 +43,9 @@ const Home = ({ navigation }) => {
   useEffect(() => {
     (async () => {
       if (Object.keys(newSessionData).length) {
-        console.log("newSessionData: ", newSessionData);
         deleteSession();
         insertSession(newSessionData);
         const sessionRefreshed = await fetchSession();
-        console.log(
-          "sessionRefreshed: ",
-          await sessionRefreshed.rows._array[0]
-        );
 
         dispatch(
           getUser({
@@ -65,7 +58,6 @@ const Home = ({ navigation }) => {
       }
     })();
   }, [newSessionData]);
-  console.log("LastSessionData:", lastSessionData);
 
   const handleModal = ({ visible }) => {
     setModalVisible(visible);
@@ -90,11 +82,8 @@ const Home = ({ navigation }) => {
       refreshToken: data.refresh_token,
     });
 
-    console.log("RefreshData: ", data);
-
     if (error) {
-      console.log(error);
-      //setIsLoginError(true);
+      Alert.alert("Se ha producido un error", `${error}`);
     }
   };
   if (modalVisible && !refreshToken) {

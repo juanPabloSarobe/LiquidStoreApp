@@ -34,7 +34,6 @@ const Login = ({ navigation }) => {
         password,
         returnSecureToken: true,
       });
-      console.log(data);
       if (error) {
         setIsLoginError(true);
       }
