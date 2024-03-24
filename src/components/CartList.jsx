@@ -7,6 +7,7 @@ import { Alert } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteAllitems, buyCart } from "../features/cart/cartSlice";
 import { usePostOrderMutation } from "../app/services/shop";
+import toast from "./ToastProxy";
 
 const CartList = ({ navigation }) => {
   // const user = useSelector((state) => state.counter);
@@ -50,6 +51,20 @@ Esta accion no se podra deshacer`,
     } else {
       dispatch(buyCart());
       navigation.navigate("Orders");
+      toast(
+        `
+Felicitaciones ha realizado la compra correctamente.
+
+En breve recibira un mail con el link de pago. 
+
+Gracias por su compra.
+        `,
+        4000,
+        0,
+        colors.textPrimary,
+        colors.bgPrimary,
+        500
+      );
     }
   };
   if (emptyCart) {

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRefreshLoginMutation } from "../app/services/auth";
 import Categories from "../components/Categories";
 import RefreshLoginModal from "../components/RefreshLoginModal";
+import toast from "../components/ToastProxy";
 import WelcomeModal from "../components/WelcomeModal";
 import { clearUser, getUser } from "../features/auth/authSlice";
 import { deleteSession, fetchSession, insertSession } from "../utils/db";
@@ -63,6 +64,14 @@ const Home = ({ navigation }) => {
     setModalVisible(visible);
   };
   const closeRefreshLoginModal = ({ visible }) => {
+    toast(
+      "Inicio de sesión cancelado. Borrando datos de acceso",
+      3000,
+      -20,
+      colors.textPrimary,
+      colors.bgPrimary,
+      0
+    );
     deleteSession();
     dispatch(clearUser());
     setRefreshModalVisible(visible);

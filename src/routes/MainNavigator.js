@@ -35,8 +35,7 @@ const MainNavigator = () => {
 
       //Esta consulta sirve para listar la cantidad de tablas creadas en la DB, es a fines informativos
       /* const tables = await show();
-       */
-
+      console.log(tables.rows._array[0]); */
       if (session.rows.length) {
         const now = Math.floor(Date.now() / 1000);
         const updateAt = session.rows._array[0].updateAt;

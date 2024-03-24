@@ -7,6 +7,7 @@ import { store } from "./src/app/store";
 import { Provider } from "react-redux";
 import IsLoading from "./src/components/IsLoading";
 import { eraseTable, init } from "./src/utils/db";
+import { RootSiblingParent } from "react-native-root-siblings";
 
 //eraseTable();
 init();
@@ -27,7 +28,9 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <MainNavigator />
+      <RootSiblingParent>
+        <MainNavigator />
+      </RootSiblingParent>
     </Provider>
   );
 }

@@ -3,6 +3,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart } from "../features/cart/cartSlice";
+import toast from "./ToastProxy";
 
 const QuantitySelectorCart = ({ item }) => {
   const dispatch = useDispatch();
@@ -13,10 +14,16 @@ const QuantitySelectorCart = ({ item }) => {
   const [newItem, setNewItem] = useState({});
 
   const plusQuantity = () => {
-    quantity < item.stock && setQuantity(quantity + 1);
+    if (quantity < item.stock) {
+      setQuantity(quantity + 1);
+      toast("Unidad agregada al carrito", 1000, -90);
+    }
   };
   const minusQuantity = () => {
-    quantity > 1 && setQuantity(quantity - 1);
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+      toast("Unidad retirada del carrito", 1000, -90);
+    }
   };
   useEffect(() => {
     if (quantity < item.quantity || quantity > item.quantity)

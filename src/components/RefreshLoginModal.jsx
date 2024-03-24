@@ -1,7 +1,10 @@
-import { Button, Image, Modal, StyleSheet, Text, View } from "react-native";
+import { Image, Modal, Pressable, StyleSheet, Text, View } from "react-native";
 import { useSelector } from "react-redux";
 import fonts from "../utils/global/fonts";
 import { MaterialIcons } from "@expo/vector-icons";
+import * as LocalAuthentication from "expo-local-authentication";
+import { useEffect, useState } from "react";
+import toast from "./ToastProxy";
 
 const RefreshLoginModal = ({
   isVisible,
@@ -10,6 +13,47 @@ const RefreshLoginModal = ({
   user,
 }) => {
   const colors = useSelector((state) => state.colors);
+  const [isBiometricSupported, setIsBiometricSupported] = useState(false);
+  const LocalAuthenticationOptions = {
+    promptMessage: "Ingresá con tu huella digital",
+    cancelLabel: "cancel",
+  };
+
+  useEffect(() => {
+    /* (async () => {})(); */
+    handleLocalAuth();
+  }, []);
+
+  const handleLocalAuth = async () => {
+    const compatible = await LocalAuthentication.hasHardwareAsync();
+    setIsBiometricSupported(compatible);
+
+    const savedBiometrics = await LocalAuthentication.isEnrolledAsync();
+    if (!savedBiometrics)
+      return Alert.alert(
+        "Biometric record not found",
+        "Please verify your identity with your password",
+        "OK"
+      );
+
+    const { success, error } = await LocalAuthentication.authenticateAsync(
+      LocalAuthenticationOptions
+    );
+    if (success) {
+      handleRefreshLoginModal(false);
+      toast(
+        "Bienvenido de vuelta",
+        3000,
+        -90,
+        colors.textPrimary,
+        colors.bgPrimary,
+        1500
+      );
+    }
+    if (error) {
+      toast("Sensor cerrado", 2000, 0);
+    }
+  };
 
   return (
     <Modal
@@ -28,33 +72,20 @@ const RefreshLoginModal = ({
               source={require("../../assets/liquidStoreLogo.png")}
               style={styles.image}
             />
-            <Text style={styles.title}>
-              {`Bienvenido de vuelta 
-${user.displayName}`}
-            </Text>
+            <Text style={styles.title}>{`Hola ${user.displayName} 😀`}</Text>
             <Text style={styles.subtitle}>Ingresa con tu huella digital</Text>
           </View>
-          <View style={styles.presentationZone}>
+          <Pressable style={styles.presentationZone} onPress={handleLocalAuth}>
             <MaterialIcons
               name="fingerprint"
               size={80}
-              color={colors.textSecondary}
+              color={"black"}
+              style={styles.fingerprintIcon}
             />
-            <Text style={styles.subtitle}>
-              Toca el sensor para volver a ingresar
-            </Text>
+            <Text style={styles.subtitle}>Abrir Sensor biometrico</Text>
 
             {/*  <Text style={styles.autor}>Autor: Juan Pablo Sarobe</Text> */}
-          </View>
-          <View style={styles.buttonZone}>
-            <Button
-              title="Ingresar"
-              color={colors.bgSuccess}
-              onPress={() => {
-                handleRefreshLoginModal(false);
-              }}
-            />
-          </View>
+          </Pressable>
         </View>
       </View>
     </Modal>
@@ -101,7 +132,7 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   presentationZone: {
-    flex: 2,
+    flex: 3,
     width: "100%",
     borderBottomEndRadius: 20,
     borderBottomStartRadius: 20,
@@ -109,6 +140,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 10,
     gap: 10,
+  },
+  fingerprintIcon: {
+    backgroundColor: "#dddddd",
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    textAlign: "center",
+    textAlignVertical: "center",
   },
   title: {
     color: "black",

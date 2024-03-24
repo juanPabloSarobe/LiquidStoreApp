@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart } from "../features/cart/cartSlice";
 import { useGetProductQuery } from "../app/services/shop";
 import IsLoading from "../components/IsLoading";
+import toast from "../components/ToastProxy";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -38,6 +39,10 @@ const ProductDetail = ({ route, navigation }) => {
   };
   const minusQuantity = () => {
     quantity > 1 && setQuantity(quantity - 1);
+  };
+  const handleBuy = () => {
+    dispatch(addItemToCart(item));
+    toast("Producto agregado al carrito", 1500, -90);
   };
 
   useLayoutEffect(() => {
@@ -86,7 +91,7 @@ const ProductDetail = ({ route, navigation }) => {
               title="Comprar"
               color={colors.bgSuccess}
               disabled={quantity === 0 && true}
-              onPress={() => dispatch(addItemToCart(item))}
+              onPress={handleBuy}
             />
           </View>
         </View>
