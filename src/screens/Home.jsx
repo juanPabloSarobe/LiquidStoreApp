@@ -5,7 +5,7 @@ import { useRefreshLoginMutation } from "../app/services/auth";
 import Categories from "../components/Categories";
 import RefreshLoginModal from "../components/RefreshLoginModal";
 import WelcomeModal from "../components/WelcomeModal";
-import { getUser } from "../features/auth/authSlice";
+import { clearUser, getUser } from "../features/auth/authSlice";
 import { deleteSession, fetchSession, insertSession } from "../utils/db";
 
 const Home = ({ navigation }) => {
@@ -31,7 +31,7 @@ const Home = ({ navigation }) => {
 
         setRefreshToken(session?.rows._array[0].refreshToken);
 
-        if (sessionTime > 30) {
+        if (sessionTime > 10) {
           setRefreshModalVisible(true);
         }
       } else {
@@ -63,6 +63,8 @@ const Home = ({ navigation }) => {
     setModalVisible(visible);
   };
   const closeRefreshLoginModal = ({ visible }) => {
+    deleteSession();
+    dispatch(clearUser());
     setRefreshModalVisible(visible);
   };
 
@@ -86,7 +88,7 @@ const Home = ({ navigation }) => {
       Alert.alert("Se ha producido un error", `${error}`);
     }
   };
-  if (modalVisible && !refreshToken) {
+  if (modalVisible && !user.email) {
     return <WelcomeModal isVisible={modalVisible} handleModal={handleModal} />;
   }
   if (refreshToken && refreshModalVisible) {
@@ -95,6 +97,7 @@ const Home = ({ navigation }) => {
         isVisible={refreshModalVisible}
         handleRefreshLoginModal={handleRefreshLoginModal}
         closeRefreshLoginModal={closeRefreshLoginModal}
+        user={lastSessionData}
       />
     );
   }

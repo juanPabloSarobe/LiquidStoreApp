@@ -7,8 +7,10 @@ const RefreshLoginModal = ({
   isVisible,
   handleRefreshLoginModal,
   closeRefreshLoginModal,
+  user,
 }) => {
   const colors = useSelector((state) => state.colors);
+
   return (
     <Modal
       animationType="slide"
@@ -26,7 +28,11 @@ const RefreshLoginModal = ({
               source={require("../../assets/liquidStoreLogo.png")}
               style={styles.image}
             />
-            <Text style={styles.title}>Ingresa con tu huella digital</Text>
+            <Text style={styles.title}>
+              {`Bienvenido de vuelta 
+${user.displayName}`}
+            </Text>
+            <Text style={styles.subtitle}>Ingresa con tu huella digital</Text>
           </View>
           <View style={styles.presentationZone}>
             <MaterialIcons
@@ -35,7 +41,7 @@ const RefreshLoginModal = ({
               color={colors.textSecondary}
             />
             <Text style={styles.subtitle}>
-              Toca el sensor de huella digital
+              Toca el sensor para volver a ingresar
             </Text>
 
             {/*  <Text style={styles.autor}>Autor: Juan Pablo Sarobe</Text> */}
@@ -80,7 +86,7 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   imageZone: {
-    flex: 1,
+    flex: 2,
     width: "100%",
     height: 80,
     resizeMode: "contain",
@@ -105,9 +111,11 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   title: {
-    color: "blue",
+    color: "black",
     fontSize: 28,
     fontFamily: fonts.robotoBlack,
+    textAlign: "center",
+    marginTop: 10,
   },
   subtitle: {
     color: "black",
