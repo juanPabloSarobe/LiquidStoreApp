@@ -31,7 +31,7 @@ const WelcomeModal = ({ isVisible, handleModal }) => {
               transacciona nada. Es un trabajo práctico, donde se demuestran los
               conceptos aprendidos en clase.
             </Text>
-            <Text style={styles.autor}>Autor: Juan Pablo Sarobe</Text>
+            <Text style={styles.autor}>Autor: Sarobe Juan Pablo</Text>
           </View>
           <View style={styles.buttonZone}>
             <Button

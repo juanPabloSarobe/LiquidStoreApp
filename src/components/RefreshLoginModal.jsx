@@ -1,4 +1,12 @@
-import { Image, Modal, Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  Alert,
+  Image,
+  Modal,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { useSelector } from "react-redux";
 import fonts from "../utils/global/fonts";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -30,10 +38,13 @@ const RefreshLoginModal = ({
 
     const savedBiometrics = await LocalAuthentication.isEnrolledAsync();
     if (!savedBiometrics)
-      return Alert.alert(
-        "Biometric record not found",
-        "Please verify your identity with your password",
-        "OK"
+      toast(
+        "Lector Biometico no disponible",
+        2000,
+        0,
+        colors.textPrimary,
+        colors.bgPrimary,
+        0
       );
 
     const { success, error } = await LocalAuthentication.authenticateAsync(
@@ -51,7 +62,6 @@ const RefreshLoginModal = ({
       );
     }
     if (error) {
-      toast("Sensor cerrado", 2000, 0);
     }
   };
 
@@ -109,7 +119,7 @@ const styles = StyleSheet.create({
   modalContainer: {
     backgroundColor: "white",
     width: "100%",
-    height: "50%",
+    height: "60%",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 20,

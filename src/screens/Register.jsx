@@ -7,7 +7,7 @@ import { useRegisterMutation } from "../app/services/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../features/auth/authSlice";
 import { registerSchema } from "../utils/validations/authSchema";
-import { insertSession } from "../utils/db";
+import { deleteSession, insertSession } from "../utils/db";
 
 const Register = ({ navigation }) => {
   const colors = useSelector((state) => state.colors);
@@ -40,8 +40,6 @@ const Register = ({ navigation }) => {
         displayName: nombre,
         returnSecureToken: true,
       });
-      deleteSession();
-      insertSession(data);
       if (error) {
         setIsLoginError(true);
       }
@@ -53,6 +51,8 @@ const Register = ({ navigation }) => {
           localId: data.localId,
         })
       );
+      deleteSession();
+      insertSession(data);
     } catch (error) {
       setErrorNombre("");
       setErrorEmail("");
