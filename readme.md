@@ -2,19 +2,37 @@
 
 ![](https://raw.githubusercontent.com/juanPabloSarobe/react-47225/main/src/assets/img/liquidStoreLogo.png)
 
-## LiquidStoreAPP es un proyecto del curso de React Native dictado en CoderHouse comisión 53280
+## LiquidStoreAPP es un proyecto del curso de React Native dictado en CoderHouse comisión 53280, para desarrollo de Aplicaciones mobiles para Android y iOS.
 
----
+&nbsp;
 
-### La aplicación LiquidStoreApp es un store de venta de bebidas, se utiliza los mismos recursos que cree para el curso de react js.
+### Tecnologías utilizadas
 
-De esta forma implemento mis propias prácticas adaptando lo visto en clase pero utilizando mis propias herramientas.
+![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Expo](https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![Babel](https://img.shields.io/badge/Babel-F9DC3e?style=for-the-badge&logo=babel&logoColor=black)
+![Cloudinary](https://img.shields.io/badge/Cloudinary-3448C5?style=for-the-badge&logo=Cloudinary&logoColor=white)
+![Firebase](https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black)
+![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
+![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
+![iOS](https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white)
 
 ---
 
 &nbsp;
 
-## Preentrega clase 7:
+### La aplicación LiquidStoreApp es un store de venta de bebidas, se utiliza los mismos recursos que cree para el curso de react js.
+
+De esta forma se implementan practicas propias, adaptando lo visto en clase pero utilizando mis propias herramientas.
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## Pre entrega clase 7:
 
 Como primera pantalla vemos la lista de categorías para seleccionar. Al seleccionar una lista cambia la pantalla a la lista de productos. Aquí se incluyó en la APPBar el botón de volver así como un botón para abrir el buscador.
 Una vez abierto el buscador el botón cambia a una cruz para cerrarlo.
@@ -26,19 +44,19 @@ Se agregaron las fuentes Roboto en varias de sus formas.
 
 &nbsp;
 
-## Preentrega clase 9:
+## Pre entrega clase 9:
 
-Para esta preentrega se requeria la implementacion de la libreria Navigation, la cual se implemento exitosamente. Otro de los puntos claves era ajustar el Header, pero por cuestiones de estetica y de practicar, se implemento el Header original de la libreria en vez del personalizado que ya tenia desarrollado, de esta forma pude practicar con sus propios componentes y editar por ejemplo los iconos del header variandolos dependiendo del estado del componente, mediante el metodo navigation.setOptions().
-Tambien se ajusto la barra de busqueda al nuevo componente.
-Por ultimo se agrego el componente ActivityIndicator mientras se carga la fuente.
+Para esta pre entrega se requería la implementación de la librería Navigation, la cual se implemento exitosamente. Otro de los puntos claves era ajustar el Header, pero por cuestiones de estética y de practicar, se implemento el Header original de la librería en vez del personalizado que ya tenia desarrollado, de esta forma pude practicar con sus propios componentes y editar por ejemplo los iconos del header variándolos dependiendo del estado del componente, mediante el método `navigation.setOptions()`.
+También se ajusto la barra de búsqueda al nuevo componente.
+Por ultimo se agrego el componente `ActivityIndicator` mientras se carga la fuente.
 
 Para estos trabajos se fueron creando ramas, donde se dejaron copias de la version anterior.
 
 &nbsp;
 
-## Preentrega clase 11:
+## Pre entrega clase 11:
 
-Para esta preentrega se requiere la implementación de una Bottom Tab Bar y de manejo de Estados mediante Redux, las cuales se implementaron correctamente.
+Para esta pre entrega se requiere la implementación de una Bottom Tab Bar y de manejo de Estados mediante Redux, las cuales se implementaron correctamente.
 
 Respecto de la tab bar, se utilizaron métodos diferentes al profesor para darle estilos a los botones cuando están o no seleccionados. También se modificó el main navigator.js para que sea la TabBar la principal y el Stack Navigation la secundaria dentro de una Tab. Para la Tab Shop se utiliza el header de del Stack, para el resto se utiliza el header de la TabBar.
 En la segunda Tab se implementa el carrito, el cual contiene en su header un botón para vaciarlo, previo verificarlo con el usuario mediante un Alert.
@@ -54,11 +72,11 @@ Se diseñaron funciones dentro del Slice que se reutilizan para actualizar el im
 
 ## Preentrega clase 15:
 
-Para esta preentrega se requiere la implementación de persistencia de datos en la nube, mediante redux toolkit, para lo cual se utiliza firebase realtime database como base de datos noSQL, también se utiliza firebase authentication para la login y autentificación de usuarios, y se implementa correctamente el uso de Device Features como la cámara de fotos del dispositivo.
+Para esta preentrega se requiere la implementación de persistencia de datos en la nube, mediante **redux toolkit**, para lo cual se utiliza firebase realtime database como base de datos noSQL, también se utiliza **firebase authentication** para la login y autentificación de usuarios, y se implementa correctamente el uso de **Device Features** como la cámara de fotos del dispositivo.
 
 Se diseñó la pestaña Órdenes, donde se van almacenando las órdenes generadas por cada usuario, las mismas se persisten en base de datos, discriminando el usuario que realiza la compra. En el carrito se agrega un control que no permita la compra si no está logueado. A diferencia del profesor, no tiene que estar logueado para ver la aplicación, sino que puede navegar y generar carritos, y recién cuando proceda a comprar, se le solicita el login. El componente Órdenes tiene 3 posibles estados, cuando está cargando muestra un icono de carga, si no tiene ninguna compra, muestra que no se realizó ninguna compra aun y si el usuario realizó alguna compra, muestra un listado en forma de tarjetas de todas las compras filtradas por usuario, las cuales se bajan directamente de la base de datos.
 
-Se diseñó la pestaña User, que contiene un componente de navigation tipo drawer, el mismo tiene un condicional que muestra el login y register si no esta logueado, y si esta logueado muestra la pantalla de configuración de usuario. Para el formulario de login y de registro se implementaron validaciones mediante Yup. A su vez la pestaña User contiene un Navigation Stack para mostrar luego las screen para utilización de la cámara y a futuro del posicionamiento. Al momento de registrarse se solicita como dato adicional, el nombre de la persona, el cual se almacena en el displayName de authentication, de esta forma al loguearse se usa este nombre en el label de loguin de la TabBar, para darle la indicación al usuario que ya está registrado.
+Se diseñó la pestaña User, que contiene un componente de navigation tipo `drawer`, el mismo tiene un condicional que muestra el login y register si no esta logueado, y si esta logueado muestra la pantalla de configuración de usuario. Para el formulario de login y de registro se implementaron validaciones mediante `Yup`. A su vez la pestaña User contiene un Navigation Stack para mostrar luego las screen para utilización de la cámara y a futuro del posicionamiento. Al momento de registrarse se solicita como dato adicional, el nombre de la persona, el cual se almacena en el displayName de authentication, de esta forma al loguearse se usa este nombre en el label de login de la TabBar, para darle la indicación al usuario que ya está registrado.
 
 Como valor agregado se implementó el modo claro, modo oscuro en toda la aplicación, al cual se accede luego de loguearse. A futuro se persistirá en base de datos para guardar la configuración favorita del usuario.
 Respecto del uso de la cámara, la misma se implementa correctamente, y se persiste la imagen en base de datos.
@@ -69,11 +87,26 @@ Respecto del uso de la cámara, la misma se implementa correctamente, y se persi
 
 ## Entrega Final:
 
+Para la entrega final se implemento en primera instancia la ubicación del dispositivo mediante la solicitud de permisos y el uso de la Localización del gps del equipo. para ello se generó un nuevo componente para solicitar la ubicación, mostrarla en el mapa y confirmarla por ate del usuario.
+También se persistió en el perfil del usuario en la nube la imagen, la ubicación y la preferencia de colores light o dark.
+
+Como siguiente paso se implemento `SQLite` como almacenamiento local de datos. de esta forma se pudo persistir localmente los datos del usuario.
+
+Como valor agregado se realizaron las siguientes modificaciones al proyecto, fuera de programa e integrando y ampliando los conocimientos.
+
+1. Refactorización del servicio de register y login, para solicitar adicionalmente el `refreshToken`
+2. Al momento del login exitoso, se guardan los datos del usuario en `SQLite`, incluyendo la `refreshToken`. Para esto se tuvo que refactorizar la base de datos completa, ya que para agregar nuevas columnas en la tabla `sessionUser`, hay que eliminar la tabla completa y volver a crearla desde cero con las nuevas columnas. de esta forma también se crearon 2 nuevos servicios de base de datos, uno para eliminar la tabla completa llamado `eraseTable` y otro para visualizar las tablas que tengamos creadas y como están computas sus columnas llamado `show`. De esta forma se ampliaron los usos y conocimientos en implementación de SQLite.
+3. Creación de un nuevo servicio a un nuevo endpoint para refrescar la sesión del usuario en firebase, mediante la `refreshToken`. de esta forma podemos refrescar la sesión del usuario, sin necesidad de almacenar el password ni tener que volver a solicitarlo.
+4. Implementación del `Device Feature: Local Authentication`, el cual luego de superar las verificaciones de requisitos de hardware y habilitación, le solicita la huella digital al usuario, de esta forma al superar la autentificación, se envía el `refreshToken` a firebase, el cual nos devuelve un nuevo Token de autorización y refresca el tiempo de login nuevamente.
+5. A su vez en caso de que el usuario no supere la autenticación por huella digital, se borran los datos de acceso del almacenamiento local del dispositivo, obligando al usuario no autorizado a volver a loguearse para acceder a los datos.
+
+Finalmente se implemento el cliente de Expo Application Services, (eas-cli) para realizar las funciones de compilación tanto para producción como para desarrollo. pudiendo generar el archivo APK para instalar de forma local.
+
 &nbsp;
 
 ---
 
-## Librerias utilizadas
+## Librerías utilizadas
 
 - Expo
 - Expo fonts
@@ -81,7 +114,7 @@ Respecto del uso de la cámara, la misma se implementa correctamente, y se persi
 - Expo Image Picker
 - Expo Gesture Handler
 - Expo local authentication
-- Expor SQLite
+- Expo SQLite
 - React Native Reanimated
 - Navigation Stack
 - Navigation Bottom Tabs
@@ -103,4 +136,23 @@ Respecto del uso de la cámara, la misma se implementa correctamente, y se persi
 
 ## Compilación
 
-- Expo Aplication Services - (eas)
+- Expo Application Services - (eas-cli)
+
+&nbsp;
+
+&nbsp;
+
+## Juan Pablo Sarobe
+
+[Contact Me](mailto:jp.sarobe@gmail.com)
+
+ <a href="https://github.com/juanPabloSarobe">
+    <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+ <a href="https://www.linkedin.com/in/juanpablosarobe/">
+    <img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" />
+  </a>
+
+&nbsp;
+
+&nbsp;
