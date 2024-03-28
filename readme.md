@@ -1,12 +1,12 @@
 # LiquidStoreAPP
 
-<img src="https://raw.githubusercontent.com/juanPabloSarobe/react-47225/main/src/assets/img/liquidStoreLogo.png" style="background-color: #f6f6f6; padding: 10px; border-radius:20px">
+<img src="assets/IconoLiquidStore_PlayStore.png" style="background-color: #f6f6f6; padding: 10px; border-radius:20px">
 
 ## LiquidStoreAPP es un proyecto del curso de React Native dictado en CoderHouse comisión 53280, para desarrollo de Aplicaciones mobiles para Android y iOS.
 
 [![Button Icon]][Link]
 
-[Link]: https://expo.dev/artifacts/eas/urr5TWAM17QdNp87Cm7CJS.apk "Link with example title."
+[Link]: https://expo.dev/artifacts/eas/urr5TWAM17QdNp87Cm7CJS.apk "Descargar el archivo APK para instalar en Android."
 [Button Icon]: https://img.shields.io/badge/DOWNLOAD_APK-198754?style=for-the-badge&logoColor=white&logo=DocuSign
 
 &nbsp;
