@@ -4,8 +4,10 @@
 
 ## LiquidStoreAPP es un proyecto del curso de React Native dictado en CoderHouse comisión 53280, para desarrollo de Aplicaciones mobiles para Android y iOS.
 
-<a href='https://expo.dev/artifacts/eas/urr5TWAM17QdNp87Cm7CJS.apk'  style="background-color: #198754; color:white; padding: 5px 30px"><img src="assets/downloadWhite.png" style="height:12px; padding-right: 10px ">
-Download APK </a>
+[![Button Icon]][Link]
+
+[Link]: https://expo.dev/artifacts/eas/urr5TWAM17QdNp87Cm7CJS.apk "Link with example title."
+[Button Icon]: https://img.shields.io/badge/DOWNLOAD_APK-198754?style=for-the-badge&logoColor=white&logo=DocuSign
 
 &nbsp;
 
