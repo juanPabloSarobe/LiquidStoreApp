@@ -1,6 +1,8 @@
 # LiquidStoreAPP
 
-<img src="assets/IconoLiquidStore_PlayStore.png" style="background-color: #f6f6f6; padding: 10px; border-radius:20px">
+<p align='center'>
+<img src="assets/IconoLiquidStore_PlayStore.png">
+</p>
 
 ## LiquidStoreAPP es un proyecto del curso de React Native dictado en CoderHouse comisión 53280, para desarrollo de Aplicaciones mobiles para Android y iOS.
 
