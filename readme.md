@@ -107,7 +107,7 @@ Como valor agregado se realizaron las siguientes modificaciones al proyecto, fue
 4. Implementación del `Device Feature: Local Authentication`, el cual luego de superar las verificaciones de requisitos de hardware y habilitación, le solicita la huella digital al usuario, de esta forma al superar la autentificación, se envía el `refreshToken` a firebase, el cual nos devuelve un nuevo Token de autorización y refresca el tiempo de login nuevamente.
 5. A su vez en caso de que el usuario no supere la autenticación por huella digital, se borran los datos de acceso del almacenamiento local del dispositivo, obligando al usuario no autorizado a volver a loguearse para acceder a los datos.
 
-Finalmente se implemento el cliente de Expo Application Services, (eas-cli) para realizar las funciones de compilación tanto para producción como para desarrollo. pudiendo generar el archivo APK para instalar de forma local.
+Finalmente se implemento el cliente de Expo Application Services, (eas-cli) para realizar las funciones de compilación tanto para producción como para desarrollo. Pudiendo generar el archivo APK para instalar de forma local.
 
 &nbsp;
 
@@ -148,6 +148,8 @@ Finalmente se implemento el cliente de Expo Application Services, (eas-cli) para
 &nbsp;
 
 &nbsp;
+
+<iframe src="https://res.cloudinary.com/dg8ndxl2y/video/upload/v1711670080/LiquidStoreAPP_exampleVideo_vidvrw.mp4"></iframe>
 
 ## Juan Pablo Sarobe
 
